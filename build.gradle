@@ -1,0 +1,76 @@
+group 'com.azarenka'
+version '0.1-SNAPSHOT'
+
+buildscript {
+    ext {
+        herokuPluginVersion = rev_heroku_plugin
+    }
+
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath ("gradle.plugin.com.heroku.sdk:heroku-gradle:${herokuPluginVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: "com.heroku.sdk.heroku-gradle"
+
+heroku {
+    appName="back-end-furniture"
+    processTypes(
+            web: "java \$JAVA_OPTS -jar -Dspring.profiles.active=production $buildDir.name/libs/$jar.archiveName --server.port=\$PORT".toString()
+    )
+}
+
+deployHeroku {
+    dependsOn build
+
+    doFirst {
+        if (!System.getenv('HEROKU_API_KEY')) {
+            throw new GradleException('Deployment to Heroku requires setting the environment variable HEROKU_API_KEY')
+        }
+    }
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.springframework', name: 'spring-core', version: '5.1.8.RELEASE'
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.1.8.RELEASE'
+    compile 'org.springframework:spring-context-support:5.1.8.RELEASE'
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.1.8.RELEASE'
+    implementation group: 'org.springframework', name: 'spring-tx', version: '5.1.8.RELEASE'
+    implementation group: 'org.springframework', name: 'spring-test', version: '5.1.8.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.1.5.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.1.5.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.1.5.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.1.5.RELEASE'
+    compile 'com.sun.mail:javax.mail:1.5.4'
+    compile group: 'org.springframework', name: 'spring-jdbc', version: '5.1.8.RELEASE'
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.2'
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.5.2'
+    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'org.webjars', name: 'bootstrap', version: '4.1.0'
+    compile group: 'org.webjars', name: 'jquery', version: '3.4.1'
+    compile group: 'org.webjars', name: 'datetimepicker', version: '2.5.1'
+    compile group: 'org.webjars', name: 'noty', version: '2.2.4'
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    implementation 'org.postgresql:postgresql:9.4.1212'
+    implementation group: 'org.liquibase', name: 'liquibase-core', version: '3.7.0'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.28.2'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

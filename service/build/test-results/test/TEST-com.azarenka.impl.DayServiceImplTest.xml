@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.azarenka.impl.DayServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-08-13T17:45:03" hostname="DESKTOP-1TTCG0Q" time="0.0">
+<testsuite name="com.azarenka.impl.DayServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-08-13T19:05:24" hostname="DESKTOP-1TTCG0Q" time="0.002">
   <properties/>
-  <testcase name="getAll" classname="com.azarenka.impl.DayServiceImplTest" time="0.0"/>
+  <testcase name="getAll" classname="com.azarenka.impl.DayServiceImplTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,0 +1,29 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.azarenka.api.FoodRepository">
+
+    <resultMap type="Food" id="food">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="weight" property="weight"/>
+        <result column="calories" property="calories"/>
+        <result column="protein" property="protein"/>
+        <result column="fats" property="fats"/>
+        <result column="carbohydrates" property="carbohydrates"/>
+        <result property="content" javaType="Content" column="content"/>
+    </resultMap>
+
+    <select id="getAll" resultMap="food">
+        SELECT
+            id,
+            title,
+            weight,
+            calories,
+            protein,
+            fats,
+            carbohydrates,
+            content
+        FROM home.foods
+    </select>
+</mapper>

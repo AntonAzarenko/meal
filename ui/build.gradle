@@ -12,6 +12,7 @@ repositories {
 }
 
 dependencies {
+    compile project(':db')
     compile project(':domain')
     compile project(':service')
     implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.1.8.RELEASE'

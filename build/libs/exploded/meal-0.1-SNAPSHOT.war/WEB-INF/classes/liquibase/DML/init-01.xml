@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog-ext
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="30-07-2019-00" author="Anton Azarenka">
+        <addColumn tableName="foods" schemaName="home">
+            <column name="protein" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fats" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="carbohydrates" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="30-07-2019-10" author="Anton Azarenka">
+
+        <addColumn tableName="foods" schemaName="home">
+            <column name="content" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+
+        <insert tableName="foods" schemaName="home">
+            <column name="id" value="ffa5b689-2c0c-4142-99aa-cc1563fb8ab6"/>
+            <column name="title" value="Овсяная каша"/>
+            <column name="weight" value="0.4"/>
+            <column name="content" value="GLASS"/>
+            <column name="calories" value="0"/>
+            <column name="protein" value="0"/>
+            <column name="fats" value="0"/>
+            <column name="carbohydrates" value="1"/>
+        </insert>
+
+        <sql>
+            insert into
+            home.foods (id, title, weight, content, calories, protein, fats, carbohydrates)
+            VALUES
+            ('bb2468e2-d8c8-4df9-85a5-293a2cfbb63f', 'Масло растительное', '0.3','TEA_SPOON', 0, 0, 1, 0)
+        </sql>
+    </changeSet>
+
+    <changeSet id="1-08-2019-10" author="Anton Azarenka">
+        <sql>
+            insert into
+            home.foods (id, title, weight, content, calories, protein, fats, carbohydrates)
+            VALUES
+            ('d99c4f05-fec0-47bf-8652-cb6dca9f236e', 'Сосиски', '0.7','THINGS', 0, 1, 0, 0),
+            ('a916143d-720c-488a-8179-0511c347ee9d', 'Мандарин', '1','THINGS', 0, 0, 0, 1),
+
+            ('2a821e5d-de18-402a-a54a-5f1846b06e52', 'Салат овощной', '1','GLASS', 0, 0, 0, 1),
+            ('e9d64635-52d8-4f52-8de8-95c9e9858c21', 'Рыба вареная', '50','GR', 0, 1, 0, 0),
+            ('897dadb9-aaec-4a53-9a20-606ef965761f', 'Апельсин', '1','THINGS', 0, 0, 0, 1),
+
+            ('fe94dc49-29d2-4626-83d3-078f7f5c4ce9', 'Рассольник', '0.3','TEA_SPOON', 0, 0, 1, 0),
+            ('a8c6bf79-f9e7-4f48-8d95-cecb9965e5e7', 'Сметана', '1','TEA_SPOON', 0, 0, 1, 0),
+            ('efdfaef5-6063-45e1-9fac-0f6f8205046b', 'Хлеб', '1','THINGS', 0, 0, 0, 1),
+
+            ('33a0499d-8469-4d2b-89fd-ebfe28669251', 'Йогурт(н\ж 0.1 -0.3%)', '120','GR', 0, 1, 0, 0),
+            ('4ff161cf-9d8e-41c8-b79f-1eda156777c9', 'Арахис стручковый', '6','THINGS', 0, 0, 1, 0)
+        </sql>
+    </changeSet>
+
+    <changeSet id="02-08-2019-20" author="Anton Azarenka">
+        <sql>
+            insert into
+            home.foods (id, title, weight, content, calories, protein, fats, carbohydrates)
+            VALUES
+            ('7b8e2dc4-d3ce-4803-884b-5334b302e383', 'Сухарик', '1','THINGS', 0, 0, 0, 1),
+            ('23f35945-5e5a-4234-a912-92f651cf2e9e', 'Мясо вареное н/ж', '33','GR', 0, 1, 0, 0),
+            ('2f2eadb6-dae4-4066-9d03-f59824b1a250', 'Помидоры', '2','THINGS', 0, 0, 0, 1),
+            ('98f16807-3c06-469b-9daf-751ab52449b4', 'Киви', '1','THINGS', 0, 0, 0, 1),
+            ('6552c7f2-6316-434e-8cfb-e51348ac95a3', 'Грецкий орех', '4','THINGS', 0, 0, 1, 0),
+            <!--Day two -->
+            ('6ba5688b-7c04-465d-9968-a2190e83c84b', 'Творог', '120','GR', 0, 2, 0, 0),
+            ('a6166045-1465-4d1c-94e5-6290b8cb63cb', 'Яблоко', '0.5','THINGS', 0, 0, 0, 1),
+            ('cf297a20-6bbb-4f49-be02-87b3654e5a3c', 'Тушенная капуста', '1.5','GLASS', 0, 0, 0, 1),
+
+            ('5e64986f-dbc5-4088-bae7-9315fd167ef5', 'Филе куринное', '50','GR', 0, 1, 0, 0),
+            ('6816423d-9d8e-41c8-b79f-1eda156777c9', 'Сыр н\ж белый', '40','GR', 0, 1,0, 0),
+            ('c42163e2-98a2-41a6-8d6c-c88567644e61', 'Холодник', '1','THINGS', 0, 0,0, 1),
+            ('427a9488-733f-4d96-aa47-5f0a33e93ff0', 'Яйцо вареное', '1','GR', 0,0,0, 1),
+            ('cce7b742-0aea-40c2-9ed7-e3c70a81017b', 'Картофель', '1','THINGS', 0, 0,0, 1),
+            ('e9439b24-3122-46dc-89ba-26d170fcbe02', 'Колбаса н\ж', '34','GR', 0, 1,0, 0),
+            ('6816423d-1abb-487d-84ee-3acaa46193bf', 'Салат консервированный', '0.5','GLASS', 0, 1,0, 0.5)
+        </sql>
+    </changeSet>
+
+    <changeSet id="03-08-2019-00" author="Anton Azarenka">
+        <comment>Day three</comment>
+        <sql>
+            insert into
+            home.foods (id, title, weight, content, calories, protein, fats, carbohydrates)
+            VALUES
+            ('95844ba8-202b-4257-b17e-a3320be05c3e', 'Омлет', '1','THINGS', 0, 1, 0, 0),
+            ('66d72539-5974-421e-b885-5636849cd751', 'Каша гречневая', '0.3','GLASS', 0, 0, 0, 1),
+            ('84c53432-e6b3-471d-8c17-fe6ad3b68513', 'Огурец', '1','THINGS', 0, 0, 0, 1),
+            ('35f342bb-698a-4d21-a575-0fcebb5b6d1f', 'Голубцы', '4','THINGS', 0, 0, 1, 0),
+            ('6098dbbb-6297-45c5-b44c-02456fb0478a', 'Грейпфрут', '120','GR', 0, 2, 0, 0),
+            <!--Day four -->
+            ('d82e8d0e-539f-4348-b211-5257d02c0b8c', 'Морская капуста', '1','THINGS', 0, 0, 0, 1),
+            ('22de1d71-f71e-467c-977a-c9fb0f74a46b', 'Котлеты', '30','GR', 0, 1, 0, 0),
+            ('d69df108-937d-4334-9261-50fb78f8f0a6', 'Борщ', '1','DOSE', 0, 0, 0, 1),
+            ('4e85c5d4-04aa-4645-b96b-5a57d2171f99', 'Оливки', '4','THINGS', 0, 0,1, 0),
+            <!--day five-->
+            ('e3f47790-c0f1-4562-84e1-de0f440a202d', 'Яйца в смятку', '1','THINGS', 0, 1,0, 0),
+            ('af77ddc6-d3db-4b3e-a055-99e332a2a9e9', 'Горошек зеленый', '1.3','GLASS', 0,0,0, 1),
+            ('0bd1af60-17d5-45be-990b-2fbfca00dbb2', 'Венегрет', '1','GLASS', 0, 0,0, 1),
+            ('97a16ac6-83b9-4139-82c8-24b06cdc1882', 'Суп с курицей', '1','DOSE', 0, 0,0, 1),
+            <!--day six -->
+            ('7861a143-152c-4668-93ec-f80f271b15a5', 'Каша пшенная', '0.33','DOSE', 0, 0, 0, 1),
+            ('c52fa8f0-b673-4ff8-b6f1-d21d0d950653', 'Овощи тушеные', '1','GLASS', 0, 0,0, 1),
+            ('67e44c6e-0582-4ead-87f6-3919015abc66', 'Сырники', '1','THINGS', 0, 1,0, 0.5)
+        </sql>
+    </changeSet>
+</databaseChangeLog>

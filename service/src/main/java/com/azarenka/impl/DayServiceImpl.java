@@ -1,6 +1,6 @@
 package com.azarenka.impl;
 
-import com.azarenka.domain.Day;
+import com.azarenka.Day;
 import com.azarenka.api.DayService;
 
 import java.util.List;

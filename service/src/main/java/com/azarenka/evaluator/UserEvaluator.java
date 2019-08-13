@@ -1,8 +1,9 @@
 package com.azarenka.evaluator;
 
+import com.azarenka.User;
+import com.azarenka.api.UserRepository;
 import com.azarenka.auth.RegistrationUser;
-import com.azarenka.domain.User;
-import com.azarenka.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

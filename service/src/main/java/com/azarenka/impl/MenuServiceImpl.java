@@ -1,10 +1,11 @@
 package com.azarenka.impl;
 
-import com.azarenka.auth.LoggedUser;
-import com.azarenka.domain.Menu;
-import com.azarenka.repository.MenuRepository;
-import com.azarenka.response.MenuResponse;
+import com.azarenka.Menu;
+import com.azarenka.api.MenuRepository;
 import com.azarenka.api.MenuService;
+import com.azarenka.auth.LoggedUser;
+import com.azarenka.response.MenuResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

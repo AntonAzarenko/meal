@@ -7,9 +7,8 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config/>
-    <context:component-scan base-package="com.azarenka.impl"/>
-    <context:component-scan base-package="com.azarenka.mail"/>
-    <context:component-scan base-package="com.azarenka.evaluator"/>
+    <c
+    <context:component-scan base-package="com.azarenka"/>
 
     <import resource="spring-mybatis-bean.xml"/>
     <import resource="spring-security.xml"/>

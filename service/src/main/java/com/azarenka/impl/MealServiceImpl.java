@@ -1,6 +1,6 @@
 package com.azarenka.impl;
 
-import com.azarenka.domain.Meal;
+import com.azarenka.Meal;
 import com.azarenka.api.MealService;
 
 import java.util.List;

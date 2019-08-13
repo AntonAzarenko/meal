@@ -1,7 +1,7 @@
 package com.azarenka;
 
-import com.azarenka.domain.Food;
 import com.azarenka.api.FoodService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

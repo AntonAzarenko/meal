@@ -1,6 +1,7 @@
 package com.azarenka.mail;
 
-import com.azarenka.api.impl.UserServiceImpl;
+import com.azarenka.impl.UserServiceImpl;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

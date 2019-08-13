@@ -1,8 +1,9 @@
 package com.azarenka.impl;
 
-import com.azarenka.domain.Food;
-import com.azarenka.repository.FoodRepository;
+import com.azarenka.Food;
+import com.azarenka.api.FoodRepository;
 import com.azarenka.api.FoodService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

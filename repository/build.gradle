@@ -12,7 +12,6 @@ repositories {
 }
 
 dependencies {
-    compile project(':service')
     compile project(':domain')
     compile group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.2'
     compile group: 'org.mybatis', name: 'mybatis', version: '3.5.2'

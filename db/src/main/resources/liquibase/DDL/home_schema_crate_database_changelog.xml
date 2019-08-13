@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog-ext
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2019-07-20-00" author="Anton Azarenka" runInTransaction="false">
+        <createTable tableName="foods" schemaName="home">
+            <column name="id" type="varchar(256)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="title" type="varchar(256)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="weight" type="double">
+                <constraints nullable="true"/>
+            </column>
+            <column name="calories" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="days" schemaName="home">
+            <column name="id" type="varchar(256)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="day" type="varchar(256)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="meals" schemaName="home">
+            <column name="id" type="varchar(256)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="meal" type="varchar(256)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="role" schemaName="home">
+            <column name="id" type="varchar(256)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="role" type="varchar(256)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="users" schemaName="home">
+            <column name="id" type="varchar(256)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="email" type="varchar(256)">
+                <constraints nullable="true" unique="true"/>
+            </column>
+            <column name="enabled" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(256)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="avatar" type="varchar(256)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="activate_code" type="varchar(50)">
+                <constraints nullable="true" unique="true"/>
+            </column>
+            <column name="date_registration" type="date" defaultValue="now()">
+            </column>
+        </createTable>
+
+        <createTable tableName="user_role_map" schemaName="home">
+            <column name="user_id" type="varchar(256)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_user_role_id"
+                             referencedTableName="users"
+                             referencedColumnNames="id"
+                             referencedTableSchemaName="home"/>
+            </column>
+            <column name="role_id" type="varchar(256)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_role"
+                             referencedTableName="role"
+                             referencedColumnNames="id"
+                             referencedTableSchemaName="home"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="menu" schemaName="home">
+            <column name="id" type="varchar(256)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="user_id" type="varchar(256)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_user"
+                             referencedTableName="users"
+                             referencedColumnNames="id"
+                             referencedTableSchemaName="home"/>
+            </column>
+            <column name="food_id" type="varchar(256)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_food"
+                             referencedTableName="foods"
+                             referencedColumnNames="id"
+                             referencedTableSchemaName="home"/>
+            </column>
+            <column name="day_id" type="varchar(256)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_day"
+                             referencedTableName="days"
+                             referencedColumnNames="id"
+                             referencedTableSchemaName="home"/>
+            </column>
+            <column name="meal_id" type="varchar(256)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_meal"
+                             referencedTableName="meals"
+                             referencedColumnNames="id"
+                             referencedTableSchemaName="home"/>
+            </column>
+            <column name="email" type="varchar(256)">
+                <constraints nullable="true" unique="true"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sets_name" type="varchar(256)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2019-07-20-01" author="Anton Azarenka" runInTransaction="false">
+        <sql>
+            ALTER TABLE home.users ADD COLUMN password varchar(255) NOT NULL
+        </sql>
+    </changeSet>
+</databaseChangeLog>

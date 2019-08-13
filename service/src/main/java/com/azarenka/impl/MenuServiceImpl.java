@@ -5,7 +5,6 @@ import com.azarenka.api.MenuRepository;
 import com.azarenka.api.MenuService;
 import com.azarenka.auth.LoggedUser;
 import com.azarenka.response.MenuResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

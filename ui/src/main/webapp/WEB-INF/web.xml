@@ -45,7 +45,7 @@
 
     <filter>
         <filter-name>CharecterEncodingFilter</filter-name>
-        <filter-class>com.azarenka.util.CharacterEncodingFilter</filter-class>
+        <filter-class>com.azarenka.service.util.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>

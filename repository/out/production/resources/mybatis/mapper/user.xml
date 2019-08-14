@@ -1,7 +1,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.azarenka.api.UserRepository">
+<mapper namespace="com.azarenka.repository.api.UserRepository">
 
     <resultMap type="User" id="user">
         <id column="id" property="id"/>
@@ -12,7 +12,7 @@
         <result column="activateCode" property="active_code"/>
         <result column="registrationDate" property="date_registration"/>
 
-        <collection property="roles" ofType="com.azarenka.Role" javaType="java.util.HashSet">
+        <collection property="roles" ofType="com.azarenka.domain.Role" javaType="java.util.HashSet">
             <result property="name" column="role"/>
         </collection>
     </resultMap>

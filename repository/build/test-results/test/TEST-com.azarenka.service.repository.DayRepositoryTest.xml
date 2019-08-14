@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.azarenka.service.repository.DayRepositoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-08-14T15:02:31" hostname="EPBYVITW0232" time="0.207">
+  <properties/>
+  <testcase name="getAll" classname="com.azarenka.service.repository.DayRepositoryTest" time="0.207"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Aug 14, 2019 6:02:30 PM org.springframework.test.context.support.AbstractTestContextBootstrapper getDefaultTestExecutionListenerClassNames
+INFO: Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+Aug 14, 2019 6:02:30 PM org.springframework.test.context.support.AbstractTestContextBootstrapper getTestExecutionListeners
+INFO: Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1e1f83af, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@5e952dbf, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5c975442, org.springframework.test.context.transaction.TransactionalTestExecutionListener@936c6b6, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6b562ec4]
+]]></system-err>
+</testsuite>

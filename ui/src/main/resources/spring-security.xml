@@ -9,8 +9,7 @@
 
     <http pattern="/resources/static-content" security="none"/>
     <http pattern="/webjars/**" security="none"/>
-    <beans:import resource="classpath:./spring/s.xml/com.azarenka.service.spring.spring-context.xml"/>
-    <beans:import resource="spring/spring-dataBase.xml"/>
+
     <http>
         <intercept-url pattern="/" access="permitAll()"/>
         <intercept-url pattern="/login" access="permitAll()"/>
@@ -33,7 +32,8 @@
 -->
         <csrf disabled="true"/>
     </http>
-
+    <beans:import resource="classpath:dataBase.xml"/>
+    <beans:import resource="classpath:service-context.xml"/>
     <b:bean id="tokenRepository"
             class="org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl">
         <b:property name="dataSource" ref="dataSource"/>

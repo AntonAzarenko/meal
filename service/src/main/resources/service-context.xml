@@ -9,14 +9,16 @@
     <context:annotation-config/>
 
     <context:component-scan base-package="com.azarenka.service"/>
-    <import resource="classpath:/spring-security.xml"/>
+
     <import resource="classpath:/repository-context.xml"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer ">
         <property name="locations" value="classpath:/config.properties"/>
     </bean>
 
-
+    <bean id="encoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    </bean>
 
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="javaMailProperties">

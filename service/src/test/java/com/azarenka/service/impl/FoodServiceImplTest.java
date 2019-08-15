@@ -18,12 +18,11 @@ import javax.annotation.Resource;
 
 @ContextConfiguration({
         "classpath:spring/spring-context.xml",
-        "classpath:spring/spring-dataBase.xml",
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class FoodServiceImplTest {
 
-   @Resource
+   @Autowired
     private FoodService service;
 
     @Test

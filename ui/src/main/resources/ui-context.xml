@@ -8,8 +8,9 @@
 
     <context:annotation-config/>
 
-    <context:component-scan base-package="com.azarenka.service"/>
-
+    <context:component-scan base-package="com.azarenka.controller"/>
     <import resource="classpath:/service-context.xml"/>
+    <import resource="classpath:/repository-context.xml"/>
+    <import resource="spring-security.xml"/>
 
 </beans>

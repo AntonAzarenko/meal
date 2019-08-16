@@ -7,6 +7,8 @@ import com.azarenka.repository.api.DayRepository;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -21,6 +23,8 @@ import java.util.List;
 })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class DayRepositoryTest {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(DayRepositoryTest.class);
 
     @Autowired
     private DayRepository dayRepository;
@@ -37,6 +41,7 @@ public class DayRepositoryTest {
                 buildDay("1d9cc961-9c8e-44d4-8066-10d3dc8d3eb2","Sunday")
         );
         assertEquals(days, dayRepository.getAll());
+        days.forEach(el -> LOGGER.info(el.toString()));
     }
 
     private Day buildDay(String id, String days){

@@ -21,4 +21,15 @@ public interface MenuService {
      * @return list of menu.
      */
     List<MenuResponse> getMenu();
+
+    /**
+     * Creates and saves detail of menu
+     *
+     * @param foodId food id
+     * @param dayId day id
+     * @param mealId meal id
+     * @param count count
+     */
+    void createMenu(String foodId, String dayId, String mealId, int count,  String title);
+
 }

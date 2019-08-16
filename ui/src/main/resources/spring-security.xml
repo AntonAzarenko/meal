@@ -8,6 +8,7 @@
              http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http pattern="/resources/static-content" security="none"/>
+    <http pattern="/resources/**" security="none"/>
     <http pattern="/webjars/**" security="none"/>
 
     <http>
@@ -15,7 +16,7 @@
         <intercept-url pattern="/login" access="permitAll()"/>
         <intercept-url pattern="/activate/*" access="permitAll()"/>
         <intercept-url pattern="/registerUser/" access="permitAll()"/>
-        <intercept-url pattern="/liquibase/DDL" access="isAuthenticated()"/>
+       <!-- <intercept-url pattern="/liquibase/DDL" access="isAuthenticated()"/>-->
         <intercept-url pattern="/**" access="isAuthenticated()"/>
         <form-login login-page="/" default-target-url="/start"
                     authentication-failure-url="/?error=true"

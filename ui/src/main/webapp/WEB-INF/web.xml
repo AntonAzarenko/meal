@@ -45,7 +45,24 @@
     </servlet-mapping>
 
     <filter>
-        <filter-name>CharecterEncodingFilter</filter-name>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--<filter>
+        <filter-name>characterEncodingFilter</filter-name>
         <filter-class>com.azarenka.service.util.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
@@ -54,8 +71,8 @@
     </filter>
 
     <filter-mapping>
-        <filter-name>CharecterEncodingFilter</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
 
 </web-app>

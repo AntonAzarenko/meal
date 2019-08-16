@@ -11,19 +11,19 @@
     <c:if test="${login == null}">
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#" onclick="reg1()">Sign in</a>
+                <a class="nav-link"  onclick="reg1()">Sign in</a>
             </li>
         </ul>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#" onclick="log_in()">Log in</a>
+                <a class="nav-link"  onclick="log_in()">Log in</a>
             </li>
         </ul>
     </c:if>
     <c:if test="${login != null}">
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="/logout">LogOut</a>
+                <a class="nav-link" href="logout">LogOut</a>
             </li>
         </ul>
     </c:if>

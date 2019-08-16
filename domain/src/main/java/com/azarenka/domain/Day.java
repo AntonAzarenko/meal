@@ -52,4 +52,11 @@ public class Day extends BaseEntity {
                 .append(day)
                 .toHashCode();
     }
+
+    @Override
+    public String toString() {
+        return "Day{" +
+            "day='" + day + '\'' +
+            '}';
+    }
 }

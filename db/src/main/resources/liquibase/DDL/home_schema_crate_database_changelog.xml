@@ -123,6 +123,9 @@
                              referencedColumnNames="id"
                              referencedTableSchemaName="home"/>
             </column>
+            <column name="count_food" type="int">
+                <constraints nullable="true" unique="false"/>
+            </column>
             <column name="email" type="varchar(256)">
                 <constraints nullable="true" unique="true"/>
             </column>

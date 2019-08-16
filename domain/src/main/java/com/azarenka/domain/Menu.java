@@ -21,8 +21,25 @@ public class Menu extends BaseEntity {
     private String dayId;
     private String mealId;
     private String email;
+    private int countFood;
     private Date date;
     private String setTitle;
+
+    /**
+     * @return count foods
+     */
+    public int getCountFood() {
+        return countFood;
+    }
+
+    /**
+     * Sets count food
+     *
+     * @param countFood count food
+     */
+    public void setCountFood(int countFood) {
+        this.countFood = countFood;
+    }
 
     /**
      * @return user id
@@ -123,7 +140,7 @@ public class Menu extends BaseEntity {
     /**
      * @return title of set
      */
-    public String getSetTitle() {
+    public String getTitle() {
         return setTitle;
     }
 
@@ -132,7 +149,7 @@ public class Menu extends BaseEntity {
      *
      * @param setTitle title of set
      */
-    public void setSetTitle(String setTitle) {
+    public void setTitle(String setTitle) {
         this.setTitle = setTitle;
     }
 
@@ -151,6 +168,7 @@ public class Menu extends BaseEntity {
                 .append(dayId, menu.dayId)
                 .append(mealId, menu.mealId)
                 .append(email, menu.email)
+            .append(countFood, menu.countFood)
                 .append(setTitle, menu.setTitle)
                 .isEquals();
     }
@@ -164,6 +182,7 @@ public class Menu extends BaseEntity {
                 .append(dayId)
                 .append(mealId)
                 .append(email)
+                .append(countFood)
                 .append(setTitle)
                 .toHashCode();
     }

@@ -1,7 +1,11 @@
 package com.azarenka.service.impl;
 
 import com.azarenka.domain.Day;
+import com.azarenka.repository.api.DayRepository;
 import com.azarenka.service.api.DayService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -14,10 +18,14 @@ import java.util.List;
  *
  * @author Anton Azarnka
  */
+@Service
 public class DayServiceImpl implements DayService {
+
+    @Autowired
+    private DayRepository dayRepository;
 
     @Override
     public List<Day> getAll() {
-        return null;
+        return dayRepository.getAll();
     }
 }

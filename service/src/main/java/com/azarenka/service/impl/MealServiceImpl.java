@@ -1,7 +1,11 @@
 package com.azarenka.service.impl;
 
 import com.azarenka.domain.Meal;
+import com.azarenka.repository.api.MealRepository;
 import com.azarenka.service.api.MealService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -14,10 +18,14 @@ import java.util.List;
  *
  * @author Anton Azarnka
  */
+@Service
 public class MealServiceImpl implements MealService {
+
+    @Autowired
+    private MealRepository mealRepository;
 
     @Override
     public List<Meal> getAll() {
-        return null;
+        return mealRepository.getAll();
     }
 }

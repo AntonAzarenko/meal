@@ -20,21 +20,22 @@ public class Food extends BaseEntity {
     private int protein;
     private int fats;
     private int carbohydrates;
-    private Content content;
+    private String things;
 
     /**
-     * @return content
+     * @return things
      */
-    public Content getContent() {
-        return content;
+    public String getThings() {
+        return things;
     }
 
     /**
-     * Sets content
-     * @param content content
+     * Sets things
+     *
+     * @param things things
      */
-    public void setContent(Content content) {
-        this.content = content;
+    public void setThings(String things) {
+        this.things = things;
     }
 
     /**
@@ -142,26 +143,41 @@ public class Food extends BaseEntity {
         Food food = (Food) o;
 
         return new EqualsBuilder()
-                .appendSuper(super.equals(o))
-                .append(weight, food.weight)
-                .append(calories, food.calories)
-                .append(protein, food.protein)
-                .append(fats, food.fats)
-                .append(carbohydrates, food.carbohydrates)
-                .append(title, food.title)
-                .isEquals();
+            .appendSuper(super.equals(o))
+            .append(weight, food.weight)
+            .append(calories, food.calories)
+            .append(protein, food.protein)
+            .append(fats, food.fats)
+            .append(carbohydrates, food.carbohydrates)
+            .append(title, food.title)
+            .append(things, food.things)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .appendSuper(super.hashCode())
-                .append(title)
-                .append(weight)
-                .append(calories)
-                .append(protein)
-                .append(fats)
-                .append(carbohydrates)
-                .toHashCode();
+            .appendSuper(super.hashCode())
+            .append(title)
+            .append(weight)
+            .append(calories)
+            .append(protein)
+            .append(fats)
+            .append(things)
+            .append(carbohydrates)
+            .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Food{" +
+            "title='" + title + '\'' +
+            ", weight=" + weight +
+            ", calories=" + calories +
+            ", protein=" + protein +
+            ", fats=" + fats +
+            ", carbohydrates=" + carbohydrates +
+            ", things='" + things + '\'' +
+            '}';
     }
 }

@@ -22,4 +22,10 @@ public interface MealRepository {
      * @return list of days
      */
     List<Meal> getAll();
+
+    /**
+     * @param mealId meal id
+     * @return meal by id
+     */
+    Meal getMealById(String mealId);
 }

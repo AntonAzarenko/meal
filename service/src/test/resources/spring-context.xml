@@ -10,7 +10,7 @@
 
     <context:annotation-config/>
 
-    <context:component-scan base-package="com.azarenka.service"/>
+    <context:component-scan base-package="com.azarenka.service.impl"/>
 
     <import resource="classpath:/service-context.xml"/>
 

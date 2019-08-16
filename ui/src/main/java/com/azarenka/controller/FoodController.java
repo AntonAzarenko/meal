@@ -1,4 +1,4 @@
-package com.azarenka.service;
+package com.azarenka.controller;
 
 import com.azarenka.domain.Food;
 import com.azarenka.service.api.FoodService;

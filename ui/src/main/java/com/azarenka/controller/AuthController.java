@@ -1,4 +1,4 @@
-package com.azarenka.service;
+package com.azarenka.controller;
 
 import com.azarenka.service.api.UserService;
 import com.azarenka.service.auth.RegistrationUser;

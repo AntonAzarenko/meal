@@ -4,32 +4,32 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="userRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.azarenka.service.api.UserRepository"/>
+        <property name="mapperInterface" value="com.azarenka.repository.api.UserRepository"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
     <bean id="usersRoleMapRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.azarenka.service.api.UsersRoleMapRepository"/>
+        <property name="mapperInterface" value="com.azarenka.repository.api.UsersRoleMapRepository"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
     <bean id="foodRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.azarenka.service.api.FoodRepository"/>
+        <property name="mapperInterface" value="com.azarenka.repository.api.FoodRepository"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
     <bean id="menuRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.azarenka.service.api.MenuRepository"/>
+        <property name="mapperInterface" value="com.azarenka.repository.api.MenuRepository"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
     <bean id="dayRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.azarenka.service.api.DayRepository"/>
+        <property name="mapperInterface" value="com.azarenka.repository.api.DayRepository"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
     <bean id="mealRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.azarenka.service.api.MealRepository"/>
+        <property name="mapperInterface" value="com.azarenka.repository.api.MealRepository"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 

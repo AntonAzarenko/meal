@@ -2,6 +2,7 @@ package com.azarenka.repository.api;
 
 import com.azarenka.domain.Food;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

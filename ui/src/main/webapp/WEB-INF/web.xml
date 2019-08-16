@@ -11,9 +11,10 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:spring/spring-context.xml
-            classpath:spring/spring-dataBase.xml
-            classpath:spring/spring-mybatis-bean.xml
+            classpath*:ui-context.xml
+            classpath*:dataBase.xml
+            classpath*:service-context.xml
+            classpath*:repository-context.xml
         </param-value>
     </context-param>
     <filter>
@@ -34,7 +35,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/spring-mvc.xml</param-value>
+            <param-value>classpath:spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -56,4 +57,5 @@
         <filter-name>CharecterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
 </web-app>

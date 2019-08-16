@@ -16,8 +16,6 @@ import java.util.List;
  * @author Anton Azarnko
  * Date 12 08 2019
  */
-@Repository
-@Qualifier("dayRepository")
 public interface DayRepository {
 
     /**

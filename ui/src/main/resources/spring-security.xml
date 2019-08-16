@@ -7,15 +7,15 @@
              http://www.springframework.org/schema/security
              http://www.springframework.org/schema/security/spring-security.xsd">
 
-   <!-- <http pattern="/resources/**" security="none"/>
+    <http pattern="/resources/static-content" security="none"/>
     <http pattern="/webjars/**" security="none"/>
 
-    <beans:import resource="spring-dataBase.xml"/>
     <http>
         <intercept-url pattern="/" access="permitAll()"/>
         <intercept-url pattern="/login" access="permitAll()"/>
         <intercept-url pattern="/activate/*" access="permitAll()"/>
         <intercept-url pattern="/registerUser/" access="permitAll()"/>
+        <intercept-url pattern="/liquibase/DDL" access="isAuthenticated()"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
         <form-login login-page="/" default-target-url="/start"
                     authentication-failure-url="/?error=true"
@@ -23,17 +23,18 @@
                     login-processing-url="/spring_security_check"/>
         <logout logout-success-url="/login"/>
 
-        &lt;!&ndash;<remember-me
+        <!--<remember-me
                 key="myAppKey"
                 user-service-ref="userService"
                 token-repository-ref="tokenRepository"
                 remember-me-cookie="remember-me-cookieName"
                 remember-me-parameter="remember-me-parameter"
                 token-validity-seconds="1800"/>
-&ndash;&gt;
+-->
         <csrf disabled="true"/>
     </http>
-
+    <beans:import resource="classpath:dataBase.xml"/>
+    <beans:import resource="classpath:service-context.xml"/>
     <b:bean id="tokenRepository"
             class="org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl">
         <b:property name="dataSource" ref="dataSource"/>
@@ -48,6 +49,6 @@
     <beans:bean id="encoder"
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
     </beans:bean>
--->
+
 
 </beans:beans>

@@ -10,10 +10,9 @@
 <html>
 <body>
 <hr>
-<div class="start-menu">
-    <li><a class="button" href="#">Моя меню</a></li>
-    <li><a class="button" href="foods">Еда</a></li>
-    <li><a class="button" href="to-create">Создать меню</a></li>
-</div>
+<div class="">
+    <div class="col">
+        <img src="resources/img/health_food_3.jpg" width="100%" height="85%"/>
+    </div>
 </body>
 </html>

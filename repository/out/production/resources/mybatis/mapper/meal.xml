@@ -14,4 +14,12 @@
             meal
         FROM home.meals
     </select>
+
+    <select id="getMealById" resultMap="meal">
+        SELECT
+        id,
+        meal
+        FROM home.meals
+        WHERE id=#{mealId}
+    </select>
 </mapper>

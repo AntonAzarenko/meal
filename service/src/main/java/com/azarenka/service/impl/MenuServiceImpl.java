@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Menu service
@@ -53,7 +54,7 @@ public class MenuServiceImpl implements MenuService {
         if (menuList.size() > 0) {
             menuList.forEach(menu -> menuResponses.add(convertToMenuResponse(menu)));
         }
-        return menuResponses;
+        return menuResponses.stream().sorted((e,f) -> e.compareTo(f.getMeal())).collect(Collectors.toList());
     }
 
     @Override
@@ -71,20 +72,32 @@ public class MenuServiceImpl implements MenuService {
         menuRepository.save(menu);
     }
 
+    @Override
+    public void remove(String id) {
+        menuRepository.remove(id);
+    }
+
+    @Override
+    public List<String> getMenuNames(List<Menu> menus) {
+
+        return menuRepository.getMenuNames(LoggedUser.getId());
+    }
+
     private MenuResponse convertToMenuResponse(Menu menu) {
         MenuResponse menuResponse = new MenuResponse();
         if (Objects.nonNull(menu)) {
+            menuResponse.setId(menu.getId());
+            menuResponse.setSetTitle(menu.getTitle());
             menuResponse.setDay(dayRepository.getDayById(menu.getDayId()).getDay());
             Food food = foodRepository.getFoodById(menu.getFoodId());
-            LOGGER.info(food.toString());
             menuResponse.setFood(food.getTitle());
             menuResponse.setMeal(mealRepository.getMealById(menu.getMealId()).getMeal());
             menuResponse.setCarbohydrates(String.valueOf(
-                countPropertyOfFood(food.getCarbohydrates(), menu.getCountFood())));
+                    countPropertyOfFood(food.getCarbohydrates(), menu.getCountFood())));
             menuResponse.setFats(String.valueOf(
-                countPropertyOfFood(food.getFats(), menu.getCountFood())));
+                    countPropertyOfFood(food.getFats(), menu.getCountFood())));
             menuResponse.setProtein(String.valueOf(
-                countPropertyOfFood(food.getProtein(), menu.getCountFood())));
+                    countPropertyOfFood(food.getProtein(), menu.getCountFood())));
             menuResponse.setCount(countFormatter(food.getWeight(), menu.getCountFood(), food.getThings()));
         }
         return menuResponse;
@@ -92,12 +105,15 @@ public class MenuServiceImpl implements MenuService {
 
     private int countPropertyOfFood(int item, int count) {
         return item == 0
-            ? 0
-            : item * count;
+                ? 0
+                : item * count;
     }
 
     private String countFormatter(double item, int count, String things) {
         double prop = item * count;
+        if (prop > 0.5) {
+            prop = Math.round(prop);
+        }
 
         return String.format("%s - %s", String.valueOf(prop), things);
     }

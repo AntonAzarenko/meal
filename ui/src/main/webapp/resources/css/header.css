@@ -1,0 +1,26 @@
+.dws-menu {
+    background-color: #dddaff;
+    margin-top: 50px;
+    width: 100%;
+}
+
+ui.dws-ul {
+    display: flex;
+    padding: 0;
+    justify-content: center;
+}
+
+li.dws-li {
+    list-style: none;
+    padding: 10px;
+}
+
+li.dws-li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}
+
+li.dws-li a i {
+    margin-right: 10px;
+}

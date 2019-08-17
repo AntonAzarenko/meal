@@ -3,8 +3,19 @@
     padding-left: 100px;
 }
 .header {
-    padding-top: 30px;
+    padding-top: 5px;
 }
 .select {
     padding: 10px 0 10px 0;
+}
+.title {
+    text-align: center;
+}
+
+.image{
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    list-style: none;
+    margin-right: 10px;
 }

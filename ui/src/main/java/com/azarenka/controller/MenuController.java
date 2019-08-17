@@ -1,6 +1,7 @@
 package com.azarenka.controller;
 
 import com.azarenka.domain.Food;
+import com.azarenka.domain.Menu;
 import com.azarenka.service.api.DayService;
 import com.azarenka.service.api.FoodService;
 import com.azarenka.service.api.MealService;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Menu  controller
@@ -47,28 +50,30 @@ public class MenuController {
 
     @GetMapping(value = "/to-create")
     public String getFoods(Model model) {
-        //List<MenuResponse> = menuService.getMenu();
-        model.addAttribute("menus", menuService.getMenu());
+        List<MenuResponse> menu = menuService.getMenu();
+        model.addAttribute("menus", menu);
         model.addAttribute("foods", foodService.getFoods());
         model.addAttribute("days", dayService.getAll());
         model.addAttribute("meals", mealService.getAll());
         model.addAttribute("login", userService.getUserName());
+        model.addAttribute("menu", menu.stream().map(MenuResponse::getSetTitle)
+                .distinct().collect(Collectors.toList()));
         return "create_menu";
     }
 
-    @PostMapping(value = "/addMenu")
+    @PostMapping(value = "/addFoodToMenu")
     public String saveToMenu(@RequestParam(required = false) @PathVariable("foodId") String foodId,
                              @RequestParam(required = false) @PathVariable("dayId") String dayId,
                              @RequestParam(required = false) @PathVariable("mealId") String mealId,
                              @RequestParam(required = false) @PathVariable("count") int count,
                              @RequestParam(required = false) @PathVariable("setTitle") String setTitle) {
-        LOGGER.info(foodId);
-        LOGGER.info(dayId);
-        LOGGER.info(mealId);
-        LOGGER.info(String.valueOf(count));
-        LOGGER.info(setTitle);
         menuService.createMenu(foodId, dayId, mealId, count, setTitle);
         return "redirect:/to-create";
     }
 
+    @PostMapping(value = "/remove/{id}")
+    public String remove(@PathVariable("id") String id) {
+        menuService.remove(id);
+        return "redirect:/to-create";
+    }
 }

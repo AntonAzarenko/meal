@@ -14,4 +14,12 @@
             day
         FROM home.days
     </select>
+
+    <select id="getDayById" resultMap="day">
+        SELECT
+        id,
+        day
+        FROM home.days
+        WHERE id=#{dayId}
+    </select>
 </mapper>

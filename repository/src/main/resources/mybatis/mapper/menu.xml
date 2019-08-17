@@ -45,4 +45,9 @@
             #{setTitle}
         )
     </insert>
+
+    <delete id="remove" parameterType="string">
+        DELETE FROM home.menu
+        WHERE id=#{id}
+    </delete>
 </mapper>

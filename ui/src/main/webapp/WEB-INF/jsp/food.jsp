@@ -23,7 +23,7 @@
             <tr>
                 <th>${food.title}</th>
                 <th>${food.weight}</th>
-                <th>${food.content}</th>
+                <th>${food.things}</th>
                 <th>${food.calories}</th>
                 <th>${food.protein}</th>
                 <th>${food.fats}</th>

@@ -1,9 +1,10 @@
 package com.azarenka.service.response;
 
+import com.azarenka.domain.BaseEntity;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public class MenuResponse {
+public class MenuResponse extends BaseEntity implements Comparable{
 
     private String day;
     private String meal;
@@ -12,6 +13,15 @@ public class MenuResponse {
     private String fats;
     private String protein;
     private String carbohydrates;
+    private String setTitle;
+
+    public String getSetTitle() {
+        return setTitle;
+    }
+
+    public void setSetTitle(String setTitle) {
+        this.setTitle = setTitle;
+    }
 
     public String getDay() {
         return day;
@@ -104,4 +114,14 @@ public class MenuResponse {
             .append(carbohydrates)
             .toHashCode();
     }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.compareTo(o);
+    }
+
+    public int compareTo(String meal) {
+        return this.meal.compareTo(meal);
+    }
+
 }

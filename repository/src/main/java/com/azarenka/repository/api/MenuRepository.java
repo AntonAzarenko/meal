@@ -32,4 +32,17 @@ public interface MenuRepository {
      * @param menu menu
      */
     void save(Menu menu);
+
+    /**
+     * Removes by id
+     * @param id id
+     */
+    void remove(String id);
+
+    /**
+     * Returns names of all menu for current user
+     * @param id
+     * @return
+     */
+    List<String> getMenuNames(String id);
 }

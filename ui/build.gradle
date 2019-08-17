@@ -22,6 +22,7 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.1.5.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.1.5.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.1.5.RELEASE'
+    compile group: 'org.webjars', name: 'font-awesome', version: '5.10.1'
 
     implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.1.8.RELEASE'
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'

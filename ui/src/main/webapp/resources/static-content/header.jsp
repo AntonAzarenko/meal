@@ -4,6 +4,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" href="resources/css/header.css"/>
+<link rel="stylesheet" href="webjars/font-awesome/5.10.1/css/all.css" type="text/css">
+
 
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Meal</a>
@@ -28,6 +31,16 @@
         </ul>
     </c:if>
 </nav>
+
+<div class="dws-menu context-menu">
+    <ui class="dws-ul">
+        <li class="dws-li nav-link"><a href="start"><i class="fa fa-home" aria-hidden="true"></i>Главная</a></li>
+        <li class="dws-li"><a href="to-create"><i class="fa fa-bars" aria-hidden="true"></i>Создать меню</a></li>
+        <li class="dws-li"><a href="foods"><i class="fa fa-apple-alt" aria-hidden="true"></i>Еда</a></li>
+        <li class="dws-li"><a href="#"><i class="fa fa-server" aria-hidden="true"></i>Профиль</a></li>
+        <li class="dws-li"><a href="#"><i class="fa fa-calculator" aria-hidden="true"></i>Калькулятор каллорий</a></li>
+    </ui>
+</div>
 
 <script type="text/javascript" src="resources/js/registration.js" defer></script>
 <script type="text/javascript" src="webjars/jquery/3.4.1/jquery.min.js" defer></script>

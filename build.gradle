@@ -21,10 +21,10 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: "com.heroku.sdk.heroku-gradle"
 
-/*heroku {
-    appName="back-end-furniture"
+heroku {
+    appName="meal"
     processTypes(
-            web: "java \$JAVA_OPTS -jar -Dspring.profiles.active=production $buildDir.name/libs/$jar.archiveName --server.port=\$PORT".toString()
+           
     )
 }
 
@@ -36,24 +36,14 @@ deployHeroku {
             throw new GradleException('Deployment to Heroku requires setting the environment variable HEROKU_API_KEY')
         }
     }
-}*/
-
-sourceCompatibility = 1.8
+}
 
 repositories {
     mavenCentral()
 }
 
-/*allprojects {
-    group='com.azarenko.meal'
-}*/
 
 dependencies {
-    //testCompile project(':repository')
-    /*implementation group: 'org.springframework', name: 'spring-core', version: '5.1.8.RELEASE'
-    implementation group: 'org.springframework', name: 'spring-context', version: '5.1.8.RELEASE'
-    testCompile group: 'org.springframework', name: 'spring-test', version: '5.1.8.RELEASE'
-    testCompile group: 'junit', name: 'junit', version: '4.12'*/
 
 }
 

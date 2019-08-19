@@ -3,19 +3,19 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean class="liquibase.integration.spring.SpringLiquibase" id="liquibase">
-        <property name="changeLog" value="classpath:/liquibase/changelog.xml"/>
+    <!--<bean class="liquibase.integration.spring.SpringLiquibase" id="liquibase">
+        <property name="changeLog" value="classpath:/changelog.xml"/>
         <property name="dataSource" ref="dataSource"/>
-    </bean>
+    </bean>-->
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="configLocation" value="classpath:/mybatis/mybatis.xml"/>
-        <property name="mapperLocations" value="classpath*:/mybatis/mapper/**/*.xml"/>
+        <property name="mapperLocations" value="classpath*:/mybatis/mapper/*.xml"/>
     </bean>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer ">
-        <property name="locations" value="classpath:/config.properties"/>
+        <property name="locations" value="classpath:/rep-config.properties"/>
     </bean>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

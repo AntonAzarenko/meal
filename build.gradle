@@ -1,8 +1,11 @@
 group 'com.azarenka'
 version '0.1-SNAPSHOT'
-
+repositories {
+    mavenCentral()
+}
 buildscript {
     ext {
+        //springBootVersion = rev_spring_boot
         herokuPluginVersion = rev_heroku_plugin
     }
 
@@ -13,37 +16,38 @@ buildscript {
         }
     }
     dependencies {
-        classpath ("gradle.plugin.com.heroku.sdk:heroku-gradle:${herokuPluginVersion}")
+        classpath("gradle.plugin.com.heroku.sdk:heroku-gradle:${herokuPluginVersion}")
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'war'
-apply plugin: "com.heroku.sdk.heroku-gradle"
 
-heroku {
-    appName="meal"
+
+/*heroku {
+    appName = "meal"
     processTypes(
-           
+            web: "cd build ; java -Dgrails.env=prod -jar ../build/server/webapp-runner-*.jar --expand-war --port=\$PORT libs/*.war".toString()
+           //web: "java \$JAVA_OPTS -jar -Dspring.profiles.active=production $buildDir.name/libs/$war.archiveName --server.port=\$PORT".toString()
     )
+}*/
+
+dependencies {
+    compile group: 'com.github.jsimone', name: 'webapp-runner', version: '9.0.24.0'
+
 }
 
-deployHeroku {
-    dependsOn build
+task stage() {
+    dependsOn clean, war
+}
 
-    doFirst {
-        if (!System.getenv('HEROKU_API_KEY')) {
-            throw new GradleException('Deployment to Heroku requires setting the environment variable HEROKU_API_KEY')
-        }
+
+task copyToLib(type: Copy) {
+    into "$buildDir/libs"
+    from(configurations.compile) {
+        include "webapp-runner*"
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
-
-dependencies {
-
-}
+stage.dependsOn(copyToLib)
 

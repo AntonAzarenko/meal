@@ -1,0 +1,1 @@
+web: java -jar -Dspring.profiles.active=production build/server/webapp-runner-*.jar build/libs/*.war

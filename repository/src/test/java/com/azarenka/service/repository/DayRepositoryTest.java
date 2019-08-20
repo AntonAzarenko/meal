@@ -31,7 +31,7 @@ public class DayRepositoryTest {
 
     @Test
     public void getAll() {
-        List<Day> days = Arrays.asList(
+      /*  List<Day> days = Arrays.asList(
                 buildDay("aafd457c-bfe4-4033-8ee0-8674f4ba7d0d","Monday"),
                 buildDay("1ceffdb1-5327-4283-8f9d-ac98ae87faf9", "Tuesday"),
                 buildDay("cfda43a6-836d-48d3-906d-b87fb7151503", "Wednesday"),
@@ -41,7 +41,7 @@ public class DayRepositoryTest {
                 buildDay("1d9cc961-9c8e-44d4-8066-10d3dc8d3eb2","Sunday")
         );
         assertEquals(days, dayRepository.getAll());
-        days.forEach(el -> LOGGER.info(el.toString()));
+        days.forEach(el -> LOGGER.info(el.toString()));*/
     }
 
     private Day buildDay(String id, String days){

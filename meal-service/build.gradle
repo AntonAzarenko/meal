@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'com.azarenka'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':meal-domain')
+    implementation project(':meal-repository')
+    implementation project(':meal-test')
+    implementation project(':meal-rest')
+    implementation 'org.apache.commons:commons-lang3:3.9'
+    implementation 'org.springframework.boot:spring-boot-starter-mail:2.1.8.RELEASE'
+    testCompile 'org.springframework.boot:spring-boot-starter-test:2.0.4.RELEASE'
+    testCompile 'org.springframework:spring-test:5.0.9.RELEASE'
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="meal.controller.main" target="1.8" />
+      <module name="meal.controller.test" target="1.8" />
+      <module name="meal.db.main" target="1.8" />
+      <module name="meal.db.test" target="1.8" />
+      <module name="meal.domain.main" target="1.8" />
+      <module name="meal.domain.test" target="1.8" />
+      <module name="meal.main" target="1.8" />
+      <module name="meal.meal-db.main" target="1.8" />
+      <module name="meal.meal-db.test" target="1.8" />
+      <module name="meal.meal-domain.main" target="1.8" />
+      <module name="meal.meal-domain.test" target="1.8" />
+      <module name="meal.meal-repository.main" target="1.8" />
+      <module name="meal.meal-repository.test" target="1.8" />
+      <module name="meal.meal-rest.main" target="1.8" />
+      <module name="meal.meal-rest.test" target="1.8" />
+      <module name="meal.meal-runner.main" target="1.8" />
+      <module name="meal.meal-runner.test" target="1.8" />
+      <module name="meal.meal-service.main" target="1.8" />
+      <module name="meal.meal-service.test" target="1.8" />
+      <module name="meal.meal-test.main" target="1.8" />
+      <module name="meal.meal-test.test" target="1.8" />
+      <module name="meal.repository.main" target="1.8" />
+      <module name="meal.repository.test" target="1.8" />
+      <module name="meal.runner.main" target="1.8" />
+      <module name="meal.runner.test" target="1.8" />
+      <module name="meal.service.main" target="1.8" />
+      <module name="meal.service.test" target="1.8" />
+      <module name="meal.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

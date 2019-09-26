@@ -1,24 +1,6 @@
 package com.azarenka;
 
-import com.azarenka.service.api.DayService;
-import com.azarenka.service.api.FoodService;
-import com.azarenka.service.api.MealService;
-import com.azarenka.service.api.MenuService;
-import com.azarenka.service.api.UserService;
-import com.azarenka.service.response.MenuResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Menu  controller
@@ -32,7 +14,7 @@ import java.util.stream.Collectors;
 @Controller
 public class MenuController {
 
-    @Autowired
+   /* @Autowired
     private UserService userService;
     @Autowired
     private FoodService foodService;
@@ -43,9 +25,9 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(MenuController.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(MenuController.class);*/
 
-    @GetMapping(value = "/to-create")
+   /* @GetMapping(value = "/to-create")
     public String getFoods(Model model) {
         List<MenuResponse> menu = menuService.getMenu();
         model.addAttribute("menus", menu);
@@ -72,5 +54,5 @@ public class MenuController {
     public String remove(@PathVariable("id") String id) {
         menuService.remove(id);
         return "redirect:/to-create";
-    }
+    }*/
 }

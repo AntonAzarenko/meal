@@ -1,14 +1,10 @@
 package com.azarenka.impl;
 
-import com.azarenka.DayRepository;
-import com.azarenka.FoodRepository;
-import com.azarenka.MealRepository;
-import com.azarenka.Menu;
-import com.azarenka.MenuRepository;
+import com.azarenka.*;
 import com.azarenka.api.MenuService;
+import com.azarenka.impl.auth.UserPrinciple;
 import com.azarenka.response.MenuResponse;
 import com.azarenka.util.KeyGenerator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +41,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuResponse> getMenu() {
-        String userId = LoggedUser.getId();
+        String userId = Objects.requireNonNull(UserPrinciple.safeGet()).getId();
         List<Menu> menuList = menuRepository.getMenu(userId);
         List<MenuResponse> menuResponses = new ArrayList<>();
         if (menuList.size() > 0) {
@@ -60,11 +56,11 @@ public class MenuServiceImpl implements MenuService {
         menu.setId(KeyGenerator.generateUuid());
         menu.setFoodId(foodId);
         menu.setDayId(dayId);
-        menu.setUserId(UserPrinciple.g);
+        menu.setUserId(Objects.requireNonNull(UserPrinciple.safeGet()).getId());
         menu.setMealId(mealId);
         menu.setCountFood(count);
         menu.setDate(new Date());
-        menu.setEmail(Objects.requireNonNull(LoggedUser.safeGet()).getUsername());
+        menu.setEmail(Objects.requireNonNull(UserPrinciple.safeGet()).getUsername());
         menu.setTitle(title);
         menuRepository.save(menu);
     }
@@ -77,7 +73,7 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<String> getMenuNames(List<Menu> menus) {
 
-        return menuRepository.getMenuNames(LoggedUser.getId());
+        return menuRepository.getMenuNames(Objects.requireNonNull(UserPrinciple.safeGet()).getId());
     }
 
     private MenuResponse convertToMenuResponse(Menu menu) {
@@ -90,20 +86,18 @@ public class MenuServiceImpl implements MenuService {
             menuResponse.setFood(food.getTitle());
             menuResponse.setMeal(mealRepository.getMealById(menu.getMealId()).getMeal());
             menuResponse.setCarbohydrates(String.valueOf(
-                countPropertyOfFood(food.getCarbohydrates(), menu.getCountFood())));
+                    countPropertyOfFood(food.getCarbohydrates(), menu.getCountFood())));
             menuResponse.setFats(String.valueOf(
-                countPropertyOfFood(food.getFats(), menu.getCountFood())));
+                    countPropertyOfFood(food.getFats(), menu.getCountFood())));
             menuResponse.setProtein(String.valueOf(
-                countPropertyOfFood(food.getProtein(), menu.getCountFood())));
+                    countPropertyOfFood(food.getProtein(), menu.getCountFood())));
             menuResponse.setCount(countFormatter(food.getWeight(), menu.getCountFood(), food.getThings()));
         }
         return menuResponse;
     }
 
     private int countPropertyOfFood(int item, int count) {
-        return item == 0
-            ? 0
-            : item * count;
+        return item == 0 ? 0 : item * count;
     }
 
     private String countFormatter(double item, int count, String things) {

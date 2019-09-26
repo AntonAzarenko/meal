@@ -168,7 +168,7 @@ public class Menu extends BaseEntity {
                 .append(dayId, menu.dayId)
                 .append(mealId, menu.mealId)
                 .append(email, menu.email)
-            .append(countFood, menu.countFood)
+                .append(countFood, menu.countFood)
                 .append(setTitle, menu.setTitle)
                 .isEquals();
     }

@@ -25,7 +25,6 @@ public class User extends BaseEntity {
     private String avatar;
     private String activateCode;
     private Date registrationDate = new Date();
-
     /**
      * Gets registration date.
      *
@@ -186,6 +185,7 @@ public class User extends BaseEntity {
                 .append(name, user.name)
                 .append(activateCode, user.activateCode)
                 .append(roles, user.roles)
+                .append(avatar, user.avatar)
                 .isEquals();
     }
 
@@ -198,6 +198,7 @@ public class User extends BaseEntity {
                 .append(enabled)
                 .append(activateCode)
                 .append(roles)
+                .append(avatar)
                 .toHashCode();
     }
 }

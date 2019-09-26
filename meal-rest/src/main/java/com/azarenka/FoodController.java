@@ -1,12 +1,11 @@
 package com.azarenka;
 
-import com.azarenka.domain.Food;
-import com.azarenka.service.api.FoodService;
-
+import com.azarenka.api.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -19,16 +18,16 @@ import java.util.List;
  * @author Anton Azarnka
  * Date 21 07 2019
  */
-@Controller
+@RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RequestMapping(value = "food/")
 public class FoodController {
 
     @Autowired
     private FoodService foodService;
 
-    @GetMapping(value = "foods")
-    public String getFoods(Model model) {
-        List<Food> foods = foodService.getFoods();
-        model.addAttribute("foods", foods);
-        return "food";
+    @GetMapping(value = "allfoods")
+    public List<Food> getFoods() {
+        return foodService.getFoods();
     }
 }

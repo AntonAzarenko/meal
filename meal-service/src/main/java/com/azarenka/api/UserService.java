@@ -2,8 +2,6 @@ package com.azarenka.api;
 
 import com.azarenka.User;
 import com.azarenka.auth.SignUpForm;
-import com.azarenka.domain.User;
-import com.azarenka.service.auth.RegistrationUser;
 
 /**
  * User service

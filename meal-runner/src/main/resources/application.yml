@@ -46,50 +46,12 @@ spring:
     add-mappings: false
 
 mybatis:
-  mapper-locations: com/azarenka/mapper/*.xml
+  mapper-locations: classpath*:com.azarenka.mapper/*.xml
   type-aliases-package: com.azarenka
 
-oauth2:
-  client:
-    authSuccessUrl: /
-github:
-  client:
-    id: github
-   # clientId: ${GITHUB_CLIENT_ID}
-   # clientSecret: ${GITHUB_CLIENT_SECRET}
-    accessTokenUri: https://github.com/login/oauth/access_token
-    userAuthorizationUri: https://github.com/login/oauth/authorize
-    clientAuthenticationScheme: form
-    scope: user:email
-  resource:
-    userInfoUri: https://api.github.com/user
-epam:
-  client:
-    id: epam
-    clientId: ${EPAM_CLIENT_ID}
-    clientSecret: ${EPAM_CLIENT_SECRET}
-    accessTokenUri: ${EPAM_ACCESS_TOKEN_URI}
-    userAuthorizationUri: ${EPAM_USER_AUTHORIZATION_URI}?resource=${FC_URL}
-    clientAuthenticationScheme: form
 
-robot:
-  shared:
-    folder: ${SHARED_FOLDER}
-    robots: ${ROBOTS_FOLDER}
-    replays: ${REPLAYS_FOLDER}
 
-fc:
-  queue:
-    main:
-      battle: fc.battle
-      battleResults: fc.battle.results
 
-replays:
-  compression: ${REPLAYS_COMPRESSION}
-
-performance:
-  threshold.millis: 10000
-  logging.enabled: true
 
 swagger:
   enabled: ${SWAGGER_ENABLED}

@@ -9,7 +9,7 @@ public class SignUpForm {
     @NotBlank
     @Size(min = 3, max = 50)
     private String username;
-    @NotBlank
+    //@NotBlank
     private String name;
 
     private Set<String> role;

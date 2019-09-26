@@ -1,3 +1,4 @@
+
 package com.azarenka.impl;
 
 import com.azarenka.Role;
@@ -6,24 +7,18 @@ import com.azarenka.UserRepository;
 import com.azarenka.UsersRoleMapRepository;
 import com.azarenka.api.UserService;
 import com.azarenka.auth.SignUpForm;
-import com.azarenka.domain.Role;
-import com.azarenka.domain.User;
 import com.azarenka.mail.Mail;
-import com.azarenka.service.auth.LoggedUser;
-import com.azarenka.service.auth.RegistrationUser;
-import com.azarenka.service.util.KeyGenerator;
 import com.azarenka.util.KeyGenerator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.UUID;
 
 /**
@@ -36,7 +31,7 @@ import java.util.UUID;
  * Date: 21.07.2019
  */
 @Service("userService")
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
     @Autowired
@@ -47,7 +42,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private UsersRoleMapRepository roleMapRepository;
     @Autowired
     private Mail mail;
-    @Value("${mail.url}")
+    //@Value("${mail.url}")
     private String url;
 
     @Override
@@ -65,7 +60,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             String roleId = roleMapRepository.getIdByRole(Role.ROLE_USER.name());
             roleMapRepository.saveRole(user.getId(), roleId);
             String message = String.format("Hello %s. Please activate your account for Health Food. %s%s",
-                user.getName(), url, user.getActivateCode());
+                    user.getName(), url, user.getActivateCode());
             mail.sendMessage(registrationUser.getUsername(), Mail.REGISTRATION_MASSAGE, message);
         } catch (Exception e) {
             LOGGER.info("Mail hasn't been send {} {}", registrationUser.getUsername(), e.getMessage());
@@ -78,20 +73,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public LoggedUser loadUserByUsername(String login) throws UsernameNotFoundException {
-        User u = repository.getByEmail(login);
-        if (u == null) {
-            throw new UsernameNotFoundException("User " + login + " not found!");
-        }
-        return new LoggedUser(u);
-    }
-
-    @Override
     public String getUserName() {
-        LoggedUser loggedUser = LoggedUser.safeGet();
-        if (loggedUser != null) {
-            return loggedUser.getUserNick();
-        }
         return null;
     }
 

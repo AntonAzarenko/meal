@@ -1,9 +1,8 @@
 package com.azarenka.impl;
 
-import com.azarenka.domain.Day;
-import com.azarenka.repository.api.DayRepository;
-import com.azarenka.service.api.DayService;
-
+import com.azarenka.Day;
+import com.azarenka.DayRepository;
+import com.azarenka.api.DayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

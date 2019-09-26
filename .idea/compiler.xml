@@ -2,6 +2,22 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="com.azarenka.meal-db.main" target="1.8" />
+      <module name="com.azarenka.meal-db.test" target="1.8" />
+      <module name="com.azarenka.meal-domain.main" target="1.8" />
+      <module name="com.azarenka.meal-domain.test" target="1.8" />
+      <module name="com.azarenka.meal-repository.main" target="1.8" />
+      <module name="com.azarenka.meal-repository.test" target="1.8" />
+      <module name="com.azarenka.meal-rest.main" target="1.8" />
+      <module name="com.azarenka.meal-rest.test" target="1.8" />
+      <module name="com.azarenka.meal-runner.main" target="1.8" />
+      <module name="com.azarenka.meal-runner.test" target="1.8" />
+      <module name="com.azarenka.meal-service.main" target="1.8" />
+      <module name="com.azarenka.meal-service.test" target="1.8" />
+      <module name="com.azarenka.meal-test.main" target="1.8" />
+      <module name="com.azarenka.meal-test.test" target="1.8" />
+      <module name="com.azarenka.meal.main" target="1.8" />
+      <module name="com.azarenka.meal.test" target="1.8" />
       <module name="meal.controller.main" target="1.8" />
       <module name="meal.controller.test" target="1.8" />
       <module name="meal.db.main" target="1.8" />

@@ -1,12 +1,12 @@
 package com.azarenka.impl;
 
-import com.azarenka.domain.Food;
-import com.azarenka.repository.api.FoodRepository;
-import com.azarenka.service.api.FoodService;
-
+import com.azarenka.Food;
+import com.azarenka.FoodRepository;
+import com.azarenka.api.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -21,7 +21,7 @@ import java.util.List;
 @Service
 public class FoodServiceImpl implements FoodService {
 
-    @Autowired
+    @Resource
     private FoodRepository foodRepository;
 
     @Override

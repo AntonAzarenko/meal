@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,11 +16,10 @@ public class Mail {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    @Autowired
-    @Qualifier("mailSender")
-    private JavaMailSender javaMailSender;
-    @Autowired
-    private SimpleMailMessage simpleMailMessage;
+    //@Autowired
+    private JavaMailSender javaMailSender = new JavaMailSenderImpl();
+    //@Autowired
+    private SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
     public static String REGISTRATION_MASSAGE = "Вам пришло это писмо так как вы зарегистрировались в программе HEALTH FOOD";
 

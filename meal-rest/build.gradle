@@ -15,7 +15,8 @@ dependencies {
     implementation project(':meal-service')
     implementation project(':meal-test')
     implementation project(':meal-domain')
-    implementation project(':meal-runner')
+
+    //implementation project(':meal-runner')
     implementation 'org.springframework.boot:spring-boot-starter-web:2.1.8.RELEASE'
     testCompile 'nl.jqno.equalsverifier:equalsverifier: 3.0'
     compile 'org.springframework.security:spring-security-core:5.0.8.RELEASE'

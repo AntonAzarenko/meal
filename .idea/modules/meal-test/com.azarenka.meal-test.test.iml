@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":meal-test:test" external.linked.project.path="$MODULE_DIR$/../../../meal-test" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="com.azarenka" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output-test url="file://$MODULE_DIR$/../../../meal-test/out/test/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../meal-test/src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../../meal-test/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../meal-test/src/test/resources" type="java-test-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="com.azarenka.meal-test.main" />
+    <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter-engine:5.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter-params:5.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter-api:5.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: nl.jqno.equalsverifier:equalsverifier:3.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-test:5.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: com.openpojo:openpojo:0.8.10" level="project" />
+    <orderEntry type="library" name="Gradle: org.mockito:mockito-core:2.15.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.junit.platform:junit-platform-engine:1.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.junit.platform:junit-platform-commons:1.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.apiguardian:apiguardian-api:1.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.opentest4j:opentest4j:1.1.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-core:5.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: net.bytebuddy:byte-buddy:1.7.9" level="project" />
+    <orderEntry type="library" name="Gradle: net.bytebuddy:byte-buddy-agent:1.7.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.objenesis:objenesis:2.6" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-jcl:5.0.9.RELEASE" level="project" />
+  </component>
+  <component name="TestModuleProperties" production-module="com.azarenka.meal-test.main" />
+</module>

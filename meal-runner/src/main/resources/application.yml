@@ -1,10 +1,6 @@
 server:
   servlet:
     context-path: /api
-    session:
-      max-age: 3600
-      cookie:
-        secure: true
 
 spring:
   datasource:
@@ -16,42 +12,3 @@ spring:
     password: root
     url: jdbc:postgresql://localhost:5432/postgres
     user: root
- # mail:
-  #  host: ${EMAIL_HOST}
-   # port: ${EMAIL_PORT}
-    #username: ${EPAM_EMAIL_NAME}
-    #password: ${EPAM_EMAIL_PASSWORD}
-    #recipient: ${FC_SUPPORT_EMAIL}
-    #properties:
-    #  mail:
-     #   smtp:
-      #    auth: true
-       #   starttls:
-        #    enable: true
- # login:
-    #remember:
-    #  key: FightCl@Token
-    #  expire:
-    #    seconds: ${REMEMBER_ME_EXPIRE_SECONDS}
-  servlet:
-    multipart:
-      max-file-size: 5MB
-      max-request-size: 5MB
-      enabled: true
-  jackson:
-    default-property-inclusion: non_null
-  activemq:
-   # broker-url: failover:(${BROKER_TCP})?jms.redeliveryPolicy.maximumRedeliveries=1
-  resources:
-    add-mappings: false
-
-mybatis:
-  mapper-locations: classpath*:com.azarenka.mapper/*.xml
-  type-aliases-package: com.azarenka
-
-
-
-
-
-swagger:
-  enabled: ${SWAGGER_ENABLED}

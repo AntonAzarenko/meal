@@ -10,6 +10,13 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true 
+}
 
 dependencies {
     implementation project(':meal-domain')
@@ -17,11 +24,7 @@ dependencies {
     implementation project(':meal-test')
     implementation 'org.apache.commons:commons-lang3:3.9'
     implementation 'org.springframework.boot:spring-boot-starter-security:2.1.6.RELEASE'
-    implementation 'io.jsonwebtoken:jjwt:' + rev_jjwt
     compile group: 'org.springframework.session', name: 'spring-session-core', version: '2.1.8.RELEASE'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation "org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:${springBootVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-mail:2.1.8.RELEASE'
     testCompile 'org.springframework.boot:spring-boot-starter-test:2.0.4.RELEASE'
-    testCompile 'org.springframework:spring-test:5.0.9.RELEASE'
 }

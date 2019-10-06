@@ -1,14 +1,9 @@
 package com.azarenka.service;
 
 
-import com.azarenka.domain.User;
-
 import org.junit.Test;
 
 import java.util.Arrays;
-
-import nl.jqno.equalsverifier.EqualsVerifier;
-import nl.jqno.equalsverifier.Warning;
 
 /**
  * Verifies domain.

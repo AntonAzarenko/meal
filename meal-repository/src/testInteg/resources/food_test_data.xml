@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog-ext
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="30-07-2019-00" author="Anton Azarenka">
+        <addColumn tableName="foods" schemaName="home">
+            <column name="protein" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fats" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="carbohydrates" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+
+        <addColumn tableName="foods" schemaName="home">
+            <column name="content" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1-08-2019-10" author="Anton Azarenka">
+        <sql>
+            insert into
+            home.foods (id, title, weight, content, calories, protein, fats, carbohydrates)
+            VALUES
+            ('d99c4f05-fec0-47bf-8652-cb6dca9f236e', 'Сосиски', '0.7','THINGS', 0, 1, 0, 0),
+            ('a916143d-720c-488a-8179-0511c347ee9d', 'Мандарин', '1','THINGS', 0, 0, 0, 1),
+
+            ('2a821e5d-de18-402a-a54a-5f1846b06e52', 'Салат овощной', '1','GLASS', 0, 0, 0, 1),
+            ('e9d64635-52d8-4f52-8de8-95c9e9858c21', 'Рыба вареная', '50','GR', 0, 1, 0, 0),
+            ('897dadb9-aaec-4a53-9a20-606ef965761f', 'Апельсин', '1','THINGS', 0, 0, 0, 1),
+
+            ('fe94dc49-29d2-4626-83d3-078f7f5c4ce9', 'Рассольник', '0.3','TEA_SPOON', 0, 0, 1, 0),
+            ('a8c6bf79-f9e7-4f48-8d95-cecb9965e5e7', 'Сметана', '1','TEA_SPOON', 0, 0, 1, 0),
+            ('efdfaef5-6063-45e1-9fac-0f6f8205046b', 'Хлеб', '1','THINGS', 0, 0, 0, 1),
+
+            ('33a0499d-8469-4d2b-89fd-ebfe28669251', 'Йогурт(н\ж 0.1 -0.3%)', '120','GR', 0, 1, 0, 0),
+            ('4ff161cf-9d8e-41c8-b79f-1eda156777c9', 'Арахис стручковый', '6','THINGS', 0, 0, 1, 0)
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -25,7 +25,6 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: "com.heroku.sdk.heroku-gradle"
 apply plugin: 'java-library'
-
 sourceCompatibility = 1.8
 
 repositories {
@@ -49,6 +48,18 @@ deployHeroku {
     }
 }
 
+
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/testInteg/java')
+        }
+        resources.srcDir file('src/testInteg/resources')
+    }
+}
+
 bootJar {
     enabled = false
 }
@@ -62,3 +73,4 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-parent:${springBootVersion}"
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+

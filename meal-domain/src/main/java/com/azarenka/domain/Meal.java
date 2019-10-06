@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 /**
  * Meal
  * <p>
- * Copyright (C) ant-azarenko@mail.ru
+ * Copyright (C) ant-azarenka@mail.ru
  * </p>
  * Date 12 08 2019
  *
@@ -52,6 +52,13 @@ public class Meal extends BaseEntity {
                 .appendSuper(super.hashCode())
                 .append(meal)
                 .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Meal{" +
+                "meal='" + meal + '\'' +
+                '}';
     }
 }
 

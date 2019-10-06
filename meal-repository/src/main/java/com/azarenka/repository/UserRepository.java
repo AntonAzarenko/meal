@@ -45,7 +45,7 @@ public interface UserRepository {
      * @param code code.
      * @return user.
      */
-    User getByActivateCode(@Param("code") String code);
+    User getByActivateCode(String code);
 
     /**
      * Updates user.

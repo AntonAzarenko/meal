@@ -1,45 +1,73 @@
-package com.azarenka.repository;
+package com.azarenka.repository.testinteg;
 
+import com.azarenka.repository.*;
 import liquibase.integration.spring.SpringLiquibase;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperFactoryBean;
+import org.postgresql.Driver;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
+import ru.yandex.qatools.embed.postgresql.distribution.Version;
 
 import javax.sql.DataSource;
+import java.io.IOException;
 
+/**
+ * Configuration for embedded postgres database.
+ * <p>
+ * Copyright (C) 2018 epam.com
+ * <p>
+ * Date: Nov 30, 2018
+ *
+ * @author Anton Azarenka
+ */
 
 @Configuration
-public class Config {
+public class EmbeddedPostgresConfig {
 
-    @Bean
-    public DataSource dataSource() {
-        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setDriverClass(org.postgresql.Driver.class);
-        dataSource.setUsername("root");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
-        dataSource.setPassword("root");
+    private static final String HOST = "localhost";
+    private static final int PORT = 31666;
+    private static final String DB_NAME = "postgres";
+    private static final String USER = "root";
+    private static final String PASSWORD = "root";
 
-        return dataSource;
+    private String url;
+
+    @Bean(destroyMethod = "stop")
+    public EmbeddedPostgres embeddedPostgres() throws IOException {
+        EmbeddedPostgres postgres = new EmbeddedPostgres(Version.V9_6_11);
+        url = postgres.start(HOST, PORT, DB_NAME, USER, PASSWORD);
+        return postgres;
     }
 
     @Bean
-    public DataSourceTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
+    public SpringLiquibase liquibase() {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog("classpath:common_test_data.xml");
+        liquibase.setDataSource(dataSource());
+        return liquibase;
+    }
+
+    @DependsOn("embeddedPostgres")
+    @Bean
+    public DataSource dataSource() {
+        return new SimpleDriverDataSource(new Driver(), url);
     }
 
     @Bean
     public SqlSessionFactoryBean sqlSessionFactory(ApplicationContext applicationContext) throws Exception {
-        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource());
-        sessionFactory.setConfigLocation(applicationContext.getResource("classpath:mybatis.xml"));
-        sessionFactory.setMapperLocations(applicationContext.getResources("classpath:com.azarenka.mapper/*.xml"));
-        sessionFactory.setTypeAliasesPackage("com.azarenka.domain");
-        sessionFactory.afterPropertiesSet();
-        return sessionFactory;
+        SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
+        sqlSessionFactory.setMapperLocations(applicationContext.getResources("classpath:com.azarenka.mapper/*.xml"));
+        sqlSessionFactory.setTypeAliasesPackage("com.azarenka.domain");
+        sqlSessionFactory.setDataSource(dataSource());
+        sqlSessionFactory.setConfigLocation(applicationContext.getResource("classpath:mybatis.xml"));
+        sqlSessionFactory.afterPropertiesSet();
+
+        return sqlSessionFactory;
     }
 
     @Bean
@@ -76,10 +104,10 @@ public class Config {
 
     @Bean
     public MapperFactoryBean<MenuRepository> menuRepository(ApplicationContext applicationContext) throws Exception {
-        MapperFactoryBean<MenuRepository> uR = new MapperFactoryBean<>();
-        uR.setMapperInterface(MenuRepository.class);
-        uR.setSqlSessionFactory(sqlSessionFactory(applicationContext).getObject());
-        return uR;
+        MapperFactoryBean<MenuRepository> repository = new MapperFactoryBean<>();
+        repository.setMapperInterface(MenuRepository.class);
+        repository.setSqlSessionFactory(sqlSessionFactory(applicationContext).getObject());
+        return repository;
     }
 
     @Bean

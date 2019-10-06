@@ -9,7 +9,7 @@
         <result column="enabled" property="enabled"/>
         <result column="name" property="name"/>
         <result column="password" property="password"/>
-        <result column="activateCode" property="active_code"/>
+        <result column="activate_code" property="activateCode"/>
         <result column="registrationDate" property="date_registration"/>
 
         <collection property="roles" ofType="com.azarenka.domain.Role" javaType="java.util.HashSet">
@@ -39,10 +39,11 @@
             #{registrationDate}
         )
     </insert>
-    
+
     <update id="update">
-        UPDATE  home.users SET enabled = #{enabled}
-        where home.users.id = #{id}
+        UPDATE home.users
+        SET enabled = #{enabled}
+        WHERE home.users.id = #{id}
     </update>
 
     <select id="getByEmail" resultMap="user">
@@ -51,6 +52,7 @@
             email,
             name,
             avatar,
+            activate_code,
             password,
             r.id,
             r.role,
@@ -64,18 +66,19 @@
 
     <select id="getByActivateCode" resultMap="user">
         SELECT
-        home.users.id,
-        email,
-        name,
-        avatar,
-        password,
-        r.id,
-        r.role,
-        enabled
+            home.users.id,
+            email,
+            name,
+            avatar,
+            password,
+            activate_code,
+            r.id,
+            r.role,
+            enabled
         FROM
-        home.users
-        JOIN home.user_role_map rm ON rm.user_id = id
-        JOIN home.role r ON r.id = rm.role_id
+            home.users
+            JOIN home.user_role_map rm ON rm.user_id = id
+            JOIN home.role r ON r.id = rm.role_id
         WHERE home.users.activate_code = #{code}
     </select>
 </mapper>

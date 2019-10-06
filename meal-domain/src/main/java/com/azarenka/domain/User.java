@@ -201,4 +201,18 @@ public class User extends BaseEntity {
                 .append(avatar)
                 .toHashCode();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                ", avatar='" + avatar + '\'' +
+                ", activateCode='" + activateCode + '\'' +
+                ", registrationDate=" + registrationDate +
+                '}';
+    }
 }

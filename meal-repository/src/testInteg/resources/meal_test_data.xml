@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog-ext
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="2019-07-20-20" author="Anton Azarenka" runInTransaction="false">
+        <comment>add data in tables: meals</comment>
+        <sql>
+            INSERT INTO home.meals (id, meal) VALUES
+            ('a7d51fe2-9e6d-49cb-bd54-1b24ff1d9c08 ','Breakfast'),
+            ('7f19e949-2b93-48c2-a878-bc7a18ad749d','Lunch'),
+            ('250425f4-5084-45e2-804f-9f1c5867ba62','Second_Lunch'),
+            ('03bfbdb6-b62a-401b-b9ce-f1bdb4e05879','Dinner')
+        </sql>
+    </changeSet>
+
+    <changeSet id="2019-07-20-10" author="Anton Azarenka" runInTransaction="false">
+        <comment>add data in tables: days</comment>
+        <sql>
+            INSERT INTO home.days(id ,day) VALUES
+            ('aafd457c-bfe4-4033-8ee0-8674f4ba7d0d','Monday'),
+            ('1ceffdb1-5327-4283-8f9d-ac98ae87faf9','Tuesday'),
+            ('cfda43a6-836d-48d3-906d-b87fb7151503','Wednesday'),
+            ('b272327c-f198-49c2-a45e-a84b19885852','Thursday'),
+            ('9852b1da-242e-4f94-aa5d-83d5c9fc6cc8','Friday'),
+            ('2a72e105-b91a-4990-8a5e-0ed5a3283b47','Saturday'),
+            ('1d9cc961-9c8e-44d4-8066-10d3dc8d3eb2','Sunday')
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -31,7 +31,11 @@ task testInteg(type: Test) {
     testInteg.mustRunAfter classes
 }
 
-
+/*
+test {
+    systemProperty "file.encoding", "utf-8"
+}
+*/
 
 configurations {
     testIntegCompile.extendsFrom testCompile
@@ -57,5 +61,6 @@ dependencies {
     testIntegCompile project(':meal-domain')
     testIntegCompile project(':meal-db')
     testIntegCompile project(':meal-test')
+    testIntegImplementation 'org.springframework.boot:spring-boot-starter-web:2.1.8.RELEASE'
 }
 

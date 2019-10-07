@@ -12,3 +12,7 @@ spring:
     password: root
     url: jdbc:postgresql://localhost:5432/postgres
     user: root
+  http:
+    encoding:
+    enabled: true
+    force: true

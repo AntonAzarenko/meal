@@ -3,7 +3,9 @@ package com.azarenka.repository.testinteg;
 import com.azarenka.domain.Menu;
 import com.azarenka.repository.MenuRepository;
 import com.azarenka.repository.UserRepository;
+import org.junit.After;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -11,12 +13,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {EmbeddedPostgresConfig.class})
-public class ManuRepositoryIntegrationTest {
+public class MenuRepositoryIntegrationTest {
 
     private final static String USER_ID = "4993f33d-cd83-4b87-a4d4-57a11e65aa9b";
     private final static String DAY_ID = "aafd457c-bfe4-4033-8ee0-8674f4ba7d0d";
@@ -27,13 +30,26 @@ public class ManuRepositoryIntegrationTest {
     @Autowired
     private MenuRepository menuRepository;
 
+    @After
+    public void  afterTest(){
+
+    }
+
     @Test
     public void testSave() {
         Menu menu = buildMenu();
         menuRepository.save(menu);
         List<Menu> menus = menuRepository.getMenu(USER_ID);
+        menus = menus.stream().filter(e -> e.getId().equals(MENU_ID)).collect(Collectors.toList());
         assertEquals(1, menus.size());
         assertEquals(menu, menus.get(0));
+        menuRepository.remove(MENU_ID);
+    }
+
+    @Test
+    public  void testGetByUserId(){
+        Menu menu = buildMenu();
+        assertEquals(menu, menuRepository.getMenu(USER_ID).get(0));
     }
 
     private Menu buildMenu() {

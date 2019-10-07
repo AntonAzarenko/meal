@@ -12,4 +12,5 @@
     <include file="user_test_data.xml"/>
     <include file="food_test_data.xml"/>
     <include file="meal_test_data.xml"/>
+    <include file="menu_test_data.xml"/>
 </databaseChangeLog>

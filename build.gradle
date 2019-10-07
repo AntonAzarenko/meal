@@ -17,6 +17,8 @@ buildscript {
     }
 }
 
+
+
 group 'com.azarenka'
 version '1.0-SNAPSHOT'
 
@@ -67,6 +69,10 @@ bootJar {
 jar {
     enabled = true
 }
+
+/*tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}*/
 
 dependencies {
     implementation project(':meal-runner')

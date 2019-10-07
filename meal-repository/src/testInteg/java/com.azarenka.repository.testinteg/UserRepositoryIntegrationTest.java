@@ -1,5 +1,8 @@
 package com.azarenka.repository.testinteg;
 
+import static com.azarenka.domain.Role.ROLE_ADMIN;
+import static com.azarenka.domain.Role.ROLE_USER;
+
 import com.azarenka.domain.Role;
 import com.azarenka.domain.User;
 import com.azarenka.repository.UserRepository;
@@ -18,6 +21,8 @@ import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 
+import static java.util.Collections.*;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {EmbeddedPostgresConfig.class})
 public class UserRepositoryIntegrationTest {
@@ -31,13 +36,13 @@ public class UserRepositoryIntegrationTest {
 
     @Test
     public void testGetUserByEmail() {
-        User user = buildUser("4993f33d-cd83-4b87-a4d4-57a11e65aa9b", "Admin@mail.ru", Role.ROLE_ADMIN, "active");
+        User user = buildUser("4993f33d-cd83-4b87-a4d4-57a11e65aa9b", "Admin@mail.ru", ROLE_ADMIN, "active");
         assertEquals(user, userRepository.getByEmail("Admin@mail.ru"));
     }
 
     @Test
     public void testSaveUser() {
-        User user = buildUser(UUID.randomUUID().toString(), "user@mail.ru", Role.ROLE_USER,
+        User user = buildUser(UUID.randomUUID().toString(), "user@mail.ru", ROLE_USER,
                 "1993f33d-cd83-4b87-a4d4-57a11e65aa9b");
         userRepository.save(user);
         String roleId = roleMapRepository.getIdByRole("ROLE_USER");
@@ -47,7 +52,7 @@ public class UserRepositoryIntegrationTest {
 
     @Test
     public void testGetByActivateCode() {
-        User user = buildUser(UUID.randomUUID().toString(), "userTwo@mail.ru", Role.ROLE_USER,
+        User user = buildUser(UUID.randomUUID().toString(), "userTwo@mail.ru", ROLE_USER,
                 "2993f33d-cd81-4b87-a4d4-57a11e65aa9b");
         userRepository.save(user);
         String roleId = roleMapRepository.getIdByRole("ROLE_USER");
@@ -60,7 +65,7 @@ public class UserRepositoryIntegrationTest {
         user.setId(id);
         user.setEnabled(true);
         user.setEmail(email);
-        user.setRoles(Collections.singleton(role));
+        user.setRoles(singleton(role));
         user.setActivateCode(activateCode);
         user.setName("admin");
         user.setPassword("admin");

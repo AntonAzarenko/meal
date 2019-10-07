@@ -1,0 +1,12 @@
+spring:
+  liquibase:
+    change-log: classpath:common_test_data.xml
+    password: root
+    url: jdbc:postgresql://localhost:31666/postgres
+    user: root
+    enabled: true
+  http:
+    encoding:
+      enabled: true
+      force: true
+

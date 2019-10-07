@@ -1,6 +1,5 @@
-.idea
 *.iml
-.gradle
-out
-log
+.idea
 build
+out
+.gradle

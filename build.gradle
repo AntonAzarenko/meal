@@ -1,12 +1,8 @@
-group 'com.azarenka'
-version '0.1-SNAPSHOT'
-repositories {
-    mavenCentral()
-}
 buildscript {
     ext {
-        //springBootVersion = rev_spring_boot
+        springBootVersion = rev_spring_boot
         herokuPluginVersion = rev_heroku_plugin
+        springBootMybatisVersion = rev_spring_boot_mybatis
     }
 
     repositories {
@@ -16,38 +12,71 @@ buildscript {
         }
     }
     dependencies {
-        classpath("gradle.plugin.com.heroku.sdk:heroku-gradle:${herokuPluginVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath ("gradle.plugin.com.heroku.sdk:heroku-gradle:${herokuPluginVersion}")
     }
 }
 
+
+
+group 'com.azarenka'
+version '1.0-SNAPSHOT'
+
 apply plugin: 'java'
-apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "com.heroku.sdk.heroku-gradle"
+apply plugin: 'java-library'
+sourceCompatibility = 1.8
 
+repositories {
+    mavenCentral()
+}
 
-/*heroku {
-    appName = "meal"
+heroku {
+    appName="com.meal"
     processTypes(
-            web: "cd build ; java -Dgrails.env=prod -jar ../build/server/webapp-runner-*.jar --expand-war --port=\$PORT libs/*.war".toString()
-           //web: "java \$JAVA_OPTS -jar -Dspring.profiles.active=production $buildDir.name/libs/$war.archiveName --server.port=\$PORT".toString()
+            web: "java \$JAVA_OPTS -jar -Dspring.profiles.active=production $buildDir.name/libs/$jar.archiveName --server.port=\$PORT".toString()
     )
+}
+
+deployHeroku {
+    dependsOn build
+
+    doFirst {
+        if (!System.getenv('HEROKU_API_KEY')) {
+            throw new GradleException('Deployment to Heroku requires setting the environment variable HEROKU_API_KEY')
+        }
+    }
+}
+
+
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/testInteg/java')
+        }
+        resources.srcDir file('src/testInteg/resources')
+    }
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+/*tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }*/
 
 dependencies {
-    compile group: 'com.github.jsimone', name: 'webapp-runner', version: '9.0.24.0'
-
+    implementation project(':meal-runner')
+    implementation "org.springframework.boot:spring-boot-parent:${springBootVersion}"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-
-task stage() {
-    dependsOn clean, war
-}
-
-
-task copyToLib(type: Copy) {
-    into "$buildDir/libs"
-    from(configurations.compile) {
-        include "webapp-runner*"
-    }
-}
-
-stage.dependsOn(copyToLib)
 

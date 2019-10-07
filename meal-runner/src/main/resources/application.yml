@@ -1,0 +1,18 @@
+server:
+  servlet:
+    context-path: /api
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: root
+    password: root
+  liquibase:
+    change-log: classpath:liquibase/changelog.xml
+    password: root
+    url: jdbc:postgresql://localhost:5432/postgres
+    user: root
+  http:
+    encoding:
+    enabled: true
+    force: true

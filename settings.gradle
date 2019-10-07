@@ -1,6 +1,10 @@
 rootProject.name = 'meal'
-include 'repository'
-include 'service'
-include 'db'
-include 'ui'
-include 'domain'
+include 'meal-db'
+include 'meal-repository'
+include 'meal-service'
+include 'meal-rest'
+include 'meal-runner'
+include 'meal-test'
+include 'meal-domain'
+
+

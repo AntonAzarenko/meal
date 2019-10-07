@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.azarenka'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.junit.jupiter:junit-jupiter-api:5.3.2'
+    compile 'org.junit.jupiter:junit-jupiter-engine:5.3.2'
+    compile 'org.junit.jupiter:junit-jupiter-params:5.3.2'
+    compile 'nl.jqno.equalsverifier:equalsverifier:3.0'
+    compile 'org.springframework:spring-test:5.0.9.RELEASE'
+    compile 'com.openpojo:openpojo:0.8.10'
+    compile 'org.mockito:mockito-core:2.15.0'
+}

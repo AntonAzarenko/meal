@@ -31,12 +31,6 @@ task testInteg(type: Test) {
     testInteg.mustRunAfter classes
 }
 
-/*
-test {
-    systemProperty "file.encoding", "utf-8"
-}
-*/
-
 configurations {
     testIntegCompile.extendsFrom testCompile
     testIntegRuntime.extendsFrom testRuntime

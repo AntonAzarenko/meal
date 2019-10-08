@@ -1,8 +1,5 @@
 package com.azarenka.repository.testinteg;
 
-import static com.azarenka.domain.Role.ROLE_ADMIN;
-import static com.azarenka.domain.Role.ROLE_USER;
-
 import com.azarenka.domain.Role;
 import com.azarenka.domain.User;
 import com.azarenka.repository.UserRepository;
@@ -15,13 +12,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.util.Collections;
 import java.util.Date;
 import java.util.UUID;
 
+import static java.util.Collections.singleton;
 import static org.junit.Assert.assertEquals;
-
-import static java.util.Collections.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {EmbeddedPostgresConfig.class})
@@ -36,13 +31,13 @@ public class UserRepositoryIntegrationTest {
 
     @Test
     public void testGetUserByEmail() {
-        User user = buildUser("4993f33d-cd83-4b87-a4d4-57a11e65aa9b", "Admin@mail.ru", ROLE_ADMIN, "active");
+        User user = buildUser("4993f33d-cd83-4b87-a4d4-57a11e65aa9b", "Admin@mail.ru", Role.ROLE_ADMIN, "active");
         assertEquals(user, userRepository.getByEmail("Admin@mail.ru"));
     }
 
     @Test
     public void testSaveUser() {
-        User user = buildUser(UUID.randomUUID().toString(), "user@mail.ru", ROLE_USER,
+        User user = buildUser(UUID.randomUUID().toString(), "user@mail.ru", Role.ROLE_USER,
                 "1993f33d-cd83-4b87-a4d4-57a11e65aa9b");
         userRepository.save(user);
         String roleId = roleMapRepository.getIdByRole("ROLE_USER");
@@ -52,7 +47,7 @@ public class UserRepositoryIntegrationTest {
 
     @Test
     public void testGetByActivateCode() {
-        User user = buildUser(UUID.randomUUID().toString(), "userTwo@mail.ru", ROLE_USER,
+        User user = buildUser(UUID.randomUUID().toString(), "userTwo@mail.ru", Role.ROLE_USER,
                 "2993f33d-cd81-4b87-a4d4-57a11e65aa9b");
         userRepository.save(user);
         String roleId = roleMapRepository.getIdByRole("ROLE_USER");

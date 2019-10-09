@@ -3,6 +3,8 @@ package com.azarenka.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.UUID;
+
 /**
  * Base Entity
  * <p>
@@ -59,5 +61,11 @@ public class BaseEntity {
         return new HashCodeBuilder(17, 37)
                 .append(id)
                 .toHashCode();
+    }
+
+    public static void main(String[] args) {
+        for (int i =0; i <10;i++){
+            System.out.println(UUID.randomUUID().toString());
+        }
     }
 }

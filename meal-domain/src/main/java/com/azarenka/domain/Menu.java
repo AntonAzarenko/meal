@@ -186,4 +186,19 @@ public class Menu extends BaseEntity {
                 .append(setTitle)
                 .toHashCode();
     }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+            "id'" + super.getId()+ '\'' +
+            "userId='" + userId + '\'' +
+            ", foodId='" + foodId + '\'' +
+            ", dayId='" + dayId + '\'' +
+            ", mealId='" + mealId + '\'' +
+            ", email='" + email + '\'' +
+            ", countFood=" + countFood +
+            ", date=" + date +
+            ", setTitle='" + setTitle + '\'' +
+            '}';
+    }
 }

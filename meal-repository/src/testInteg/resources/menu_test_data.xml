@@ -15,11 +15,11 @@
             VALUES
             ('897dadb9-aaec-4a53-9a20-606ef965761f', '4993f33d-cd83-4b87-a4d4-57a11e65aa9b',
             'd99c4f05-fec0-47bf-8652-cb6dca9f236e','1ceffdb1-5327-4283-8f9d-ac98ae87faf9',
-            '7f19e949-2b93-48c2-a878-bc7a18ad749d', '3', 'Admin@mail.ru', '2019-09-22','foods'),
+            '7f19e949-2b93-48c2-a878-bc7a18ad749d', '3', 'Admin@mail.ru', '2019-02-01','foods'),
 
             ('997dadb9-aaec-4a53-9a20-606ef965761f', '4993f33d-cd83-4b87-a4d4-57a11e65aa9b',
             '2a821e5d-de18-402a-a54a-5f1846b06e52', '1ceffdb1-5327-4283-8f9d-ac98ae87faf9',
-            '7f19e949-2b93-48c2-a878-bc7a18ad749d', '2', 'AdminO@mail.ru', '2019-09-22', 'foods')
+            '7f19e949-2b93-48c2-a878-bc7a18ad749d', '2', 'AdminO@mail.ru', '2019-02-01', 'foods')
         </sql>
     </changeSet>
 </databaseChangeLog>

@@ -1,10 +1,7 @@
 package com.azarenka.repository.testinteg;
 
-import static org.junit.Assert.assertEquals;
-
 import com.azarenka.domain.Menu;
 import com.azarenka.repository.MenuRepository;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,8 +14,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
-import java.util.UUID;
 import java.util.stream.Collectors;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {EmbeddedPostgresConfig.class})
@@ -35,20 +33,26 @@ public class MenuRepositoryIntegrationTest {
 
     @Before
     public void before() throws ParseException {
-        Menu menu = buildMenu("89e0057a-5557-4500-a7c4-28c056cb17d2","f120c9af-a016-4593-889e-e12011e9adb7",
-            "d2f5caed-93cc-4f67-a8fc-5c9ced22697a","c7e1a70b-d569-45d0-aa1f-fe462efc60aa",
-            "095e62c2-01ba-4ba5-bbdb-2aaf7ef8319e","usernumberTree@mail.ru");
+        Menu menu = buildMenu("89e0057a-5557-4500-a7c4-28c056cb17d2", USER_ID,
+                "b272327c-f198-49c2-a45e-a84b19885852", "250425f4-5084-45e2-804f-9f1c5867ba62",
+                "33a0499d-8469-4d2b-89fd-ebfe28669251", "usernumberTree@mail.ru");
         menuRepository.save(menu);
     }
 
     @After
-    public void after(){
-
+    public void after() throws ParseException {
+        Menu menu = buildMenu("89e0057a-5557-4500-a7c4-28c056cb17d2", USER_ID,
+                "b272327c-f198-49c2-a45e-a84b19885852", "250425f4-5084-45e2-804f-9f1c5867ba62",
+                "33a0499d-8469-4d2b-89fd-ebfe28669251", "usernumberTree@mail.ru");
+        List<Menu> menuList = menuRepository.getMenu(USER_ID);
+        if (menuList.contains(menu)) {
+            menuRepository.remove("89e0057a-5557-4500-a7c4-28c056cb17d2");
+        }
     }
 
     @Test
     public void testSave() throws ParseException {
-        Menu menu = buildMenu(MENU_ID,USER_ID,DAY_ID,MEAL_ID,FOOD_ID,"User@mail.ru");
+        Menu menu = buildMenu(MENU_ID, USER_ID, DAY_ID, MEAL_ID, FOOD_ID, "User@mail.ru");
         menu.setCountFood(3);
         menuRepository.save(menu);
         List<Menu> menus = menuRepository.getMenu(USER_ID);
@@ -61,14 +65,29 @@ public class MenuRepositoryIntegrationTest {
     @Test
     public void testGetByUserId() throws ParseException {
         Menu menu = buildMenu("897dadb9-aaec-4a53-9a20-606ef965761f", USER_ID, "1ceffdb1-5327-4283-8f9d-ac98ae87faf9",
-            "7f19e949-2b93-48c2-a878-bc7a18ad749d", "d99c4f05-fec0-47bf-8652-cb6dca9f236e", "Admin@mail.ru");
+                "7f19e949-2b93-48c2-a878-bc7a18ad749d", "d99c4f05-fec0-47bf-8652-cb6dca9f236e", "Admin@mail.ru");
         List<Menu> menuList = menuRepository.getMenu(USER_ID);
         assertEquals(menu, menuList.get(0));
         assertEquals(3, menuList.size());
     }
 
+    @Test
+    public void testGetNames(){
+        List<Menu> menuList = menuRepository.getMenu(USER_ID);
+        assertEquals(3, menuList.size());
+    }
+
+    @Test
+    public void testRemove() {
+        List<Menu> menuList = menuRepository.getMenu(USER_ID);
+        assertEquals(3, menuList.size());
+        menuRepository.remove("897dadb9-aaec-4a53-9a20-606ef965761f");
+        List<Menu> secondMenuList = menuRepository.getMenu(USER_ID);
+        assertEquals(2, secondMenuList.size());
+    }
+
     private Menu buildMenu(String id, String userID, String dayId, String mealId, String foodId, String email)
-        throws ParseException {
+            throws ParseException {
         Menu menu = new Menu();
         menu.setId(id);
         menu.setUserId(userID);

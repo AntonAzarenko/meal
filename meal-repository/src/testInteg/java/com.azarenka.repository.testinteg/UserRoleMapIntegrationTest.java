@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
@@ -26,7 +29,7 @@ public class UserRoleMapIntegrationTest {
     private UserRepository userRepository;
 
     @Test
-    public void testSaveRoleMap() {
+    public void testSaveRoleMap() throws ParseException {
         User user = buildUser(UUID.randomUUID().toString(), "userOne@mail.ru", Role.ROLE_USER,
                 "2993f33d-cd83-4b87-a4d4-57a11e65aa1b");
         userRepository.save(user);
@@ -42,13 +45,13 @@ public class UserRoleMapIntegrationTest {
         assertEquals("3e7e4373-2caa-4202-af8f-94f233a99027", roleMapRepository.getIdByRole("ROLE_ADMIN"));
     }
 
-    private User buildUser(String id, String email, Role role, String activateCode) {
+    private User buildUser(String id, String email, Role role, String activateCode) throws ParseException {
         User user = new User();
         user.setId(id);
         user.setEnabled(true);
         user.setName("admin");
         user.setPassword("admin");
-        user.setRegistrationDate(new Date(2019, 9, 22));
+        user.setRegistrationDate(new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse("2019-9-22"));
         user.setEmail(email);
         user.setRoles(Collections.singleton(role));
         user.setActivateCode(activateCode);

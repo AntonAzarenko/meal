@@ -11,7 +11,7 @@
         <result column="meal_id" property="mealId"/>
         <result column="email" property="email"/>
         <result column="date" property="date"/>
-        <result column="sets_name" property="setTitle"/>
+        <result column="sets_name" property="titleOfSet"/>
         <result column="count_food" property="countFood"/>
     </resultMap>
 
@@ -42,7 +42,7 @@
             #{date},
             #{countFood},
             #{email},
-            #{setTitle}
+            #{titleOfSet}
         )
     </insert>
 

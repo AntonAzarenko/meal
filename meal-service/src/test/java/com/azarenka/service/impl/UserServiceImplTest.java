@@ -1,5 +1,6 @@
 package com.azarenka.service.impl;
 
+import com.azarenka.domain.User;
 import com.azarenka.repository.UserRepository;
 import com.azarenka.service.api.UserService;
 
@@ -23,6 +24,8 @@ class UserServiceImplTest {
 
     @Test
     void getByEmail() {
+        User user = new User();
+        user.getRegistrationDate();
     }
 
     @Test

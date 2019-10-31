@@ -67,7 +67,7 @@ public class MenuServiceImpl implements MenuService {
         menu.setCountFood(count);
         menu.setDate(new Date());
         menu.setEmail(Objects.requireNonNull(UserPrinciple.safeGet()).getUsername());
-        menu.setTitle(title);
+        menu.setTitleOfSet(title);
         menuRepository.save(menu);
     }
 
@@ -86,7 +86,7 @@ public class MenuServiceImpl implements MenuService {
         MenuResponse menuResponse = new MenuResponse();
         if (Objects.nonNull(menu)) {
             menuResponse.setId(menu.getId());
-            menuResponse.setSetTitle(menu.getTitle());
+            menuResponse.setSetTitle(menu.getTitleOfSet());
             menuResponse.setDay(dayRepository.getDayById(menu.getDayId()).getDay());
             Food food = foodRepository.getFoodById(menu.getFoodId());
             menuResponse.setFood(food.getTitle());

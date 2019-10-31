@@ -96,7 +96,7 @@ public class MenuRepositoryIntegrationTest {
         menu.setFoodId(foodId);
         menu.setDate(new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse("2019-02-01"));
         menu.setCountFood(3);
-        menu.setTitle("foods");
+        menu.setTitleOfSet("foods");
         menu.setEmail(email);
         return menu;
     }

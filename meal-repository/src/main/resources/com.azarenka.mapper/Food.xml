@@ -29,15 +29,17 @@
 
     <select id="getFoodById" resultMap="food">
         SELECT
-        id,
-        title,
-        weight,
-        calories,
-        protein,
-        fats,
-        carbohydrates,
-        content
-        FROM home.foods
-        WHERE id=#{foodId}
+            id,
+            title,
+            weight,
+            calories,
+            protein,
+            fats,
+            carbohydrates,
+            content
+        FROM
+            home.foods
+        WHERE
+            id=#{foodId}
     </select>
 </mapper>

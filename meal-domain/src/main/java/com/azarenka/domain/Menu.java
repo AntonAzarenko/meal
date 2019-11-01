@@ -23,7 +23,7 @@ public class Menu extends BaseEntity {
     private String email;
     private int countFood;
     private Date date;
-    private String setTitle;
+    private String titleOfSet;
 
     /**
      * @return count foods
@@ -137,54 +137,52 @@ public class Menu extends BaseEntity {
         this.date = date;
     }
 
-    /**
-     * @return title of set
-     */
-    public String getTitle() {
-        return setTitle;
+    public String getTitleOfSet() {
+        return titleOfSet;
     }
 
-    /**
-     * Setss title of set
-     *
-     * @param setTitle title of set
-     */
-    public void setTitle(String setTitle) {
-        this.setTitle = setTitle;
+    public void setTitleOfSet(String titleOfSet) {
+        this.titleOfSet = titleOfSet;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
+        if (this == o) {
+            return true;
+        }
 
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Menu menu = (Menu) o;
 
         return new EqualsBuilder()
-                .appendSuper(super.equals(o))
-                .append(userId, menu.userId)
-                .append(foodId, menu.foodId)
-                .append(dayId, menu.dayId)
-                .append(mealId, menu.mealId)
-                .append(email, menu.email)
-                .append(countFood, menu.countFood)
-                .append(setTitle, menu.setTitle)
-                .isEquals();
+            .appendSuper(super.equals(o))
+            .append(countFood, menu.countFood)
+            .append(userId, menu.userId)
+            .append(foodId, menu.foodId)
+            .append(dayId, menu.dayId)
+            .append(mealId, menu.mealId)
+            .append(email, menu.email)
+            .append(date, menu.date)
+            .append(titleOfSet, menu.titleOfSet)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .appendSuper(super.hashCode())
-                .append(userId)
-                .append(foodId)
-                .append(dayId)
-                .append(mealId)
-                .append(email)
-                .append(countFood)
-                .append(setTitle)
-                .toHashCode();
+            .appendSuper(super.hashCode())
+            .append(userId)
+            .append(foodId)
+            .append(dayId)
+            .append(mealId)
+            .append(email)
+            .append(countFood)
+            .append(date)
+            .append(titleOfSet)
+            .toHashCode();
     }
 
     @Override
@@ -198,7 +196,7 @@ public class Menu extends BaseEntity {
             ", email='" + email + '\'' +
             ", countFood=" + countFood +
             ", date=" + date +
-            ", setTitle='" + setTitle + '\'' +
+            ", titleOfSet='" + titleOfSet + '\'' +
             '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.azarenka.domain.auth;
 
+import java.util.Collection;
 import java.util.Set;
 
 import javax.validation.constraints.NotBlank;

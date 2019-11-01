@@ -50,7 +50,6 @@ deployHeroku {
     }
 }
 
-
 sourceSets {
     integrationTest {
         java {

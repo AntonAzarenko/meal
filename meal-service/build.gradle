@@ -19,14 +19,24 @@ jar {
 }
 
 dependencies {
-    implementation project(':meal-domain')
-    implementation project(':meal-repository')
-    implementation project(':meal-test')
-    implementation 'org.apache.commons:commons-lang3:3.9'
-    implementation 'org.springframework.boot:spring-boot-starter-security:2.1.6.RELEASE'
-    implementation 'org.springframework.boot:spring-boot-starter-mail:2.1.8.RELEASE'
-    compile group: 'org.springframework.session', name: 'spring-session-core', version: '2.1.8.RELEASE'
-    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
-    testCompile group: 'org.easymock', name: 'easymock', version: '3.1'
-    testCompile 'org.springframework.boot:spring-boot-starter-test:2.0.4.RELEASE'
+        implementation project(':meal-domain')
+        implementation project(':meal-repository')
+        implementation project(':meal-test')
+        implementation 'org.apache.commons:commons-lang3:3.9'
+        implementation 'org.springframework.boot:spring-boot-starter-security:2.1.6.RELEASE'
+        implementation 'org.springframework.boot:spring-boot-starter-mail:2.1.8.RELEASE'
+        compile group: 'org.springframework.session', name: 'spring-session-core', version: '2.1.8.RELEASE'
+        // group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testCompile 'org.springframework.boot:spring-boot-starter-test:2.0.4.RELEASE'
+       // testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '2.0.2'
+       // testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '2.0.2'
+        testImplementation project(':meal-service')
+        testCompile"com.azarenka:white-object:1.0"
+
+        testCompile "org.powermock:powermock-module-junit4:1.6.4"
+        testCompile "org.powermock:powermock-module-junit4-rule:1.6.4"
+        testCompile "org.powermock:powermock-api-mockito:1.6.4"
+        testCompile "org.powermock:powermock-classloading-xstream:1.6.4"
+
 }

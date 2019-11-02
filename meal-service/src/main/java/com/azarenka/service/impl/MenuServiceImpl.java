@@ -10,7 +10,6 @@ import com.azarenka.service.api.MenuService;
 import com.azarenka.service.impl.auth.UserPrinciple;
 import com.azarenka.service.response.MenuResponse;
 import com.azarenka.service.util.KeyGenerator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,11 +1,10 @@
 package com.azarenka.service.response;
 
 import com.azarenka.domain.BaseEntity;
-
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public class MenuResponse extends BaseEntity implements Comparable{
+public class MenuResponse extends BaseEntity implements Comparable {
 
     private String day;
     private String meal;
@@ -93,27 +92,27 @@ public class MenuResponse extends BaseEntity implements Comparable{
         MenuResponse that = (MenuResponse) o;
 
         return new EqualsBuilder()
-            .append(day, that.day)
-            .append(meal, that.meal)
-            .append(count, that.count)
-            .append(food, that.food)
-            .append(fats, that.fats)
-            .append(protein, that.protein)
-            .append(carbohydrates, that.carbohydrates)
-            .isEquals();
+                .append(day, that.day)
+                .append(meal, that.meal)
+                .append(count, that.count)
+                .append(food, that.food)
+                .append(fats, that.fats)
+                .append(protein, that.protein)
+                .append(carbohydrates, that.carbohydrates)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-            .append(day)
-            .append(meal)
-            .append(count)
-            .append(food)
-            .append(fats)
-            .append(protein)
-            .append(carbohydrates)
-            .toHashCode();
+                .append(day)
+                .append(meal)
+                .append(count)
+                .append(food)
+                .append(fats)
+                .append(protein)
+                .append(carbohydrates)
+                .toHashCode();
     }
 
     @Override

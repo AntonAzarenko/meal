@@ -3,7 +3,6 @@ package com.azarenka.service.impl;
 import com.azarenka.domain.Meal;
 import com.azarenka.repository.MealRepository;
 import com.azarenka.service.api.MealService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

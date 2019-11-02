@@ -3,12 +3,10 @@ package com.azarenka.service.impl;
 import com.azarenka.domain.Food;
 import com.azarenka.repository.FoodRepository;
 import com.azarenka.service.api.FoodService;
-
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Food service

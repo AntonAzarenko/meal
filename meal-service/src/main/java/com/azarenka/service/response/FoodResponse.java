@@ -2,7 +2,7 @@ package com.azarenka.service.response;
 
 import com.azarenka.domain.Food;
 
-public class FoodResponse{
+public class FoodResponse {
 
     private String title;
     private double weight;

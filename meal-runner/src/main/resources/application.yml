@@ -5,13 +5,13 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
+    username: root
     password: root
   liquibase:
     change-log: classpath:liquibase/changelog.xml
     password: root
     url: jdbc:postgresql://localhost:5432/postgres
-    user: postgres
+    user: root
   http:
     enabled: true
     force: true

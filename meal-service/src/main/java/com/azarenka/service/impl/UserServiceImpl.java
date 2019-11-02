@@ -17,8 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
-
 /**
  * User service implementation.
  * <p>
@@ -46,18 +44,14 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void save(SignUpForm registrationUser) {
-        User user = new User();
-        user.setId(KeyGenerator.generateUuid());
-        user.setEmail(registrationUser.getUsername());
-        user.setName(registrationUser.getName());
-        user.setActivateCode(UUID.randomUUID().toString());
+        User user = buildUser(registrationUser);
         try {
             LOGGER.info("Start creating user {}", registrationUser.getName());
             user.setPassword(encoder.encode(registrationUser.getPassword()));
             repository.save(user);
             String roleId = roleMapRepository.getIdByRole(Role.ROLE_USER.name());
             roleMapRepository.saveRole(user.getId(), roleId);
-            String message = String.format("Hello %s. Please activate your account for Health Food. %s%s",
+            String message = String.format("Hello %s. Please activate your account for Health Food. %s %s",
                     user.getName(), url, user.getActivateCode());
             mail.sendMessage(registrationUser.getUsername(), Mail.REGISTRATION_MASSAGE, message);
         } catch (Exception e) {
@@ -68,11 +62,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getByEmail(String email) {
         return repository.getByEmail(email);
-    }
-
-    @Override
-    public String getUserName() {
-        return null;
     }
 
     @Override
@@ -87,7 +76,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Bean
-    public BCryptPasswordEncoder encoder(){
+    public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    protected User buildUser(SignUpForm registrationUser) {
+        User user = new User();
+        user.setId(KeyGenerator.generateUuid());
+        user.setEmail(registrationUser.getUsername());
+        user.setName(registrationUser.getName());
+        user.setActivateCode(KeyGenerator.generateUuid());
+        return user;
     }
 }

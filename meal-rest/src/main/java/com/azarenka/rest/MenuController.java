@@ -24,29 +24,4 @@ import java.util.stream.Collectors;
 @Controller
 public class MenuController {
 
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private FoodService foodService;
-    @Autowired
-    private DayService dayService;
-    @Autowired
-    private MealService mealService;
-    @Autowired
-    private MenuService menuService;
-
-    private final static Logger LOGGER = LoggerFactory.getLogger(MenuController.class);
-
-    @GetMapping(value = "/to-create")
-    public String getFoods(Model model) {
-        List<MenuResponse> menu = menuService.getMenu();
-        model.addAttribute("menus", menu);
-        model.addAttribute("foods", foodService.getFoods());
-        model.addAttribute("days", dayService.getAll());
-        model.addAttribute("meals", mealService.getAll());
-        model.addAttribute("login", userService.getUserName());
-        model.addAttribute("menu", menu.stream().map(MenuResponse::getSetTitle)
-                .distinct().collect(Collectors.toList()));
-        return "create_menu";
-    }
 }

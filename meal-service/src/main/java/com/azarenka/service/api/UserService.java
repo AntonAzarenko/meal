@@ -30,13 +30,6 @@ public interface UserService {
     User getByEmail(String email);
 
     /**
-     * Returns name of current user.
-     *
-     * @return name;
-     */
-    String getUserName();
-
-    /**
      * Returns is activate user
      *
      * @param code code.

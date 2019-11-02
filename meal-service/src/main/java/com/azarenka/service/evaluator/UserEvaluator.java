@@ -1,9 +1,8 @@
 package com.azarenka.service.evaluator;
 
 import com.azarenka.domain.User;
-import com.azarenka.repository.UserRepository;
 import com.azarenka.domain.auth.SignUpForm;
-
+import com.azarenka.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

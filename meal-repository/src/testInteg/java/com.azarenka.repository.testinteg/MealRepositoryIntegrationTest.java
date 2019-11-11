@@ -34,4 +34,12 @@ public class MealRepositoryIntegrationTest {
         meal.setMeal("Breakfast");
         assertEquals(meal, mealRepository.getMealById("a7d51fe2-9e6d-49cb-bd54-1b24ff1d9c08 "));
     }
+
+    @Test
+    public void testfindMaalByName(){
+        Meal meal = new Meal();
+        meal.setId("a7d51fe2-9e6d-49cb-bd54-1b24ff1d9c08 ");
+        meal.setMeal("Breakfast");
+        assertEquals(meal, mealRepository.findByName("Breakfast"));
+    }
 }

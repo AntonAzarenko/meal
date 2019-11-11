@@ -22,4 +22,12 @@
         FROM home.days
         WHERE id=#{dayId}
     </select>
+
+    <select id="findDayByName" resultMap="day">
+        SELECT
+        id,
+        day
+        FROM home.days
+        WHERE day=#{name}
+    </select>
 </mapper>

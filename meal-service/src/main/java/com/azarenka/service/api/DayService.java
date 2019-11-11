@@ -19,4 +19,11 @@ public interface DayService {
      * returns list od days
      */
     List<Day> getAll();
+
+    /**
+     * returns day by name
+     * @param name name
+     * @return day
+     * */
+    Day getDayByName(String name);
 }

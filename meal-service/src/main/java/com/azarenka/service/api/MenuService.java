@@ -26,12 +26,9 @@ public interface MenuService {
     /**
      * Creates and saves detail of menu
      *
-     * @param foodId food id
-     * @param dayId  day id
-     * @param mealId meal id
-     * @param count  count
+     * @param menuResponse
      */
-    void createMenu(String foodId, String dayId, String mealId, int count, String title);
+    void save(MenuResponse menuResponse);
 
     /**
      * Removes element from menu table by id

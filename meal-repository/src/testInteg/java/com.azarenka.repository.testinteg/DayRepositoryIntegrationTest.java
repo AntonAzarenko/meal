@@ -18,14 +18,23 @@ public class DayRepositoryIntegrationTest {
     private DayRepository dayRepository;
 
     @Test
-    public void testGetAll(){
+    public void testGetAll() {
         assertEquals(7, dayRepository.getAll().size());
     }
 
     @Test
-    public void testGetById(){
+    public void testGetById() {
         Day day = new Day();
         day.setId("aafd457c-bfe4-4033-8ee0-8674f4ba7d0d");
         day.setDay("Monday");
+        assertEquals(day, dayRepository.getDayById(day.getId()));
+    }
+
+    @Test
+    public void testFindByName() {
+        Day day = new Day();
+        day.setId("aafd457c-bfe4-4033-8ee0-8674f4ba7d0d");
+        day.setDay("Monday");
+        assertEquals(day, dayRepository.findDayByName(day.getDay()));
     }
 }

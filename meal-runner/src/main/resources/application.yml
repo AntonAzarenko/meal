@@ -15,3 +15,6 @@ spring:
   http:
     enabled: true
     force: true
+management:
+  security:
+    enabled: false

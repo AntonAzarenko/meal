@@ -12,7 +12,4 @@ public class FoodResponse {
     private int carbohydrates;
     private String content;
 
-    public FoodResponse(Food food) {
-        this.content = content;
-    }
 }

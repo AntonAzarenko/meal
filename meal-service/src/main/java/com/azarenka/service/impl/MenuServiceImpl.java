@@ -56,7 +56,14 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public void createMenu(String foodId, String dayId, String mealId, int count, String title) {
+    public void save(MenuResponse menuResponse) {
+        String dayId = dayRepository.findDayByName(menuResponse.getDay()).getId();
+        String mealId = mealRepository.findByName(menuResponse.getMeal()).getId();
+        createMenu(menuResponse.getFoodId(), dayId, mealId, Integer.parseInt(menuResponse.getCount()),
+                menuResponse.getMenuTitle());
+    }
+
+    private void createMenu(String foodId, String dayId, String mealId, int count, String title) {
         Menu menu = new Menu();
         menu.setId(KeyGenerator.generateUuid());
         menu.setFoodId(foodId);
@@ -77,7 +84,6 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<String> getMenuNames(List<Menu> menus) {
-
         return menuRepository.getMenuNames(Objects.requireNonNull(UserPrinciple.safeGet()).getId());
     }
 
@@ -85,10 +91,10 @@ public class MenuServiceImpl implements MenuService {
         MenuResponse menuResponse = new MenuResponse();
         if (Objects.nonNull(menu)) {
             menuResponse.setId(menu.getId());
-            menuResponse.setSetTitle(menu.getTitleOfSet());
+            menuResponse.setMenuTitle(menu.getTitleOfSet());
             menuResponse.setDay(dayRepository.getDayById(menu.getDayId()).getDay());
             Food food = foodRepository.getFoodById(menu.getFoodId());
-            menuResponse.setFood(food.getTitle());
+            menuResponse.setFoodId(food.getTitle());
             menuResponse.setMeal(mealRepository.getMealById(menu.getMealId()).getMeal());
             menuResponse.setCarbohydrates(String.valueOf(
                     countPropertyOfFood(food.getCarbohydrates(), menu.getCountFood())));

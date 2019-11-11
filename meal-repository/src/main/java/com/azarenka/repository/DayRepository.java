@@ -29,4 +29,11 @@ public interface DayRepository {
      * @return day id
      */
     Day getDayById(String dayId);
+
+    /**
+     * Returns day by name.
+     * @param name
+     * @return
+     */
+    Day findDayByName(String name);
 }

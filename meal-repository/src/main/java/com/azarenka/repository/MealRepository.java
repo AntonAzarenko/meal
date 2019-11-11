@@ -29,4 +29,10 @@ public interface MealRepository {
      * @return meal by id
      */
     Meal getMealById(String mealId);
+
+    /**
+     * @param name name
+     * @return name
+     */
+    Meal findByName(String name);
 }

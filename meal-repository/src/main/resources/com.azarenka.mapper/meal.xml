@@ -22,4 +22,12 @@
         FROM home.meals
         WHERE id=#{mealId}
     </select>
+
+    <select id="findByName" resultMap="meal">
+        SELECT
+        id,
+        meal
+        FROM home.meals
+        WHERE meal=#{name}
+    </select>
 </mapper>

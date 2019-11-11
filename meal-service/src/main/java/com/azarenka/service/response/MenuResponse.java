@@ -9,18 +9,18 @@ public class MenuResponse extends BaseEntity implements Comparable {
     private String day;
     private String meal;
     private String count;
-    private String food;
+    private String foodId;
     private String fats;
     private String protein;
     private String carbohydrates;
-    private String setTitle;
+    private String menuTitle;
 
-    public String getSetTitle() {
-        return setTitle;
+    public String getMenuTitle() {
+        return menuTitle;
     }
 
-    public void setSetTitle(String setTitle) {
-        this.setTitle = setTitle;
+    public void setMenuTitle(String menuTitle) {
+        this.menuTitle = menuTitle;
     }
 
     public String getDay() {
@@ -47,12 +47,12 @@ public class MenuResponse extends BaseEntity implements Comparable {
         this.count = count;
     }
 
-    public String getFood() {
-        return food;
+    public String getFoodId() {
+        return foodId;
     }
 
-    public void setFood(String food) {
-        this.food = food;
+    public void setFoodId(String foodId) {
+        this.foodId = foodId;
     }
 
     public String getFats() {
@@ -95,7 +95,7 @@ public class MenuResponse extends BaseEntity implements Comparable {
                 .append(day, that.day)
                 .append(meal, that.meal)
                 .append(count, that.count)
-                .append(food, that.food)
+                .append(foodId, that.foodId)
                 .append(fats, that.fats)
                 .append(protein, that.protein)
                 .append(carbohydrates, that.carbohydrates)
@@ -108,11 +108,25 @@ public class MenuResponse extends BaseEntity implements Comparable {
                 .append(day)
                 .append(meal)
                 .append(count)
-                .append(food)
+                .append(foodId)
                 .append(fats)
                 .append(protein)
                 .append(carbohydrates)
                 .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "MenuResponse{" +
+                "day='" + day + '\'' +
+                ", meal='" + meal + '\'' +
+                ", count='" + count + '\'' +
+                ", food='" + foodId + '\'' +
+                ", fats='" + fats + '\'' +
+                ", protein='" + protein + '\'' +
+                ", carbohydrates='" + carbohydrates + '\'' +
+                ", setTitle='" + menuTitle + '\'' +
+                '}';
     }
 
     @Override

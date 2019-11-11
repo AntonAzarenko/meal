@@ -27,4 +27,9 @@ public class DayServiceImpl implements DayService {
     public List<Day> getAll() {
         return dayRepository.getAll();
     }
+
+    @Override
+    public Day getDayByName(String name) {
+        return dayRepository.findDayByName(name);
+    }
 }

@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * </p>
  * Date 21.07.2019
  *
- * @author Anton Azarnko
+ * @author Anton Azarnka
  */
 public class Food extends BaseEntity {
 
@@ -20,22 +20,14 @@ public class Food extends BaseEntity {
     private int protein;
     private int fats;
     private int carbohydrates;
-    private String things;
+    private Measurement measurement;
 
-    /**
-     * @return things
-     */
-    public String getThings() {
-        return things;
+    public com.azarenka.domain.Measurement getMeasurement() {
+        return measurement;
     }
 
-    /**
-     * Sets things
-     *
-     * @param things things
-     */
-    public void setThings(String things) {
-        this.things = things;
+    public void setMeasurement(com.azarenka.domain.Measurement measurement) {
+        this.measurement = measurement;
     }
 
     /**
@@ -136,9 +128,13 @@ public class Food extends BaseEntity {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
+        if (this == o) {
+            return true;
+        }
 
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Food food = (Food) o;
 
@@ -150,7 +146,7 @@ public class Food extends BaseEntity {
             .append(fats, food.fats)
             .append(carbohydrates, food.carbohydrates)
             .append(title, food.title)
-            .append(things, food.things)
+            .append(measurement, food.measurement)
             .isEquals();
     }
 
@@ -163,8 +159,8 @@ public class Food extends BaseEntity {
             .append(calories)
             .append(protein)
             .append(fats)
-            .append(things)
             .append(carbohydrates)
+            .append(measurement)
             .toHashCode();
     }
 
@@ -177,7 +173,7 @@ public class Food extends BaseEntity {
             ", protein=" + protein +
             ", fats=" + fats +
             ", carbohydrates=" + carbohydrates +
-            ", things='" + things + '\'' +
+            ", measurement=" + measurement +
             '}';
     }
 }

@@ -1,6 +1,7 @@
 package com.azarenka.service.api;
 
 import com.azarenka.domain.Food;
+import com.azarenka.service.response.FoodResponse;
 
 import java.util.List;
 
@@ -18,5 +19,5 @@ public interface FoodService {
     /**
      * Gets all food.
      */
-    List<Food> getFoods();
+    List<FoodResponse> getFoods();
 }

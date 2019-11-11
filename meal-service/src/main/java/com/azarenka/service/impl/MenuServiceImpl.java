@@ -1,6 +1,7 @@
 package com.azarenka.service.impl;
 
 import com.azarenka.domain.Food;
+import com.azarenka.domain.Measurement;
 import com.azarenka.domain.Menu;
 import com.azarenka.repository.DayRepository;
 import com.azarenka.repository.FoodRepository;
@@ -93,8 +94,9 @@ public class MenuServiceImpl implements MenuService {
             menuResponse.setId(menu.getId());
             menuResponse.setMenuTitle(menu.getTitleOfSet());
             menuResponse.setDay(dayRepository.getDayById(menu.getDayId()).getDay());
-            Food food = foodRepository.getFoodById(menu.getFoodId());
+            Food food = foodRepository.findFoodById(menu.getFoodId());
             menuResponse.setFoodId(food.getTitle());
+            menuResponse.setMeal(food.getTitle());
             menuResponse.setMeal(mealRepository.getMealById(menu.getMealId()).getMeal());
             menuResponse.setCarbohydrates(String.valueOf(
                     countPropertyOfFood(food.getCarbohydrates(), menu.getCountFood())));
@@ -102,7 +104,7 @@ public class MenuServiceImpl implements MenuService {
                     countPropertyOfFood(food.getFats(), menu.getCountFood())));
             menuResponse.setProtein(String.valueOf(
                     countPropertyOfFood(food.getProtein(), menu.getCountFood())));
-            menuResponse.setCount(countFormatter(food.getWeight(), menu.getCountFood(), food.getThings()));
+            menuResponse.setCount(countFormatter(food.getWeight(), menu.getCountFood(), food.getMeasurement()));
         }
         return menuResponse;
     }
@@ -111,12 +113,12 @@ public class MenuServiceImpl implements MenuService {
         return item == 0 ? 0 : item * count;
     }
 
-    private String countFormatter(double item, int count, String things) {
+    private String countFormatter(double item, int count, Measurement measurement) {
         double prop = item * count;
         if (prop > 0.5) {
             prop = Math.round(prop);
         }
 
-        return String.format("%s - %s", String.valueOf(prop), things);
+        return String.format("%s - %s", String.valueOf(prop), measurement);
     }
 }

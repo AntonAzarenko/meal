@@ -1,6 +1,7 @@
 package com.azarenka.repository.testinteg;
 
 import com.azarenka.domain.Food;
+import com.azarenka.domain.Measurement;
 import com.azarenka.repository.FoodRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,14 +23,14 @@ public class FoodRepositoryIntegrationTest {
 
     @Test
     public void testGetAll() {
-        List<Food> foodList = foodRepository.getAll();
+        List<Food> foodList = foodRepository.findAll();
         assertNotNull(foodList);
         assertEquals(10, foodList.size());
     }
 
     @Test
     public void testGetById() {
-        Food food = foodRepository.getFoodById("a916143d-720c-488a-8179-0511c347ee9d");
+        Food food = foodRepository.findFoodById("a916143d-720c-488a-8179-0511c347ee9d");
         assertEquals(buildFood("a916143d-720c-488a-8179-0511c347ee9d"), food);
     }
 
@@ -42,7 +43,7 @@ public class FoodRepositoryIntegrationTest {
         food.setProtein(0);
         food.setTitle("Мандарин");
         food.setWeight(1);
-        food.setThings("THINGS");
+        food.setMeasurement(Measurement.THINGS);
         return food;
     }
 }

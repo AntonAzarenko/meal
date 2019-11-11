@@ -13,6 +13,10 @@ repositories {
 
 mainClassName = 'com.azarenka.runner.Application'
 
+run {
+    systemProperties = System.properties
+}
+
 dependencies {
     implementation project(':meal-rest')
     compile project(':meal-service')

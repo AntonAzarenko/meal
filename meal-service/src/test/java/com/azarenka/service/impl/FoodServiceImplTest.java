@@ -28,7 +28,7 @@ public class FoodServiceImplTest {
 
     @Test
     public void testGetFoods() {
-        expect(repository.getAll()).andReturn(new ArrayList<Food>());
+        expect(repository.findAll()).andReturn(new ArrayList<Food>());
         replay(repository);
         service.getFoods();
         verify(repository);

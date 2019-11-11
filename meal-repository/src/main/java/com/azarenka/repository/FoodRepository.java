@@ -20,11 +20,11 @@ public interface FoodRepository {
     /**
      * @return all foods.
      */
-    List<Food> getAll();
+    List<Food> findAll();
 
     /**
      * @param foodId food id
      * @return food by id
      */
-    Food getFoodById(String foodId);
+    Food findFoodById(String foodId);
 }

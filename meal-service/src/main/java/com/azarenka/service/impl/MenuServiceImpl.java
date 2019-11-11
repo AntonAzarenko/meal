@@ -11,6 +11,7 @@ import com.azarenka.service.api.MenuService;
 import com.azarenka.service.impl.auth.UserPrinciple;
 import com.azarenka.service.response.MenuResponse;
 import com.azarenka.service.util.KeyGenerator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +61,8 @@ public class MenuServiceImpl implements MenuService {
     public void save(MenuResponse menuResponse) {
         String dayId = dayRepository.findDayByName(menuResponse.getDay()).getId();
         String mealId = mealRepository.findByName(menuResponse.getMeal()).getId();
-        createMenu(menuResponse.getFoodId(), dayId, mealId, Integer.parseInt(menuResponse.getCount()),
+        String foodId = foodRepository.findFoodByName(menuResponse.getFood()).getId();
+        createMenu(foodId, dayId, mealId, Integer.parseInt(menuResponse.getCount()),
                 menuResponse.getMenuTitle());
     }
 
@@ -69,11 +71,11 @@ public class MenuServiceImpl implements MenuService {
         menu.setId(KeyGenerator.generateUuid());
         menu.setFoodId(foodId);
         menu.setDayId(dayId);
-        menu.setUserId(Objects.requireNonNull(UserPrinciple.safeGet()).getId());
+        menu.setUserId(UserPrinciple.safeGet().getId());
         menu.setMealId(mealId);
         menu.setCountFood(count);
         menu.setDate(new Date());
-        menu.setEmail(Objects.requireNonNull(UserPrinciple.safeGet()).getUsername());
+        menu.setEmail(UserPrinciple.safeGet().getUsername());
         menu.setTitleOfSet(title);
         menuRepository.save(menu);
     }
@@ -95,7 +97,7 @@ public class MenuServiceImpl implements MenuService {
             menuResponse.setMenuTitle(menu.getTitleOfSet());
             menuResponse.setDay(dayRepository.getDayById(menu.getDayId()).getDay());
             Food food = foodRepository.findFoodById(menu.getFoodId());
-            menuResponse.setFoodId(food.getTitle());
+            menuResponse.setFood(food.getTitle());
             menuResponse.setMeal(food.getTitle());
             menuResponse.setMeal(mealRepository.getMealById(menu.getMealId()).getMeal());
             menuResponse.setCarbohydrates(String.valueOf(

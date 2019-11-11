@@ -9,4 +9,5 @@
     <include file="liquibase/com.azarenka/DDL/home_schema_crate_database_changelog.xml"/>
     <include file="liquibase/com.azarenka/DML/init_tables_data.xml"/>
     <include file="liquibase/com.azarenka/DML/init-01.xml"/>
+    <include file="liquibase/com.azarenka/DML/november-2019.xml"/>
 </databaseChangeLog>

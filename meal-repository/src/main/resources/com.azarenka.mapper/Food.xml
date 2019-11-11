@@ -42,4 +42,20 @@
         WHERE
             id=#{foodId}
     </select>
+
+    <select id="findFoodByName" resultMap="food">
+        SELECT
+            id,
+            title,
+            weight,
+            calories,
+            protein,
+            fats,
+            carbohydrates,
+            content
+        FROM
+            home.foods
+        WHERE
+            title=#{foodName}
+    </select>
 </mapper>

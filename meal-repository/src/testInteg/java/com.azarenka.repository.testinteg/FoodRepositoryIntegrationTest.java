@@ -34,6 +34,12 @@ public class FoodRepositoryIntegrationTest {
         assertEquals(buildFood("a916143d-720c-488a-8179-0511c347ee9d"), food);
     }
 
+    @Test
+    public void testGetByName() {
+        Food food = foodRepository.findFoodByName("Мандарин");
+        assertEquals(buildFood("a916143d-720c-488a-8179-0511c347ee9d"), food);
+    }
+
     public Food buildFood(String id) {
         Food food = new Food();
         food.setId(id);

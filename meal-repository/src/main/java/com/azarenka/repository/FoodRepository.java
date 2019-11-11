@@ -1,7 +1,9 @@
 package com.azarenka.repository;
 
 import com.azarenka.domain.Food;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -27,4 +29,11 @@ public interface FoodRepository {
      * @return food by id
      */
     Food findFoodById(String foodId);
+
+    /**
+     *
+     * @param foodName food name
+     * @return name of food
+     */
+    Food findFoodByName(@Param("foodName") String foodName);
 }

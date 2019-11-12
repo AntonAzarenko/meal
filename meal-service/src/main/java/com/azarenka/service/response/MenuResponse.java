@@ -9,7 +9,7 @@ public class MenuResponse extends BaseEntity implements Comparable {
     private String day;
     private String meal;
     private String count;
-    private String foodId;
+    private String food;
     private String fats;
     private String protein;
     private String carbohydrates;
@@ -47,12 +47,12 @@ public class MenuResponse extends BaseEntity implements Comparable {
         this.count = count;
     }
 
-    public String getFoodId() {
-        return foodId;
+    public String getFood() {
+        return food;
     }
 
-    public void setFoodId(String foodId) {
-        this.foodId = foodId;
+    public void setFood(String food) {
+        this.food = food;
     }
 
     public String getFats() {
@@ -95,7 +95,7 @@ public class MenuResponse extends BaseEntity implements Comparable {
                 .append(day, that.day)
                 .append(meal, that.meal)
                 .append(count, that.count)
-                .append(foodId, that.foodId)
+                .append(food, that.food)
                 .append(fats, that.fats)
                 .append(protein, that.protein)
                 .append(carbohydrates, that.carbohydrates)
@@ -108,7 +108,7 @@ public class MenuResponse extends BaseEntity implements Comparable {
                 .append(day)
                 .append(meal)
                 .append(count)
-                .append(foodId)
+                .append(food)
                 .append(fats)
                 .append(protein)
                 .append(carbohydrates)
@@ -121,7 +121,7 @@ public class MenuResponse extends BaseEntity implements Comparable {
                 "day='" + day + '\'' +
                 ", meal='" + meal + '\'' +
                 ", count='" + count + '\'' +
-                ", food='" + foodId + '\'' +
+                ", food='" + food + '\'' +
                 ", fats='" + fats + '\'' +
                 ", protein='" + protein + '\'' +
                 ", carbohydrates='" + carbohydrates + '\'' +

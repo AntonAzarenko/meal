@@ -19,6 +19,8 @@ public class UserPrinciple implements UserDetails {
 
     private String email;
 
+    private User user;
+
     @JsonIgnore
     private String password;
 
@@ -27,6 +29,7 @@ public class UserPrinciple implements UserDetails {
         this.email = email;
         this.password = password;
         this.authorities = authorities;
+        this.user = new User(id, email, password);
     }
 
     public static UserPrinciple build(User user) {
@@ -48,7 +51,7 @@ public class UserPrinciple implements UserDetails {
             return null;
         }
         Object user = auth.getPrincipal();
-        return (user instanceof LoggedUser) ? (UserPrinciple) user : null;
+        return (user instanceof UserPrinciple) ? (UserPrinciple) user : null;
     }
 
     private Collection<? extends GrantedAuthority> authorities;

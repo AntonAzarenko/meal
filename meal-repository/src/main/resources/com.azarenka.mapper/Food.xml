@@ -11,10 +11,10 @@
         <result column="protein" property="protein"/>
         <result column="fats" property="fats"/>
         <result column="carbohydrates" property="carbohydrates"/>
-        <result property="things"  column="content"/>
+        <result  property="measurement" column="content" javaType="com.azarenka.domain.Measurement"/>
     </resultMap>
 
-    <select id="getAll" resultMap="food">
+    <select id="findAll" resultMap="food">
         SELECT
             id,
             title,
@@ -27,7 +27,7 @@
         FROM home.foods
     </select>
 
-    <select id="getFoodById" resultMap="food">
+    <select id="findFoodById" resultMap="food">
         SELECT
             id,
             title,
@@ -41,5 +41,21 @@
             home.foods
         WHERE
             id=#{foodId}
+    </select>
+
+    <select id="findFoodByName" resultMap="food">
+        SELECT
+            id,
+            title,
+            weight,
+            calories,
+            protein,
+            fats,
+            carbohydrates,
+            content
+        FROM
+            home.foods
+        WHERE
+            title=#{foodName}
     </select>
 </mapper>

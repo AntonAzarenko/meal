@@ -26,6 +26,15 @@ public class User extends BaseEntity {
     private String activateCode;
     private LocalDateTime registrationDate;
 
+    public User(String id, String email, String password) {
+        this.setId(id);
+        this.email = email;
+        this.password = password;
+    }
+
+    public User() {
+    }
+
     public LocalDateTime getRegistrationDate() {
         return registrationDate;
     }

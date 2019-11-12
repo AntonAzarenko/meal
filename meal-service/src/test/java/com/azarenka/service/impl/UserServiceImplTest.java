@@ -1,20 +1,22 @@
 package com.azarenka.service.impl;
 
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import static java.util.Collections.singleton;
+
 import com.azarenka.domain.Role;
 import com.azarenka.domain.User;
 import com.azarenka.domain.auth.SignUpForm;
 import com.azarenka.repository.UserRepository;
 import com.azarenka.repository.UsersRoleMapRepository;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import static java.util.Collections.singleton;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 
 @RunWith(MockitoJUnitRunner.class)

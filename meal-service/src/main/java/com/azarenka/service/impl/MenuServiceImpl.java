@@ -1,6 +1,7 @@
 package com.azarenka.service.impl;
 
 import com.azarenka.domain.Food;
+import com.azarenka.domain.Measurement;
 import com.azarenka.domain.Menu;
 import com.azarenka.repository.DayRepository;
 import com.azarenka.repository.FoodRepository;
@@ -10,6 +11,7 @@ import com.azarenka.service.api.MenuService;
 import com.azarenka.service.impl.auth.UserPrinciple;
 import com.azarenka.service.response.MenuResponse;
 import com.azarenka.service.util.KeyGenerator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +61,8 @@ public class MenuServiceImpl implements MenuService {
     public void save(MenuResponse menuResponse) {
         String dayId = dayRepository.findDayByName(menuResponse.getDay()).getId();
         String mealId = mealRepository.findByName(menuResponse.getMeal()).getId();
-        createMenu(menuResponse.getFoodId(), dayId, mealId, Integer.parseInt(menuResponse.getCount()),
+        String foodId = foodRepository.findFoodByName(menuResponse.getFood()).getId();
+        createMenu(foodId, dayId, mealId, Integer.parseInt(menuResponse.getCount()),
                 menuResponse.getMenuTitle());
     }
 
@@ -68,11 +71,11 @@ public class MenuServiceImpl implements MenuService {
         menu.setId(KeyGenerator.generateUuid());
         menu.setFoodId(foodId);
         menu.setDayId(dayId);
-        menu.setUserId(Objects.requireNonNull(UserPrinciple.safeGet()).getId());
+        menu.setUserId(UserPrinciple.safeGet().getId());
         menu.setMealId(mealId);
         menu.setCountFood(count);
         menu.setDate(new Date());
-        menu.setEmail(Objects.requireNonNull(UserPrinciple.safeGet()).getUsername());
+        menu.setEmail(UserPrinciple.safeGet().getUsername());
         menu.setTitleOfSet(title);
         menuRepository.save(menu);
     }
@@ -93,8 +96,9 @@ public class MenuServiceImpl implements MenuService {
             menuResponse.setId(menu.getId());
             menuResponse.setMenuTitle(menu.getTitleOfSet());
             menuResponse.setDay(dayRepository.getDayById(menu.getDayId()).getDay());
-            Food food = foodRepository.getFoodById(menu.getFoodId());
-            menuResponse.setFoodId(food.getTitle());
+            Food food = foodRepository.findFoodById(menu.getFoodId());
+            menuResponse.setFood(food.getTitle());
+            menuResponse.setMeal(food.getTitle());
             menuResponse.setMeal(mealRepository.getMealById(menu.getMealId()).getMeal());
             menuResponse.setCarbohydrates(String.valueOf(
                     countPropertyOfFood(food.getCarbohydrates(), menu.getCountFood())));
@@ -102,7 +106,7 @@ public class MenuServiceImpl implements MenuService {
                     countPropertyOfFood(food.getFats(), menu.getCountFood())));
             menuResponse.setProtein(String.valueOf(
                     countPropertyOfFood(food.getProtein(), menu.getCountFood())));
-            menuResponse.setCount(countFormatter(food.getWeight(), menu.getCountFood(), food.getThings()));
+            menuResponse.setCount(countFormatter(food.getWeight(), menu.getCountFood(), food.getMeasurement()));
         }
         return menuResponse;
     }
@@ -111,12 +115,12 @@ public class MenuServiceImpl implements MenuService {
         return item == 0 ? 0 : item * count;
     }
 
-    private String countFormatter(double item, int count, String things) {
+    private String countFormatter(double item, int count, Measurement measurement) {
         double prop = item * count;
         if (prop > 0.5) {
             prop = Math.round(prop);
         }
 
-        return String.format("%s - %s", String.valueOf(prop), things);
+        return String.format("%s - %s", String.valueOf(prop), measurement);
     }
 }

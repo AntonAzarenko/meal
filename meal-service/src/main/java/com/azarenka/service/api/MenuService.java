@@ -41,4 +41,9 @@ public interface MenuService {
      * @return names of menus
      */
     List<String> getMenuNames(List<Menu> menus);
+
+    /**
+     * @return menu by name
+     */
+    List<MenuResponse> getMenuByName(String name);
 }

@@ -90,6 +90,17 @@ public class MenuServiceImpl implements MenuService {
         return menuRepository.getMenuNames(Objects.requireNonNull(UserPrinciple.safeGet()).getId());
     }
 
+    @Override
+    public List<MenuResponse> getMenuByName(String title) {
+        String userName = UserPrinciple.safeGet().getUsername();
+        List<Menu> menuList =  menuRepository.getMenuByUsernameAndMenuTitle(userName, title);
+        List<MenuResponse> menuResponses = new ArrayList<>();
+        if (menuList.size() > 0) {
+            menuList.forEach(menu -> menuResponses.add(convertToMenuResponse(menu)));
+        }
+        return menuResponses.stream().sorted((e, f) -> e.compareTo(f.getDay())).collect(Collectors.toList());
+    }
+
     private MenuResponse convertToMenuResponse(Menu menu) {
         MenuResponse menuResponse = new MenuResponse();
         if (Objects.nonNull(menu)) {

@@ -30,6 +30,12 @@
         WHERE user_id = #{userId}
     </select>
 
+    <select id="findMenuByUserName" resultType="string">
+        SELECT distinct(sets_name)
+        FROM home.menu
+        WHERE email = #{userName}
+    </select>
+
     <select id="getMenuByUsernameAndMenuTitle" resultMap="menu">
         SELECT
         id,

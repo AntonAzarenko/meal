@@ -42,8 +42,11 @@ public class MenuController {
 
     @GetMapping(value ="/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MenuResponse> getMenuByName(@PathVariable("name") String name){
-        LOGGER.info(name);
-        LOGGER.info(menuService.getMenuByName(name).toString());
        return menuService.getMenuByName(name);
+    }
+
+    @GetMapping(value ="/findallMenu", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<String> getMenuByName(){
+        return menuService.getMenuByUsername();
     }
 }

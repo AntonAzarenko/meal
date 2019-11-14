@@ -72,6 +72,15 @@ public class MenuRepositoryIntegrationTest {
     }
 
     @Test
+    public void testFindByUserName() throws ParseException {
+        Menu menu = buildMenu("897dadb9-aaec-4a53-9a20-606ef965761f", USER_ID, "1ceffdb1-5327-4283-8f9d-ac98ae87faf9",
+            "7f19e949-2b93-48c2-a878-bc7a18ad749d", "d99c4f05-fec0-47bf-8652-cb6dca9f236e", "Admin@mail.ru");
+        List<Menu> menuList = menuRepository.findMenuByUserName("admin@mail.ru");
+        assertEquals(menu, menuList.get(0));
+        assertEquals(1, menuList.size());
+    }
+
+    @Test
     public void testGetNames(){
         List<Menu> menuList = menuRepository.getMenu(USER_ID);
         assertEquals(3, menuList.size());

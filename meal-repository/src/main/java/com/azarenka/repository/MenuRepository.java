@@ -56,4 +56,12 @@ public interface MenuRepository {
      * @return list of menu
      */
     List<Menu> getMenuByUsernameAndMenuTitle(@Param("userName") String userName, @Param("title") String title);
+
+    /**
+     * Returns menu list by user email.
+     *
+     * @param userName
+     * @return
+     */
+    List<String> findMenuByUserName(String userName);
 }

@@ -1,36 +1,44 @@
 package com.azarenka.service.impl;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyCollection;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import com.azarenka.domain.Day;
 import com.azarenka.repository.DayRepository;
 import com.azarenka.service.api.DayService;
-import org.junit.Before;
+
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.internal.util.reflection.Whitebox;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.ArgumentMatchers;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
-
-import static org.easymock.EasyMock.*;
+import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DayServiceImplTest {
-
-    private DayService service;
+    @InjectMocks
+    private DayService service = new DayServiceImpl();
+    @Mock
     private DayRepository repository;
-
-    @Before
-    public void setUp() {
-        service = new DayServiceImpl();
-        repository = createMock(DayRepository.class);
-        Whitebox.setInternalState(service, "dayRepository", repository);
-    }
 
     @Test
     public void testGetAll() {
-        expect(repository.getAll()).andReturn(new ArrayList<Day>());
-        replay(repository);
+        when(repository.getAll()).thenReturn(ArgumentMatchers.anyList());
         service.getAll();
+        verify(repository.getAll());
+    }
+
+    @Test
+    public void testGetByName() {
+        when(repository.findDayByName(StringUtils.EMPTY)).thenReturn(any(Day.class));
+        service.getDayByName(StringUtils.EMPTY);
         verify(repository);
     }
 }

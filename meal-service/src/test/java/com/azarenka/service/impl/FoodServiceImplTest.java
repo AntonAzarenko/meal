@@ -1,10 +1,8 @@
 package com.azarenka.service.impl;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
-import static org.easymock.EasyMock.verify;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import com.azarenka.domain.Food;
 import com.azarenka.repository.FoodRepository;
 import com.azarenka.service.api.FoodService;
 
@@ -14,7 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.ArrayList;
+import java.util.Collections;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FoodServiceImplTest {
@@ -25,9 +23,8 @@ public class FoodServiceImplTest {
 
     @Test
     public void testGetFoods() {
-        expect(repository.findAll()).andReturn(new ArrayList<Food>());
-        replay(repository);
+        when(repository.findAll()).thenReturn(Collections.emptyList());
         service.getFoods();
-        verify(repository);
+        verify(repository).findAll();
     }
 }

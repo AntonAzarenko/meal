@@ -20,6 +20,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @RunWith(PowerMockRunner.class)
@@ -39,13 +40,19 @@ public class UserServiceImplTest {
     public void testSave() {
         mockStatic(KeyGenerator.class);
         when(KeyGenerator.generateUuid()).thenReturn("123");
+        when(encoder.encode("password")).thenReturn("password");
         doNothing().when(repository).save(getUser());
+        when(roleMapRepository.getIdByRole(Role.ROLE_USER.name())).thenReturn("user_id");
+        doNothing().when(roleMapRepository).saveRole("123", "user_id");
         userService.save(getForm());
-        verify(repository);
+        verify(repository).save(getUser());
+        verify(roleMapRepository).getIdByRole(Role.ROLE_USER.name());
+        verify(roleMapRepository).saveRole("123", "user_id");
     }
 
     @Test
     public void testGetByEmail() {
+        when(repository.getByEmail("asd")).thenReturn(new User());
         userService.getByEmail("asd");
         verify(repository);
     }
@@ -62,7 +69,9 @@ public class UserServiceImplTest {
     private User getUser() {
         User user = new User();
         user.setName("name");
+        user.setId("123");
         user.setActivateCode("123");
+        user.setPassword("password");
 
         return user;
     }

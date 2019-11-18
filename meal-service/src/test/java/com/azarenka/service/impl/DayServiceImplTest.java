@@ -1,7 +1,6 @@
 package com.azarenka.service.impl;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyCollection;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -15,11 +14,9 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DayServiceImplTest {
@@ -30,15 +27,15 @@ public class DayServiceImplTest {
 
     @Test
     public void testGetAll() {
-        when(repository.getAll()).thenReturn(ArgumentMatchers.anyList());
+        when(repository.getAll()).thenReturn(Collections.emptyList());
         service.getAll();
-        verify(repository.getAll());
+        verify(repository).getAll();
     }
 
     @Test
     public void testGetByName() {
-        when(repository.findDayByName(StringUtils.EMPTY)).thenReturn(any(Day.class));
-        service.getDayByName(StringUtils.EMPTY);
-        verify(repository);
+        when(repository.findDayByName("admin@mail.ru")).thenReturn(any());
+        service.getDayByName("admin@mail.ru");
+        verify(repository).findDayByName("admin@mail.ru");
     }
 }

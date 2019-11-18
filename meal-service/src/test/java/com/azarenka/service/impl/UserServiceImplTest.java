@@ -1,7 +1,9 @@
 package com.azarenka.service.impl;
 
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 import static java.util.Collections.singleton;
 
@@ -10,20 +12,23 @@ import com.azarenka.domain.User;
 import com.azarenka.domain.auth.SignUpForm;
 import com.azarenka.repository.UserRepository;
 import com.azarenka.repository.UsersRoleMapRepository;
+import com.azarenka.service.util.KeyGenerator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({KeyGenerator.class})
 public class UserServiceImplTest {
 
     @InjectMocks
-    private UserServiceImpl userService;
+    private UserServiceImpl userService = new UserServiceImpl();
     @Mock
     private UserRepository repository;
     @Mock
@@ -33,21 +38,42 @@ public class UserServiceImplTest {
 
     @Test
     public void testSave() {
-        //todo {aazarenka} write test
+        mockStatic(KeyGenerator.class);
+        when(KeyGenerator.generateUuid()).thenReturn("123");
+        when(encoder.encode("password")).thenReturn("password");
+        doNothing().when(repository).save(getUser());
+        when(roleMapRepository.getIdByRole(Role.ROLE_USER.name())).thenReturn("user_id");
+        doNothing().when(roleMapRepository).saveRole("123", "user_id");
+        userService.save(getForm());
+        verify(repository).save(getUser());
+        verify(roleMapRepository).getIdByRole(Role.ROLE_USER.name());
+        verify(roleMapRepository).saveRole("123", "user_id");
     }
 
     @Test
     public void testGetByEmail() {
+        when(repository.getByEmail("asd")).thenReturn(new User());
         userService.getByEmail("asd");
-        verify(repository).getByEmail("asd");
+        verify(repository);
     }
 
     @Test
     public void testIsActivate() {
+        mockStatic(KeyGenerator.class);
         when(repository.getByActivateCode("123")).thenReturn(new User());
         userService.isActivate("123");
         verify(repository).getByActivateCode("123");
         verify(repository).update(null, true);
+    }
+
+    private User getUser() {
+        User user = new User();
+        user.setName("name");
+        user.setId("123");
+        user.setActivateCode("123");
+        user.setPassword("password");
+
+        return user;
     }
 
     public SignUpForm getForm() {

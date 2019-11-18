@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -69,6 +70,32 @@ public class MenuRepositoryIntegrationTest {
         List<Menu> menuList = menuRepository.getMenu(USER_ID);
         assertEquals(menu, menuList.get(0));
         assertEquals(3, menuList.size());
+    }
+
+    @Test
+    public void testFindByUserNameAndMenuTitle() throws ParseException {
+        Menu menuOne =
+            buildMenu("897dadb9-aaec-4a53-9a20-606ef9657614", USER_ID, "1ceffdb1-5327-4283-8f9d-ac98ae87faf9",
+                "7f19e949-2b93-48c2-a878-bc7a18ad749d", "d99c4f05-fec0-47bf-8652-cb6dca9f236e", "usernumberTree@mail.ru");
+        menuRepository.save(menuOne);
+        Menu menuSecond = buildMenu("89e0057a-5557-4500-a7c4-28c056cb17d2", USER_ID,
+            "b272327c-f198-49c2-a45e-a84b19885852", "250425f4-5084-45e2-804f-9f1c5867ba62",
+            "33a0499d-8469-4d2b-89fd-ebfe28669251", "usernumberTree@mail.ru");
+        List<Menu> expectedMenus = Arrays.asList(menuOne,menuSecond);
+        List<Menu> menuList = menuRepository.getMenuByUsernameAndMenuTitle("usernumberTree@mail.ru", "foods");
+        assertEquals(expectedMenus.size(), menuList.size());
+        assertEquals(2, menuList.size());
+        menuRepository.remove("897dadb9-aaec-4a53-9a20-606ef9657614");
+    }
+
+    @Test
+    public void testFindByUserName() throws ParseException {
+        Menu menu = buildMenu("89e0057a-5557-4500-a7c4-28c056cb17d2", USER_ID,
+            "b272327c-f198-49c2-a45e-a84b19885852", "250425f4-5084-45e2-804f-9f1c5867ba62",
+            "33a0499d-8469-4d2b-89fd-ebfe28669251", "usernumberTree@mail.ru");
+        List<String> menuList = menuRepository.findMenuByUserName("usernumberTree@mail.ru");
+        assertEquals(menu.getTitleOfSet(), menuList.get(0));
+        assertEquals(1, menuList.size());
     }
 
     @Test

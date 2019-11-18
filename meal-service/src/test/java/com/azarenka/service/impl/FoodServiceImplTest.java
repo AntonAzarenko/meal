@@ -1,36 +1,30 @@
 package com.azarenka.service.impl;
 
-import com.azarenka.domain.Food;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import com.azarenka.repository.FoodRepository;
 import com.azarenka.service.api.FoodService;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.internal.util.reflection.Whitebox;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-
-import static org.easymock.EasyMock.*;
+import java.util.Collections;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FoodServiceImplTest {
-
-    private FoodService service;
+    @InjectMocks
+    private FoodService service = new FoodServiceImpl();
+    @Mock
     private FoodRepository repository;
-
-    @Before
-    public void setUp() {
-        service = new FoodServiceImpl();
-        repository = createMock(FoodRepository.class);
-        Whitebox.setInternalState(service, "foodRepository", repository);
-    }
 
     @Test
     public void testGetFoods() {
-        expect(repository.findAll()).andReturn(new ArrayList<Food>());
-        replay(repository);
+        when(repository.findAll()).thenReturn(Collections.emptyList());
         service.getFoods();
-        verify(repository);
+        verify(repository).findAll();
     }
 }

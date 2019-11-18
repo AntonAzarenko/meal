@@ -24,10 +24,10 @@ public class FoodResponse extends BaseEntity {
         this.protein = food.getProtein();
         this.fats = food.getFats();
         this.carbohydrates = food.getCarbohydrates();
-        this.description = getDescription(food.getMeasurement());
+        this.description = getDescriptions(food.getMeasurement());
     }
 
-    private String getDescription(Measurement measurement) {
+    private String getDescriptions(Measurement measurement) {
         switch (measurement) {
             case GR:
                 return "граммов";
@@ -41,6 +41,10 @@ public class FoodResponse extends BaseEntity {
                 return "чайных ложек";
         }
         return "неизвестный тип";
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getTitle() {

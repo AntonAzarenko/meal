@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
  * @author Anton Azarnka
  */
 @Service
-public class MenuServiceImpl implements MenuService {
+public class MenuServiceImpl implements MenuService{
 
     private final static Logger LOGGER = LoggerFactory.getLogger(MenuServiceImpl.class);
 
@@ -88,6 +88,23 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<String> getMenuNames(List<Menu> menus) {
         return menuRepository.getMenuNames(Objects.requireNonNull(UserPrinciple.safeGet()).getId());
+    }
+
+    @Override
+    public List<MenuResponse> getMenuByName(String title) {
+        String userName = UserPrinciple.safeGet().getUsername();
+        List<Menu> menuList =  menuRepository.getMenuByUsernameAndMenuTitle(userName, title);
+        List<MenuResponse> menuResponses = new ArrayList<>();
+        if (menuList.size() > 0) {
+            menuList.forEach(menu -> menuResponses.add(convertToMenuResponse(menu)));
+        }
+        return menuResponses.stream().sorted((e, f) -> e.compareTo(f.getDay())).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> getMenuByUsername() {
+        String userName = UserPrinciple.safeGet().getUsername();
+        return menuRepository.findMenuByUserName(userName);
     }
 
     private MenuResponse convertToMenuResponse(Menu menu) {

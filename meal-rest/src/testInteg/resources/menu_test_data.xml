@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog-ext
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="2019-10-10-00" author="Anton Azarenka" runInTransaction="false">
+        <comment>Create test data to menu tests</comment>
+        <sql>
+            INSERT INTO home.menu
+            (id, user_id, food_id, day_id, meal_id, count_food, email,date, sets_name)
+            VALUES
+            ('897dadb9-aaec-4a53-9a20-606ef965761f', '4993f33d-cd83-4b87-a4d4-57a11e65aa9b',
+            'd99c4f05-fec0-47bf-8652-cb6dca9f236e','1ceffdb1-5327-4283-8f9d-ac98ae87faf9',
+            '7f19e949-2b93-48c2-a878-bc7a18ad749d', '3', 'Admin@mail.ru', '2019-02-01','foods'),
+
+            ('997dadb9-aaec-4a53-9a20-606ef965761f', '4993f33d-cd83-4b87-a4d4-57a11e65aa9b',
+            '2a821e5d-de18-402a-a54a-5f1846b06e52', '1ceffdb1-5327-4283-8f9d-ac98ae87faf9',
+            '7f19e949-2b93-48c2-a878-bc7a18ad749d', '2', 'AdminO@mail.ru', '2019-02-01', 'foods')
+        </sql>
+    </changeSet>
+</databaseChangeLog>

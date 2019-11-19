@@ -24,7 +24,7 @@ import java.util.List;
  */
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping(value = "/food")
+@RequestMapping(value = "/foods")
 public class FoodController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class FoodController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/findallfood", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<FoodResponse> getFoods() {
         return foodService.getFoods();
     }

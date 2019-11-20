@@ -3,14 +3,12 @@ package com.azarenka.rest;
 import com.azarenka.domain.auth.ResponseMessage;
 import com.azarenka.service.api.MenuService;
 import com.azarenka.service.response.MenuResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,13 +38,13 @@ public class MenuController {
         return new ResponseEntity<>(new ResponseMessage("Food was added to menu"), HttpStatus.OK);
     }
 
-    @GetMapping(value ="/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MenuResponse> getMenuByName(@PathVariable("name") String name){
-       return menuService.getMenuByName(name);
+    @GetMapping(value = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<MenuResponse> getMenuByName(@PathVariable("name") String name) {
+        return menuService.getMenuByName(name);
     }
 
-    @GetMapping(value ="/findallMenu", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<String> getMenuByName(){
+    @GetMapping(value = "/findallMenu", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<String> getMenuByName() {
         return menuService.getMenuByUsername();
     }
 }

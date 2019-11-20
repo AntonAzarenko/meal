@@ -1,15 +1,8 @@
 package com.azarenka.integrationtest.rest;
 
 
-import com.azarenka.repository.DayRepository;
-import com.azarenka.repository.FoodRepository;
-import com.azarenka.repository.MealRepository;
-import com.azarenka.repository.MenuRepository;
-import com.azarenka.repository.UserRepository;
-import com.azarenka.repository.UsersRoleMapRepository;
-
+import com.azarenka.repository.*;
 import liquibase.integration.spring.SpringLiquibase;
-
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.postgresql.Driver;
@@ -18,16 +11,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
-
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.web.filter.CharacterEncodingFilter;
-
-import java.io.IOException;
-
-import javax.sql.DataSource;
-
 import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
 import ru.yandex.qatools.embed.postgresql.distribution.Version;
+
+import javax.sql.DataSource;
+import java.io.IOException;
 
 
 /**

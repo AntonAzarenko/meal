@@ -1,9 +1,7 @@
 package com.azarenka.integrationtest.rest;
 
 import com.azarenka.domain.auth.LoginForm;
-
 import com.fasterxml.jackson.databind.JsonNode;
-
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;

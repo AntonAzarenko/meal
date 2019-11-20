@@ -3,7 +3,6 @@ package com.azarenka.rest;
 import com.azarenka.service.api.FoodService;
 import com.azarenka.service.api.UserService;
 import com.azarenka.service.response.FoodResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;

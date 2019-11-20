@@ -21,6 +21,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 import javax.validation.Valid;
 
 /**
@@ -80,4 +82,5 @@ public class AuthController {
         model.addAttribute("message", "Error");
         return "landingPage";
     }
+
 }

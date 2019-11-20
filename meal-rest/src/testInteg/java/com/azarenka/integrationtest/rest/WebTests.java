@@ -12,6 +12,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -48,6 +49,7 @@ public abstract class WebTests {
         JsonNode jsonNode = restTemplate.postForObject(createURL("/auth/signin"), request, JsonNode.class);
         String authority = "Bearer " + jsonNode.get("accessToken").asText();
         headers.add("authorization", authority);
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
         entity = new HttpEntity<>(headers);
     }
 }

@@ -17,6 +17,9 @@ public class FoodResponse extends BaseEntity {
     private int carbohydrates;
     private String description;
 
+    public FoodResponse() {
+    }
+
     public FoodResponse(Food food) {
         this.title = food.getTitle();
         this.weight = food.getWeight();

@@ -61,7 +61,7 @@ public class EmbeddedPostgresConfig {
     @Bean
     public SpringLiquibase liquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setChangeLog("classpath:common_test_data.xml");
+        liquibase.setChangeLog("classpath:common_webtest_data.xml");
         liquibase.setDataSource(embeddedDataSource());
         return liquibase;
     }

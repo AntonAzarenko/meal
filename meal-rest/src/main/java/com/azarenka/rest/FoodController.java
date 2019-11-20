@@ -3,7 +3,6 @@ package com.azarenka.rest;
 import com.azarenka.service.api.FoodService;
 import com.azarenka.service.api.UserService;
 import com.azarenka.service.response.FoodResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,7 +23,7 @@ import java.util.List;
  */
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping(value = "/food")
+@RequestMapping(value = "/foods")
 public class FoodController {
 
     @Autowired
@@ -33,7 +32,7 @@ public class FoodController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/findallfood", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<FoodResponse> getFoods() {
         return foodService.getFoods();
     }

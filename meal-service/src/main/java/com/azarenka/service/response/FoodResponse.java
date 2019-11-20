@@ -7,7 +7,7 @@ import com.azarenka.domain.Measurement;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public class FoodResponse extends BaseEntity {
+public class FoodResponse extends BaseEntity  implements Comparable{
 
     private String title;
     private double weight;
@@ -16,6 +16,9 @@ public class FoodResponse extends BaseEntity {
     private int fats;
     private int carbohydrates;
     private String description;
+
+    public FoodResponse() {
+    }
 
     public FoodResponse(Food food) {
         this.title = food.getTitle();
@@ -148,5 +151,14 @@ public class FoodResponse extends BaseEntity {
             ", carbohydrates=" + carbohydrates +
             ", description='" + description + '\'' +
             '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.compareTo(o);
+    }
+
+    public int compareTo(String title) {
+        return this.title.compareTo(title);
     }
 }

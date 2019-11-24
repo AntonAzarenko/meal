@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages = {"com.azarenka.runner", "com.azarenka.repository", "com.azarenka.service",
         "com.azarenka.domain", "com.azarenka.rest", "com.azarenka.rest.auth"})
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {

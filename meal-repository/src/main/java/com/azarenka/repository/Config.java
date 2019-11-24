@@ -1,6 +1,5 @@
 package com.azarenka.repository;
 
-import liquibase.integration.spring.SpringLiquibase;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.context.ApplicationContext;
@@ -11,7 +10,6 @@ import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import javax.sql.DataSource;
 
-
 @Configuration
 public class Config {
 
@@ -19,10 +17,9 @@ public class Config {
     public DataSource dataSource() {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriverClass(org.postgresql.Driver.class);
-        dataSource.setUsername("postgres");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
-        dataSource.setPassword("root");
-
+        dataSource.setUsername("${JDBC_DATABASE_USERNAME}");
+        dataSource.setUrl("${JDBC_DATABASE_URL}");
+        dataSource.setPassword("${JDBC_DATABASE_PASSWORD}");
         return dataSource;
     }
 

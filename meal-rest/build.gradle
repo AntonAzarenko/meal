@@ -55,7 +55,6 @@ dependencies {
     testIntegCompile project(':meal-test')
     testIntegCompile project(':meal-domain')
     testIntegCompile project(':meal-repository')
-    testIntegCompile project(':meal-runner')
     testIntegCompile 'ru.yandex.qatools.embed:postgresql-embedded:2.10'
     testIntegCompile 'org.postgresql:postgresql:9.4.1212'
     testIntegCompile group: 'org.liquibase', name: 'liquibase-core', version: '3.8.0'

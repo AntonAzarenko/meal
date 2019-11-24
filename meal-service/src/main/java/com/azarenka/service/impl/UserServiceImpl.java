@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository repository;
     @Autowired
     private UsersRoleMapRepository roleMapRepository;
-    @Autowired
-    private Mail mail;
+   /* @Autowired
+    private Mail mail;*/
     //@Value("${mail.url}")
     private String url;
 
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
             roleMapRepository.saveRole(user.getId(), roleId);
             String message = String.format("Hello %s. Please activate your account for Health Food. %s %s",
                     user.getName(), url, user.getActivateCode());
-            mail.sendMessage(registrationUser.getUsername(), Mail.REGISTRATION_MASSAGE, message);
+           // mail.sendMessage(registrationUser.getUsername(), Mail.REGISTRATION_MASSAGE, message);
         } catch (Exception e) {
             LOGGER.info("Mail hasn't been send {} {}", registrationUser.getUsername(), e.getMessage());
         }

@@ -12,10 +12,20 @@ pipeline {
                 gradlew('clean', 'classes')
             }
         }
+        stage('Unit Tests') {
+                    steps {
+                        gradlew('test')
+                    }
+                    post {
+                        always {
+                            junit '**/build/test-results/test/TEST-*.xml'
+                        }
+                    }
+                }
         stage('build') {
             steps {
                 gradlew('build')
-                stash includes: '**/build/libs/*.war', name: 'app'
+                stash includes: '**/build/libs/*.jar', name: 'app'
             }
         }
         stage('Promotion') {
@@ -39,5 +49,5 @@ pipeline {
 }
 
 def gradlew(String... args) {
-    sh "./gradlew ${args.join(' ')} -s"
+    bat "gradlew ${args.join(' ')} -s"
 }

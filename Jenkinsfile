@@ -15,7 +15,7 @@ pipeline {
         stage('build') {
             steps {
                 gradlew('build')
-                stash includes: '**/build/libs/*.war', name: 'app'
+                stash includes: '**/build/libs/*.jar', name: 'app'
             }
         }
         stage('Promotion') {

@@ -4,14 +4,14 @@ server:
 
 spring:
   datasource:
-    url: ${JDBC_DATABASE_URL}
-    username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
+    url: postgres://ebicihdwpdusbx:aa59a362d23430ee7494c08d8576c3aa8d18f32385967bec36d1eafd5805424f@ec2-54-217-225-16.eu-west-1.compute.amazonaws.com:5432/d7ufrup50lej5n
+    username: ebicihdwpdusbx
+    password: aa59a362d23430ee7494c08d8576c3aa8d18f32385967bec36d1eafd5805424f
   liquibase:
     change-log: classpath:liquibase/changelog.xml
-    password: ${JDBC_DATABASE_PASSWORD}
-    url:  ${JDBC_DATABASE_URL}
-    user: ${JDBC_DATABASE_USERNAME}
+    password: aa59a362d23430ee7494c08d8576c3aa8d18f32385967bec36d1eafd5805424f
+    url: postgres://ebicihdwpdusbx:aa59a362d23430ee7494c08d8576c3aa8d18f32385967bec36d1eafd5805424f@ec2-54-217-225-16.eu-west-1.compute.amazonaws.com:5432/d7ufrup50lej5n
+    user: ebicihdwpdusbx
   http:
     enabled: true
     force: true

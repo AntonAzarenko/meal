@@ -17,9 +17,10 @@ public class Config {
     public DataSource dataSource() {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriverClass(org.postgresql.Driver.class);
-        dataSource.setUsername("${JDBC_DATABASE_USERNAME}");
-        dataSource.setUrl("${JDBC_DATABASE_URL}");
-        dataSource.setPassword("${JDBC_DATABASE_PASSWORD}");
+        dataSource.setUsername("ebicihdwpdusbx");
+        dataSource.setUrl("postgres://ebicihdwpdusbx:aa59a362d23430ee7494c08d8576c3aa8d18f32385967bec36d1eafd5805424f@ec2-54-217-225-16.eu-west-1.compute.amazonaws.com:5432/d7ufrup50lej5n");
+        dataSource.setPassword("aa59a362d23430ee7494c08d8576c3aa8d18f32385967bec36d1eafd5805424f");
+
         return dataSource;
     }
 

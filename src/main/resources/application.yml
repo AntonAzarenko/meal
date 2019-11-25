@@ -4,17 +4,28 @@ server:
 
 spring:
   datasource:
+    driver: org.postgresql.Driver
     url: ${JDBC_DATABASE_URL}
     username: ${JDBC_DATABASE_USERNAME}
     password: ${JDBC_DATABASE_PASSWORD}
   liquibase:
-    change-log: classpath:liquibase/changelog.xml
+    enabled: false
+    change-log: classpath:changelog.xml
     password: ${JDBC_DATABASE_PASSWORD}
     url:  ${JDBC_DATABASE_URL}
     user: ${JDBC_DATABASE_USERNAME}
   http:
     enabled: true
     force: true
-management:
+
+  h2:
+    console:
+      enabled: true
+
   security:
     enabled: false
+
+app:
+  admin:
+    username: admin@mail.ru
+    password: admin123

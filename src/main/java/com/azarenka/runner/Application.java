@@ -1,10 +1,9 @@
 package com.azarenka.runner;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * Main class of Spring Boot application.
@@ -16,9 +15,9 @@ import org.springframework.context.annotation.Configuration;
  * @author Anton Azarenka
  */
 //@EnableJms
-@Configuration
-@ComponentScan(basePackages = {"com.azarenka.runner", "com.azarenka.repository", "com.azarenka.service",
-        "com.azarenka.domain", "com.azarenka.rest", "com.azarenka.rest.auth"})
+@EnableAutoConfiguration
+@ComponentScan(basePackages = {"com.azarenka.runner", "com.azarenka.rest", "com.azarenka.service",
+    "com.azarenka.repository", "com.azarenka.domain"})
 @SpringBootApplication
 public class Application {
 

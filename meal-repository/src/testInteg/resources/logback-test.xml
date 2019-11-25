@@ -2,7 +2,7 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml" />
     <logger name="org.springframework" level="ERROR"/>
-    <logger name="com.epam.fc" level="ERROR"/>
+    <logger name="com.azarenka" level="DEBUG"/>
     <logger name="ru.yandex.qatools.embed" level="ERROR"/>
     <logger name="de.flapdoodle.embed.process" level="ERROR"/>
 </configuration>

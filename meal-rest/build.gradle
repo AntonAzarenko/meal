@@ -42,6 +42,7 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt:' + rev_jjwt
     implementation 'org.springframework.boot:spring-boot-starter-web:2.1.8.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-security:2.1.6.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.1.8.RELEASE'
     testCompile 'nl.jqno.equalsverifier:equalsverifier: 3.0'
     compile 'io.springfox:springfox-swagger2:2.9.2'
     compile 'io.springfox:springfox-swagger-ui:2.9.2'

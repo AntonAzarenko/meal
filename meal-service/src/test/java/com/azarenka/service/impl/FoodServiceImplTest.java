@@ -16,6 +16,7 @@ import java.util.Collections;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FoodServiceImplTest {
+
     @InjectMocks
     private FoodService service = new FoodServiceImpl();
     @Mock

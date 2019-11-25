@@ -9,7 +9,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class Mail {
     private final static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 

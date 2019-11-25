@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="liquibase/com.azarenka/DDL/schema-init.xml"/>
+    <include file="liquibase/com.azarenka/DDL/home_schema_crate_database_changelog.xml"/>
+    <include file="liquibase/com.azarenka/DML/init_tables_data.xml"/>
+    <include file="liquibase/com.azarenka/DML/init-01.xml"/>
+    <include file="liquibase/com.azarenka/DML/november-2019.xml"/>
+</databaseChangeLog>

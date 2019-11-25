@@ -2,10 +2,14 @@ spring:
   liquibase:
     change-log: classpath:common_webtest_data.xml
     password: root
-    url: jdbc:postgresql://localhost:31666/postgres
-    user: root
+    url: postgres://ebicihdwpdusbx:aa59a362d23430ee7494c08d8576c3aa8d18f32385967bec36d1eafd5805424f@ec2-54-217-225-16.eu-west-1.compute.amazonaws.com:5432/d7ufrup50lej5n
+    user: ebicihdwpdusbx
     enabled: true
   http:
     encoding:
       enabled: true
       force: true
+app:
+  admin:
+    username: admin@mail.ru
+    password: admin123

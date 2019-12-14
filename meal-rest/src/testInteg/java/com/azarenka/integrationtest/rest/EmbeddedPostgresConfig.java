@@ -131,4 +131,12 @@ public class EmbeddedPostgresConfig {
         repository.setSqlSessionFactory(embeddedSqlSessionFactory(applicationContext).getObject());
         return repository;
     }
+
+    @Bean
+    public MapperFactoryBean<BookerRepository> bookerRepository(ApplicationContext applicationContext) throws Exception {
+        MapperFactoryBean<BookerRepository> repository = new MapperFactoryBean<>();
+        repository.setMapperInterface(BookerRepository.class);
+        repository.setSqlSessionFactory(embeddedSqlSessionFactory(applicationContext).getObject());
+        return repository;
+    }
 }

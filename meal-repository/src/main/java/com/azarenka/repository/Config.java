@@ -23,11 +23,11 @@ public class Config {
    /* @Value("${spring.datasource.driver-class-name}")
     Driver driverClassName;*/
     @Value("${spring.datasource.url}")
-    String url;
-    @Value("${spring.datasource.username}")
-    String username;
-    @Value("${spring.datasource.password}")
-    String password;
+    String url;// = "jdbc:postgresql://localhost:5432/postgres";
+    //@Value("${spring.datasource.username}")
+    String username;// = "root";
+    //@Value("${spring.datasource.password}")
+    String password;// = "root";
 
     @Bean
     public DataSource dataSource() throws SQLException {
@@ -100,6 +100,14 @@ public class Config {
     public MapperFactoryBean<UsersRoleMapRepository> userRoleMapRepository(ApplicationContext applicationContext) throws Exception {
         MapperFactoryBean<UsersRoleMapRepository> repository = new MapperFactoryBean<>();
         repository.setMapperInterface(UsersRoleMapRepository.class);
+        repository.setSqlSessionFactory(sqlSessionFactory(applicationContext).getObject());
+        return repository;
+    }
+
+    @Bean
+    public MapperFactoryBean<BookerRepository> bookerRepository(ApplicationContext applicationContext) throws Exception {
+        MapperFactoryBean<BookerRepository> repository = new MapperFactoryBean<>();
+        repository.setMapperInterface(BookerRepository.class);
         repository.setSqlSessionFactory(sqlSessionFactory(applicationContext).getObject());
         return repository;
     }

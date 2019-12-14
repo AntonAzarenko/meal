@@ -88,4 +88,8 @@ public class UserServiceImpl implements UserService {
         user.setActivateCode(KeyGenerator.generateUuid());
         return user;
     }
+
+    public static void main(String[] args) {
+        System.out.println(new BCryptPasswordEncoder().encode("admin123"));
+    }
 }

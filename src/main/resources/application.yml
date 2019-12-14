@@ -24,8 +24,3 @@ spring:
 
   security:
     enabled: false
-
-app:
-  admin:
-    username: admin@mail.ru
-    password: admin123

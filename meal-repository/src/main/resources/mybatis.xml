@@ -7,6 +7,6 @@
         <typeAlias alias="Day" type="com.azarenka.domain.Day"/>
         <typeAlias alias="Menu" type="com.azarenka.domain.Menu"/>
         <typeAlias alias="User" type="com.azarenka.domain.User"/>
+        <typeAlias alias="Booker" type="com.azarenka.domain.Booker"/>
     </typeAliases>
-
 </configuration>

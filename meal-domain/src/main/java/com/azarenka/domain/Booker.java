@@ -1,5 +1,8 @@
 package com.azarenka.domain;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -49,24 +52,36 @@ public class Booker extends BaseEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+
         Booker booker = (Booker) o;
-        return Objects.equals(countPrice, booker.countPrice) &&
-                Objects.equals(checkDate, booker.checkDate) &&
-                type == booker.type &&
-                Objects.equals(userEmail, booker.userEmail);
+
+        return new EqualsBuilder()
+                .appendSuper(super.equals(o))
+                .append(countPrice, booker.countPrice)
+                .append(checkDate, booker.checkDate)
+                .append(type, booker.type)
+                .append(userEmail, booker.userEmail)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), countPrice, checkDate, type, userEmail);
+        return new HashCodeBuilder(17, 37)
+                .appendSuper(super.hashCode())
+                .append(countPrice)
+                .append(checkDate)
+                .append(type)
+                .append(userEmail)
+                .toHashCode();
     }
 
     @Override
     public String toString() {
         return "Booker{" +
-                "countPrice=" + countPrice +
+                "id=" + getId() +
+                ", countPrice=" + countPrice +
                 ", checkDate=" + checkDate +
                 ", type=" + type +
                 ", userEmail='" + userEmail + '\'' +

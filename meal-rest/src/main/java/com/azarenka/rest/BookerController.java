@@ -1,6 +1,7 @@
 package com.azarenka.rest;
 
 import com.azarenka.domain.Booker;
+import com.azarenka.domain.Report;
 import com.azarenka.service.impl.BookerService;
 import com.azarenka.service.response.BookerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,10 @@ public class BookerController {
     @GetMapping(value = "/{category}", produces = MediaType.APPLICATION_JSON_VALUE)
     public String price(@PathVariable("category") String category) {
         return bookerService.getPriceByCategory(category);
+    }
+
+    @GetMapping(value = "/report", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Report getReport() {
+        return bookerService.getReport();
     }
 }

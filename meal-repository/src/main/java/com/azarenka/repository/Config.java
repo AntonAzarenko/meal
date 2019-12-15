@@ -24,10 +24,10 @@ public class Config {
     Driver driverClassName;*/
     @Value("${spring.datasource.url}")
     String url;// = "jdbc:postgresql://localhost:5432/postgres";
-    //@Value("${spring.datasource.username}")
+    @Value("${spring.datasource.username}")
     String username;// = "root";
-    //@Value("${spring.datasource.password}")
-    String password;// = "root";
+    @Value("${spring.datasource.password}")
+    String password ;//= "root";
 
     @Bean
     public DataSource dataSource() throws SQLException {

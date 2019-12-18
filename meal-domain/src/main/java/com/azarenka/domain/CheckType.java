@@ -4,5 +4,8 @@ public enum CheckType {
     FOOD,
     DRINK,
     CLOTHES,
-    GAS
+    GAS,
+    CREDIT,
+    PETS,
+    HOME
 }

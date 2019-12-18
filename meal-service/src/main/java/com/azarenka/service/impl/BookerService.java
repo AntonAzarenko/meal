@@ -81,6 +81,15 @@ public class BookerService implements IBookerService {
             case CLOTHES:
                 report.setClothes(decimal);
                 break;
+            case HOME:
+                report.setHome(decimal);
+                break;
+            case CREDIT:
+                report.setCredit(decimal);
+                break;
+            case PETS:
+                report.setPets(decimal);
+                break;
         }
     }
 
@@ -94,6 +103,12 @@ public class BookerService implements IBookerService {
                 return CheckType.GAS;
             case "CLOTHES":
                 return CheckType.CLOTHES;
+            case "HOME":
+                return CheckType.HOME;
+            case "CREDIT":
+                return CheckType.CREDIT;
+            case "PETS":
+                return CheckType.PETS;
         }
         return null;
     }

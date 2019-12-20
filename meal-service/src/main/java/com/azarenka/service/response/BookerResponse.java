@@ -24,10 +24,20 @@ public class BookerResponse {
 
     private CheckType insertType(){
         switch (type) {
-            case  "FOOD": return CheckType.FOOD;
-            case  "DRINK": return CheckType.DRINK;
-            case  "GAS": return CheckType.GAS;
-            case  "CLOTHES": return CheckType.CLOTHES;
+            case "FOOD":
+                return CheckType.FOOD;
+            case "DRINK":
+                return CheckType.DRINK;
+            case "GAS":
+                return CheckType.GAS;
+            case "CLOTHES":
+                return CheckType.CLOTHES;
+            case "HOME":
+                return CheckType.HOME;
+            case "CREDIT":
+                return CheckType.CREDIT;
+            case "PETS":
+                return CheckType.PETS;
         }
         return null;
     }

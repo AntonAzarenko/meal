@@ -10,8 +10,7 @@
         <result column="name" property="name"/>
         <result column="password" property="password"/>
         <result column="activate_code" property="activateCode"/>
-        <result column="registrationDate" property="date_registration"/>
-
+        <result  column="date_registration" property="registrationDate"/>
         <collection property="roles" ofType="com.azarenka.domain.Role" javaType="java.util.HashSet">
             <result property="name" column="role"/>
         </collection>
@@ -54,6 +53,7 @@
             avatar,
             activate_code,
             password,
+            date_registration,
             r.id,
             r.role,
             enabled
@@ -72,6 +72,7 @@
             avatar,
             password,
             activate_code,
+            date_registration,
             r.id,
             r.role,
             enabled

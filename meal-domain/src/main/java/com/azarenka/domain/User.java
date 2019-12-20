@@ -3,7 +3,7 @@ package com.azarenka.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -24,22 +24,22 @@ public class User extends BaseEntity {
     private Set<Role> roles;
     private String avatar;
     private String activateCode;
-    private Date registrationDate = new Date();
-    /**
-     * Gets registration date.
-     *
-     * @return registration date.
-     */
-    public Date getRegistrationDate() {
+    private LocalDateTime registrationDate;
+
+    public User(String id, String email, String password) {
+        this.setId(id);
+        this.email = email;
+        this.password = password;
+    }
+
+    public User() {
+    }
+
+    public LocalDateTime getRegistrationDate() {
         return registrationDate;
     }
 
-    /**
-     * Sets registration date.
-     *
-     * @param registrationDate registration date.
-     */
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(LocalDateTime registrationDate) {
         this.registrationDate = registrationDate;
     }
 
@@ -169,37 +169,44 @@ public class User extends BaseEntity {
         this.avatar = avatar;
     }
 
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
+        if (this == o) {
+            return true;
+        }
 
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         User user = (User) o;
 
         return new EqualsBuilder()
-                .append(enabled, user.enabled)
-                .append(email, user.email)
-                .append(password, user.password)
-                .append(name, user.name)
-                .append(activateCode, user.activateCode)
-                .append(roles, user.roles)
-                .append(avatar, user.avatar)
-                .isEquals();
+            .appendSuper(super.equals(o))
+            .append(enabled, user.enabled)
+            .append(email, user.email)
+            .append(password, user.password)
+            .append(name, user.name)
+            .append(roles, user.roles)
+            .append(avatar, user.avatar)
+            .append(activateCode, user.activateCode)
+            .append(registrationDate, user.registrationDate)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(email)
-                .append(password)
-                .append(name)
-                .append(enabled)
-                .append(activateCode)
-                .append(roles)
-                .append(avatar)
-                .toHashCode();
+            .appendSuper(super.hashCode())
+            .append(email)
+            .append(password)
+            .append(name)
+            .append(enabled)
+            .append(roles)
+            .append(avatar)
+            .append(activateCode)
+            .append(registrationDate)
+            .toHashCode();
     }
 
     @Override

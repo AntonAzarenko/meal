@@ -41,7 +41,9 @@ dependencies {
     implementation project(':meal-db')
     implementation project(':meal-test')
     implementation 'org.postgresql:postgresql:9.4.1212'
+    compile 'org.springframework.boot:spring-boot-starter-jdbc'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
+    compile group: 'org.liquibase', name: 'liquibase-core', version: '3.8.0'
     compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '1.3.2'
     compile 'ru.yandex.qatools.embed:postgresql-embedded:2.10'
     testIntegRuntime 'org.postgresql:postgresql:9.4.1212'

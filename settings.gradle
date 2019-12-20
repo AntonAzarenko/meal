@@ -3,7 +3,6 @@ include 'meal-db'
 include 'meal-repository'
 include 'meal-service'
 include 'meal-rest'
-include 'meal-runner'
 include 'meal-test'
 include 'meal-domain'
 

@@ -1,0 +1,26 @@
+server:
+  servlet:
+    context-path: /api
+
+spring:
+  datasource:
+    driver: org.postgresql.Driver
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+  liquibase:
+    enabled: false
+    change-log: classpath:changelog.xml
+    password: ${JDBC_DATABASE_PASSWORD}
+    url:  ${JDBC_DATABASE_URL}
+    user: ${JDBC_DATABASE_USERNAME}
+  http:
+    enabled: true
+    force: true
+
+  h2:
+    console:
+      enabled: true
+
+  security:
+    enabled: false

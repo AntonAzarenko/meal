@@ -49,7 +49,7 @@ public class AuthController {
     public AuthController() {
     }
 
-    @GetMapping("/signin")
+    @PostMapping(value = "/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
         LOGGER.error(loginRequest.toString());
         Authentication authentication = authenticationManager.authenticate(
@@ -79,4 +79,5 @@ public class AuthController {
         model.addAttribute("message", "Error");
         return "landingPage";
     }
+
 }

@@ -1,9 +1,12 @@
 package com.azarenka.repository.testinteg;
 
+import static org.junit.Assert.assertEquals;
+
 import com.azarenka.domain.Role;
 import com.azarenka.domain.User;
 import com.azarenka.repository.UserRepository;
 import com.azarenka.repository.UsersRoleMapRepository;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +14,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Date;
-import java.util.Locale;
 import java.util.UUID;
-
-import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {EmbeddedPostgresConfig.class})
@@ -51,7 +51,7 @@ public class UserRoleMapIntegrationTest {
         user.setEnabled(true);
         user.setName("admin");
         user.setPassword("admin");
-        user.setRegistrationDate(new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse("2019-9-22"));
+        user.setRegistrationDate(LocalDateTime.of(2019,9,22,0,0,0));
         user.setEmail(email);
         user.setRoles(Collections.singleton(role));
         user.setActivateCode(activateCode);

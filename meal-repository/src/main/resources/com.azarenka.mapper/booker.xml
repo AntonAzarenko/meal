@@ -1,0 +1,38 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.azarenka.repository.BookerRepository">
+
+    <resultMap type="Booker" id="booker">
+        <id column="id" property="id"/>
+        <result column="count_price" property="countPrice"/>
+        <result column="date" property="checkDate"/>
+        <result column="type" property="type"/>
+        <result column="user_email" property="userEmail"/>
+    </resultMap>
+
+    <select id="getAllByUserEmail" resultMap="booker">
+        SELECT
+               id,
+               count_price,
+               date,
+               type,
+               user_email
+        FROM
+             home.bookers
+        WHERE
+            user_email = #{email}
+    </select>
+
+    <insert id="save" parameterType="Booker">
+        INSERT INTO
+            home.bookers (id, count_price, date, type, user_email)
+        VALUES (
+                #{id},
+                #{countPrice},
+                #{checkDate},
+                #{type},
+                #{userEmail}
+               )
+    </insert>
+</mapper>

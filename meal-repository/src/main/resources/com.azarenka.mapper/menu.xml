@@ -11,7 +11,7 @@
         <result column="meal_id" property="mealId"/>
         <result column="email" property="email"/>
         <result column="date" property="date"/>
-        <result column="sets_name" property="setTitle"/>
+        <result column="sets_name" property="titleOfSet"/>
         <result column="count_food" property="countFood"/>
     </resultMap>
 
@@ -30,6 +30,28 @@
         WHERE user_id = #{userId}
     </select>
 
+    <select id="findMenuByUserName" resultType="string">
+        SELECT distinct(sets_name)
+        FROM home.menu
+        WHERE email = #{userName}
+    </select>
+
+    <select id="getMenuByUsernameAndMenuTitle" resultMap="menu">
+        SELECT
+        id,
+        user_id,
+        food_id,
+        day_id,
+        meal_id,
+        email,
+        date,
+        count_food,
+        sets_name
+        FROM home.menu
+        WHERE email=#{userName}
+        and sets_name=#{title}
+    </select>
+
     <insert id="save" parameterType="Menu">
         insert into home.menu
             (id, user_id, food_id, day_id, meal_id, date, count_food, email, sets_name)
@@ -42,7 +64,7 @@
             #{date},
             #{countFood},
             #{email},
-            #{setTitle}
+            #{titleOfSet}
         )
     </insert>
 

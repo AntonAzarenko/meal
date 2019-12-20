@@ -3,12 +3,13 @@ package com.azarenka.service.impl;
 import com.azarenka.domain.Food;
 import com.azarenka.repository.FoodRepository;
 import com.azarenka.service.api.FoodService;
+import com.azarenka.service.response.FoodResponse;
 
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Food service
@@ -26,7 +27,8 @@ public class FoodServiceImpl implements FoodService {
     private FoodRepository foodRepository;
 
     @Override
-    public List<Food> getFoods() {
-        return foodRepository.getAll();
+    public List<FoodResponse> getFoods() {
+        List<Food> foods = foodRepository.findAll();
+        return foods.stream().map(FoodResponse::new).collect(Collectors.toList());
     }
 }

@@ -1,34 +1,48 @@
 package com.azarenka.repository;
 
 import liquibase.integration.spring.SpringLiquibase;
+
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperFactoryBean;
+import org.postgresql.Driver;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+
+import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-
 @Configuration
+@PropertySource({"application.properties"})
 public class Config {
 
-    @Bean
-    public DataSource dataSource() {
-        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setDriverClass(org.postgresql.Driver.class);
-        dataSource.setUsername("root");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
-        dataSource.setPassword("root");
+   /* @Value("${spring.datasource.driver-class-name}")
+    Driver driverClassName;*/
+    @Value("${spring.datasource.url}")
+    String url ;//"jdbc:postgresql://localhost:5432/postgres";
+    @Value("${spring.datasource.username}")
+    String username;// "root";
+    @Value("${spring.datasource.password}")
+    String password ;//= "root";
 
-        return dataSource;
+    @Bean
+    public DataSource dataSource() throws SQLException {
+        Driver driver = new Driver();
+        DataSource dataSourceBuilder = new SimpleDriverDataSource(driver, url, username, password);
+
+        return dataSourceBuilder;
     }
 
     @Bean
-    public DataSourceTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
+    public SpringLiquibase getLiquibase() throws SQLException {
+        SpringLiquibase springLiquibase = new SpringLiquibase();
+        springLiquibase.setDataSource(dataSource());
+        springLiquibase.setChangeLog("classpath:changelog.xml");
+        return springLiquibase;
     }
 
     @Bean
@@ -86,6 +100,14 @@ public class Config {
     public MapperFactoryBean<UsersRoleMapRepository> userRoleMapRepository(ApplicationContext applicationContext) throws Exception {
         MapperFactoryBean<UsersRoleMapRepository> repository = new MapperFactoryBean<>();
         repository.setMapperInterface(UsersRoleMapRepository.class);
+        repository.setSqlSessionFactory(sqlSessionFactory(applicationContext).getObject());
+        return repository;
+    }
+
+    @Bean
+    public MapperFactoryBean<BookerRepository> bookerRepository(ApplicationContext applicationContext) throws Exception {
+        MapperFactoryBean<BookerRepository> repository = new MapperFactoryBean<>();
+        repository.setMapperInterface(BookerRepository.class);
         repository.setSqlSessionFactory(sqlSessionFactory(applicationContext).getObject());
         return repository;
     }

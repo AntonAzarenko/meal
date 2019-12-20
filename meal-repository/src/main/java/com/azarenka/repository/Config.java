@@ -23,9 +23,9 @@ public class Config {
    /* @Value("${spring.datasource.driver-class-name}")
     Driver driverClassName;*/
     @Value("${spring.datasource.url}")
-    String url;// = "jdbc:postgresql://localhost:5432/postgres";
+    String url ;//"jdbc:postgresql://localhost:5432/postgres";
     @Value("${spring.datasource.username}")
-    String username;// = "root";
+    String username;// "root";
     @Value("${spring.datasource.password}")
     String password ;//= "root";
 

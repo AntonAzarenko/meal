@@ -10,8 +10,35 @@ public class Report {
     private BigDecimal gas;
     private BigDecimal alcohol;
     private BigDecimal clothes;
+    private BigDecimal credit;
+    private BigDecimal pets;
+    private  BigDecimal home;
 
     public Report() {
+    }
+
+    public BigDecimal getCredit() {
+        return credit;
+    }
+
+    public void setCredit(BigDecimal credit) {
+        this.credit = credit;
+    }
+
+    public BigDecimal getPets() {
+        return pets;
+    }
+
+    public void setPets(BigDecimal pets) {
+        this.pets = pets;
+    }
+
+    public BigDecimal getHome() {
+        return home;
+    }
+
+    public void setHome(BigDecimal home) {
+        this.home = home;
     }
 
     public BigDecimal getFood() {
@@ -46,6 +73,7 @@ public class Report {
         this.clothes = clothes;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,6 +87,9 @@ public class Report {
                 .append(gas, report.gas)
                 .append(alcohol, report.alcohol)
                 .append(clothes, report.clothes)
+                .append(credit, report.credit)
+                .append(pets, report.pets)
+                .append(home, report.home)
                 .isEquals();
     }
 
@@ -69,6 +100,9 @@ public class Report {
                 .append(gas)
                 .append(alcohol)
                 .append(clothes)
+                .append(credit)
+                .append(pets)
+                .append(home)
                 .toHashCode();
     }
 
@@ -79,6 +113,9 @@ public class Report {
                 ", gas=" + gas +
                 ", alcohol=" + alcohol +
                 ", clothes=" + clothes +
+                ", credit=" + credit +
+                ", pets=" + pets +
+                ", home=" + home +
                 '}';
     }
 }

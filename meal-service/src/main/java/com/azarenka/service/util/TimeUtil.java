@@ -2,16 +2,16 @@ package com.azarenka.service.util;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.annotation.PostConstruct;
-
 @Component
 public class TimeUtil {
+
 
     private static final Map<String, Month> months = new HashMap<>();
 
@@ -34,10 +34,10 @@ public class TimeUtil {
     public static String getMonth(LocalDate date) {
         Month month = date.getMonth();
         return months.entrySet()
-            .stream()
-            .filter(pair -> pair.getValue().equals(month))
-            .findFirst()
-            .map(Entry::getKey)
-            .orElse(null);
+                .stream()
+                .filter(pair -> pair.getValue().equals(month))
+                .findFirst()
+                .map(Entry::getKey)
+                .orElse(null);
     }
 }

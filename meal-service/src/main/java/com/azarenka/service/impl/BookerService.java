@@ -8,7 +8,7 @@ import com.azarenka.service.api.IBookerService;
 import com.azarenka.service.impl.auth.UserPrinciple;
 import com.azarenka.service.util.KeyGenerator;
 import com.azarenka.service.util.ReportConverter;
-
+import com.azarenka.service.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,9 +60,22 @@ public class BookerService implements IBookerService {
         checkTypeBigDecimalMap.forEach((k, v) -> {
             ReportConverter.setField(k, v, report);
         });
-        report.setMonth(month);
         report.setYear(year);
+        report.setProfit(countProfit(report));
+        report.setMonth(TimeUtil.getMonth(date));
         return report;
+    }
+
+    private BigDecimal countProfit(Report report) {
+        BigDecimal profit = new BigDecimal("0.00");
+        profit = profit.add(report.getFood());
+        profit = profit.add(report.getAlcohol());
+        profit = profit.add(report.getClothes());
+        profit = profit.add(report.getCredit());
+        profit = profit.add(report.getGas());
+        profit = profit.add(report.getHome());
+        profit = profit.add(report.getPets());
+        return profit;
     }
 
     private Map<CheckType, BigDecimal> convertAllBookersToMap(List<Booker> all) {

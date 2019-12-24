@@ -7,10 +7,13 @@ import com.azarenka.repository.BookerRepository;
 import com.azarenka.service.api.IBookerService;
 import com.azarenka.service.impl.auth.UserPrinciple;
 import com.azarenka.service.util.KeyGenerator;
+import com.azarenka.service.util.ReportConverter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +43,7 @@ public class BookerService implements IBookerService {
         List<Booker> all = bookerRepository.getAllByUserEmail(userEmail);
         BigDecimal price = BigDecimal.ZERO;
         for (Booker element : all) {
-            if (element.getType().equals(getCheckType(category))) {
+            if (element.getType().equals(ReportConverter.getCheckType(category))) {
                 price = price.add(element.getCountPrice());
             }
         }
@@ -49,13 +52,16 @@ public class BookerService implements IBookerService {
     }
 
     @Override
-    public Report getReport() {
-        List<Booker> all = bookerRepository.getAllByUserEmail(UserPrinciple.safeGet().getUsername());
+    public Report getReport(String month, String year) {
+        LocalDate date = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), 1);
+        List<Booker> all = bookerRepository.getAllByEmailAndDate("", UserPrinciple.safeGet().getUsername());
         Map<CheckType, BigDecimal> checkTypeBigDecimalMap = convertAllBookersToMap(all);
         Report report = new Report();
         checkTypeBigDecimalMap.forEach((k, v) -> {
-            setField(k, v, report);
+            ReportConverter.setField(k, v, report);
         });
+        report.setMonth(month);
+        report.setYear(year);
         return report;
     }
 
@@ -65,51 +71,5 @@ public class BookerService implements IBookerService {
             map.merge(element.getType(), element.getCountPrice(), (old, neW) -> old.add(neW));
         });
         return map;
-    }
-
-    private void setField(CheckType type, BigDecimal decimal, Report report) {
-        switch (type) {
-            case FOOD:
-                report.setFood(decimal);
-                break;
-            case DRINK:
-                report.setAlcohol(decimal);
-                break;
-            case GAS:
-                report.setGas(decimal);
-                break;
-            case CLOTHES:
-                report.setClothes(decimal);
-                break;
-            case HOME:
-                report.setHome(decimal);
-                break;
-            case CREDIT:
-                report.setCredit(decimal);
-                break;
-            case PETS:
-                report.setPets(decimal);
-                break;
-        }
-    }
-
-    private CheckType getCheckType(String category) {
-        switch (category) {
-            case "FOOD":
-                return CheckType.FOOD;
-            case "DRINK":
-                return CheckType.DRINK;
-            case "GAS":
-                return CheckType.GAS;
-            case "CLOTHES":
-                return CheckType.CLOTHES;
-            case "HOME":
-                return CheckType.HOME;
-            case "CREDIT":
-                return CheckType.CREDIT;
-            case "PETS":
-                return CheckType.PETS;
-        }
-        return null;
     }
 }

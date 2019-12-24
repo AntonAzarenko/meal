@@ -31,12 +31,19 @@ public class BookerRepositoryIntegrationTest {
     }
 
     @Test
+    public void testGetAllByEmailAndDate() {
+        Booker expectedBooker = buildBooker();
+        String date = "2019-12-15";
+        assertEquals(Arrays.asList(expectedBooker), bookerRepository.getAllByEmailAndDate(date, "admin@mail.ru"));
+    }
+
+    @Test
     public void save() {
         Booker booker = new Booker();
         booker.setId(UUID.randomUUID().toString());
-        booker.setCheckDate(LocalDate.of(2019,12,14));
+        booker.setCheckDate(LocalDate.of(2019,12,15));
         booker.setUserEmail("admin@mail.ru");
-        booker.setType(CheckType.DRINK);
+        booker.setType(CheckType.GAS);
         booker.setCountPrice(new BigDecimal("25.25"));
         bookerRepository.save(booker);
         List<Booker> bookers = bookerRepository.getAllByUserEmail("admin@mail.ru");

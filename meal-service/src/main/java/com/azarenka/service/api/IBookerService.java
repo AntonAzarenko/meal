@@ -13,5 +13,5 @@ public interface IBookerService {
 
     String getPriceByCategory(String category);
 
-    Report getReport();
+    Report getReport(String month, String year);
 }

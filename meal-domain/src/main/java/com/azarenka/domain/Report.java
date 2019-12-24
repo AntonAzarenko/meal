@@ -12,9 +12,27 @@ public class Report {
     private BigDecimal clothes;
     private BigDecimal credit;
     private BigDecimal pets;
-    private  BigDecimal home;
+    private BigDecimal home;
+    private String month;
+    private String year;
 
     public Report() {
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public BigDecimal getCredit() {
@@ -83,39 +101,45 @@ public class Report {
         Report report = (Report) o;
 
         return new EqualsBuilder()
-                .append(food, report.food)
-                .append(gas, report.gas)
-                .append(alcohol, report.alcohol)
-                .append(clothes, report.clothes)
-                .append(credit, report.credit)
-                .append(pets, report.pets)
-                .append(home, report.home)
+            .append(food, report.food)
+            .append(gas, report.gas)
+            .append(alcohol, report.alcohol)
+            .append(clothes, report.clothes)
+            .append(credit, report.credit)
+            .append(pets, report.pets)
+            .append(home, report.home)
+            .append(month, report.month)
+            .append(year, report.year)
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(food)
-                .append(gas)
-                .append(alcohol)
-                .append(clothes)
-                .append(credit)
-                .append(pets)
-                .append(home)
-                .toHashCode();
+            .append(food)
+            .append(gas)
+            .append(alcohol)
+            .append(clothes)
+            .append(credit)
+            .append(pets)
+            .append(home)
+            .append(year)
+            .append(home)
+            .toHashCode();
     }
 
     @Override
     public String toString() {
         return "Report{" +
-                "food=" + food +
-                ", gas=" + gas +
-                ", alcohol=" + alcohol +
-                ", clothes=" + clothes +
-                ", credit=" + credit +
-                ", pets=" + pets +
-                ", home=" + home +
+            "food=" + food +
+            ", gas=" + gas +
+            ", alcohol=" + alcohol +
+            ", clothes=" + clothes +
+            ", credit=" + credit +
+            ", pets=" + pets +
+            ", home=" + home +
+            ", month" + month +
+            ", year" + year +
                 '}';
     }
 }

@@ -8,6 +8,7 @@ import com.azarenka.service.api.IBookerService;
 import com.azarenka.service.impl.auth.UserPrinciple;
 import com.azarenka.service.util.KeyGenerator;
 import com.azarenka.service.util.ReportConverter;
+import com.azarenka.service.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,7 +71,8 @@ public class BookerService implements IBookerService {
         );
         report.setYear(year);
         report.setProfit(countProfit(report));
-        report.setMonth(month);
+        report.setMonth(TimeUtil.getMonth(year, month));
+        report.setCurrentDateTime(year + " " + month + " " + "25");
         return report;
     }
 

@@ -14,5 +14,5 @@ public interface BookerRepository {
 
     void save(Booker booker);
 
-    List<Booker> getAllByEmailAndDate(@Param("date") String date,@Param("email") String email);
+    List<Booker> getAllByEmailAndDate(@Param("date") LocalDate date, @Param("email") String email);
 }

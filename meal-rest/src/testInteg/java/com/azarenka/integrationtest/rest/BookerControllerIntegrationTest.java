@@ -20,7 +20,7 @@ public class BookerControllerIntegrationTest extends WebTests {
     public void testReport() {
         ResponseEntity<Report> responseEntity = getReport();
         Report actualReport = responseEntity.getBody();
-        Report expectedReport = buildReport("25.25", "25.25", "25.25", "25.25", "25.25", "25.25", "25.25");
+        Report expectedReport = buildReport("25.25", "25.25", "25.25", "25.25", "25.25", "25.25", "25.25", "176.75");
         assertEquals(expectedReport, actualReport);
     }
 
@@ -34,7 +34,7 @@ public class BookerControllerIntegrationTest extends WebTests {
         sendDataToController(buildBookerResponse("0.75", "DRINK"));
         sendDataToController(buildBookerResponse("0.75", "PETS"));
         Report actualReport = getReport().getBody();
-        Report expectedReport = buildReport("26.00", "26.00", "26.00", "26.00", "26.00", "26.00", "26.00");
+        Report expectedReport = buildReport("26.00", "26.00", "26.00", "26.00", "26.00", "26.00", "26.00", "182.00");
         assertEquals(expectedReport, actualReport);
         rollbackSave();
     }
@@ -60,7 +60,7 @@ public class BookerControllerIntegrationTest extends WebTests {
         return responseEntity;
     }
 
-    private Report buildReport(String food, String home, String gas, String credit, String pets, String drink, String clothes) {
+    private Report buildReport(String food, String home, String gas, String credit, String pets, String drink, String clothes, String profit) {
         Report report = new Report();
         report.setPets(new BigDecimal(pets));
         report.setCredit(new BigDecimal(credit));
@@ -71,7 +71,7 @@ public class BookerControllerIntegrationTest extends WebTests {
         report.setFood(new BigDecimal(food));
         report.setMonth("12");
         report.setYear("2019");
-        report.setProfit(new BigDecimal("176.75"));
+        report.setProfit(new BigDecimal(profit));
         return report;
     }
 

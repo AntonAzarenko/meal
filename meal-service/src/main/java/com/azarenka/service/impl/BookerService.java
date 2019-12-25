@@ -54,18 +54,20 @@ public class BookerService implements IBookerService {
     }
 
     @Override
-    public Report getReport(String month, String year) {
+    public Report getReport(String year, String month) {
         List<LocalDate> dates = createAllDates(year, month);
-        List<Booker> all = bookerRepository.getAllByUserEmail(UserPrinciple.safeGet().getUsername());
+        List<Booker> allBookers = bookerRepository.getAllByUserEmail(UserPrinciple.safeGet().getUsername());
         List<Booker> filteredBookers = new ArrayList<>();
         dates.forEach(date -> {
-            filteredBookers.addAll(all.stream().filter(booker -> booker.getCheckDate().equals(date)).collect(Collectors.toList()));
+            filteredBookers.addAll(allBookers
+                    .stream()
+                    .filter(booker -> booker.getCheckDate().equals(date))
+                    .collect(Collectors.toList()));
         });
         Map<CheckType, BigDecimal> checkTypeBigDecimalMap = convertAllBookersToMap(filteredBookers);
         Report report = new Report();
-        checkTypeBigDecimalMap.forEach((k, v) -> {
-            ReportConverter.setField(k, v, report);
-        });
+        checkTypeBigDecimalMap.forEach((k, v) -> ReportConverter.setField(k, v, report)
+        );
         report.setYear(year);
         report.setProfit(countProfit(report));
         report.setMonth(month);
@@ -84,7 +86,7 @@ public class BookerService implements IBookerService {
         return profit;
     }
 
-    private List<LocalDate> createAllDates(String month, String year) {
+    private List<LocalDate> createAllDates(String year, String month) {
         LocalDate date = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), 1);
         List<LocalDate> dates = new ArrayList<>();
         IntStream.range(1, date.lengthOfMonth()).forEach(i -> {

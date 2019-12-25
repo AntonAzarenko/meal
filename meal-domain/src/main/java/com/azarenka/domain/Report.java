@@ -103,6 +103,46 @@ public class Report {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Report report = (Report) o;
+
+        return new EqualsBuilder()
+                .append(DEFAULT_VALUE, report.DEFAULT_VALUE)
+                .append(food, report.food)
+                .append(gas, report.gas)
+                .append(alcohol, report.alcohol)
+                .append(clothes, report.clothes)
+                .append(credit, report.credit)
+                .append(pets, report.pets)
+                .append(home, report.home)
+                .append(profit, report.profit)
+                .append(year, report.year)
+                .append(month, report.month)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(DEFAULT_VALUE)
+                .append(food)
+                .append(gas)
+                .append(alcohol)
+                .append(clothes)
+                .append(credit)
+                .append(pets)
+                .append(home)
+                .append(profit)
+                .append(year)
+                .append(month)
+                .toHashCode();
+    }
+
+    @Override
     public String toString() {
         return "Report{" +
                 "DEFAULT_VALUE=" + DEFAULT_VALUE +

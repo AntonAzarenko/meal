@@ -1,0 +1,346 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 162 ciObject found
+ciMethod java/lang/String <init> ([CII)V 4097 1 5655 0 -1
+ciMethod java/lang/String codePointAt (I)I 361 1 7261 0 -1
+ciMethod java/lang/String equals (Ljava/lang/Object;)Z 4097 12401 7854 0 -1
+ciMethod java/lang/String startsWith (Ljava/lang/String;I)Z 4097 1217 10833 0 224
+ciMethod java/lang/String endsWith (Ljava/lang/String;)Z 2049 1 41511 0 224
+ciMethod java/lang/String toUpperCase (Ljava/util/Locale;)Ljava/lang/String; 353 7841 1138 0 -1
+ciMethod java/lang/System arraycopy (Ljava/lang/Object;ILjava/lang/Object;II)V 31745 1 3968 0 -1
+ciMethod java/lang/Throwable printStackTrace ()V 0 0 1 0 -1
+ciMethod java/util/Map put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/lang/Character charCount (I)I 401 1 33616 0 -1
+ciMethod java/lang/Character toChars (I[CI)I 0 0 1 0 -1
+ciMethod java/lang/Character toChars (I)[C 0 0 1 0 -1
+ciMethod java/lang/Character toUpperCaseEx (I)I 2241 1 32354 0 -1
+ciMethod java/lang/Character toUpperCaseCharArray (I)[C 0 0 1 0 -1
+ciMethod sun/security/util/Debug println (Ljava/lang/String;)V 0 0 1 0 -1
+ciMethod java/util/Locale getLanguage ()Ljava/lang/String; 321 1 1219 0 -1
+ciMethod java/util/zip/ZipFile getEntry (J[BZ)J 2049 1 256 0 -1
+ciMethod java/util/zip/ZipFile getInputStream (Ljava/util/zip/ZipEntry;)Ljava/io/InputStream; 2065 1 5388 0 8896
+ciMethod java/util/zip/ZipFile getInflater ()Ljava/util/zip/Inflater; 2073 1 5352 0 -1
+ciMethod java/util/zip/ZipFile ensureOpen ()V 2049 1 8567 0 -1
+ciMethod java/util/zip/ZipFile getEntrySize (J)J 2049 1 256 0 -1
+ciMethod java/util/zip/ZipFile getEntryMethod (J)I 2049 1 256 0 -1
+ciMethod java/util/jar/JarFile getManifest ()Ljava/util/jar/Manifest; 1537 1 3477 0 -1
+ciMethod java/util/jar/JarFile getManifestFromReference ()Ljava/util/jar/Manifest; 1609 1 3552 0 -1
+ciMethod java/util/jar/JarFile getMetaInfEntryNames ()[Ljava/lang/String; 2057 1 257 0 -1
+ciMethod java/util/jar/JarFile getJarEntry (Ljava/lang/String;)Ljava/util/jar/JarEntry; 361 1 14155 0 -1
+ciMethod java/util/jar/JarFile maybeInstantiateVerifier ()V 3073 1 5649 0 1024
+ciMethod java/util/jar/JarFile initializeVerifier ()V 89 329 75 0 0
+ciMethod java/util/jar/JarFile getBytes (Ljava/util/zip/ZipEntry;)[B 1225 1 280 0 -1
+ciMethod java/util/jar/JarFile getInputStream (Ljava/util/zip/ZipEntry;)Ljava/io/InputStream; 2049 1 5376 0 -1
+ciMethod java/util/zip/ZipCoder getBytes (Ljava/lang/String;)[B 2049 1 14983 0 -1
+ciMethod java/util/zip/ZipCoder getBytesUTF8 (Ljava/lang/String;)[B 0 0 1 0 -1
+ciMethod java/util/zip/ZipCoder isUTF8 ()Z 1025 1 128 0 -1
+ciMethod java/util/zip/ZipFile$ZipFileInputStream <init> (Ljava/util/zip/ZipFile;J)V 2073 1 5388 0 -1
+ciMethod java/util/zip/ZipFile$ZipFileInflaterInputStream <init> (Ljava/util/zip/ZipFile;Ljava/util/zip/ZipFile$ZipFileInputStream;Ljava/util/zip/Inflater;I)V 2073 1 5350 0 -1
+ciMethodData java/lang/String startsWith (Ljava/lang/String;I)Z 2 12273 orig 264 88 50 143 92 0 0 0 0 176 77 33 19 0 0 0 0 176 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 137 66 1 0 201 122 1 0 6 20 0 0 156 23 0 0 2 0 0 0 1 0 13 0 2 0 0 0 128 0 0 0 255 255 255 255 7 224 25 0 0 0 0 0 data 16 0x19e007 0x4 0x40 0x284e 0x250007 0x279f 0x20 0xaf 0x2f0007 0x381 0x40 0x3115 0x410007 0xcf7 0xffffffffffffffe0 0x241f oops 0
+ciMethodData java/lang/String endsWith (Ljava/lang/String;)Z 2 41511 orig 264 88 50 143 92 0 0 0 0 232 78 33 19 0 0 0 0 128 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 57 9 5 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 3 0 2 0 0 0 48 0 0 0 255 255 255 255 5 0 13 0 0 0 0 0 data 6 0xd0005 0x0 0x26bb590 0xa127 0x0 0x0 oops 1 2 java/lang/String
+ciMethod java/util/jar/JarVerifier beginEntry (Ljava/util/jar/JarEntry;Lsun/security/util/ManifestEntryVerifier;)V 601 1 75 0 -1
+ciMethod java/util/jar/JarVerifier update (I[BIILsun/security/util/ManifestEntryVerifier;)V 1169 1 150 0 -1
+ciMethod java/util/jar/JarVerifier nothingToVerify ()Z 601 1 75 0 -1
+ciMethod java/util/jar/JarVerifier doneWithMeta ()V 601 1 75 0 -1
+ciMethod sun/security/util/SignatureFileVerifier isBlockOrSF (Ljava/lang/String;)Z 3441 1 430 0 -1
+ciMethod sun/security/util/ManifestEntryVerifier <init> (Ljava/util/jar/Manifest;)V 1585 1 198 0 -1
+ciMethodData java/util/jar/JarFile maybeInstantiateVerifier ()V 2 5649 orig 264 88 50 143 92 0 0 0 0 104 127 63 19 0 0 0 0 144 3 0 0 80 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 128 1 0 0 137 164 0 0 41 49 0 0 0 0 0 0 0 0 0 0 2 0 0 0 1 0 23 0 2 0 0 0 72 2 0 0 255 255 255 255 7 0 4 0 0 0 0 0 data 73 0x40007 0x1464 0x20 0x2d 0xc0007 0x1377 0x228 0xed 0x100002 0xed 0x150007 0x0 0x1f8 0xed 0x1d0007 0xed 0x1d8 0x625 0x260005 0xe 0x26bb590 0x617 0x0 0x0 0x2d0005 0xe 0x26bb590 0x617 0x0 0x0 0x300007 0x0 0x110 0x625 0x360005 0xe 0x26bb590 0x617 0x0 0x0 0x390007 0x0 0xc0 0x625 0x3f0005 0xe 0x26bb590 0x617 0x0 0x0 0x420007 0x0 0x70 0x625 0x480005 0xe 0x26bb590 0x617 0x0 0x0 0x4b0007 0x625 0x50 0x0 0x4f0005 0x0 0x0 0x0 0x0 0x0 0x570003 0x625 0xfffffffffffffe40 oops 5 20 java/lang/String 26 java/lang/String 36 java/lang/String 46 java/lang/String 56 java/lang/String
+ciMethodData java/util/jar/JarFile getInputStream (Ljava/util/zip/ZipEntry;)Ljava/io/InputStream; 2 5376 orig 264 88 50 143 92 0 0 0 0 64 131 63 19 0 0 0 0 24 3 0 0 120 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 160 0 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 13 0 2 0 0 0 200 1 0 0 255 255 255 255 2 0 1 0 0 0 0 0 data 57 0x10002 0x1400 0x80007 0x40 0x30 0x13c0 0xd0002 0x13c0 0x150007 0x0 0x60 0x40 0x190002 0x40 0x250007 0x0 0x30 0x40 0x2a0002 0x40 0x330002 0x0 0x370004 0x0 0x0 0x0 0x0 0x0 0x3a0007 0x0 0x68 0x0 0x3e0004 0x0 0x0 0x0 0x0 0x0 0x410003 0x0 0x78 0x460005 0x0 0x0 0x0 0x0 0x0 0x490005 0x0 0x0 0x0 0x0 0x0 0x4e0002 0x0 0x550002 0x0 oops 0
+instanceKlass ch/qos/logback/classic/spi/StackTraceElementProxy
+instanceKlass ch/qos/logback/classic/spi/ThrowableProxyUtil
+instanceKlass ch/qos/logback/classic/spi/ThrowableProxy
+instanceKlass javax/servlet/http/HttpSessionAttributeListener
+instanceKlass javax/servlet/http/HttpSessionIdListener
+instanceKlass javax/servlet/ServletRequestAttributeListener
+instanceKlass javax/servlet/ServletContextAttributeListener
+instanceKlass org/apache/catalina/ContainerServlet
+instanceKlass java/io/RandomAccessFile$1
+instanceKlass org/apache/commons/compress/archivers/tar/TarArchiveEntry
+instanceKlass org/apache/commons/compress/archivers/tar/TarConstants
+instanceKlass org/apache/commons/compress/archivers/zip/ZipFile$3
+instanceKlass de/flapdoodle/embed/process/store/PostgresFilesToExtract$1
+instanceKlass de/flapdoodle/embed/process/extract/CommonsArchiveEntryAdapter
+instanceKlass de/flapdoodle/embed/process/extract/ZipExtractor$ZipArchiveWrapper
+instanceKlass org/apache/commons/compress/archivers/zip/ZipFile$NameAndComment
+instanceKlass org/apache/commons/compress/archivers/zip/ZipEightByteInteger
+instanceKlass org/apache/commons/compress/archivers/zip/Zip64ExtendedInformationExtraField
+instanceKlass org/apache/commons/compress/archivers/zip/JarMarker
+instanceKlass org/apache/commons/compress/archivers/zip/X7875_NewUnix
+instanceKlass org/apache/commons/compress/archivers/zip/X5455_ExtendedTimestamp
+instanceKlass org/apache/commons/compress/archivers/zip/AsiExtraField
+instanceKlass org/apache/commons/compress/archivers/zip/UnixStat
+instanceKlass org/apache/commons/compress/archivers/zip/ExtraFieldUtils
+instanceKlass org/apache/commons/compress/archivers/zip/ExtraFieldUtils$UnparseableExtraField
+instanceKlass org/apache/commons/compress/archivers/zip/AbstractUnicodeExtraField
+instanceKlass org/apache/commons/compress/archivers/zip/ZipUtil
+instanceKlass org/apache/commons/compress/archivers/zip/ZipShort
+instanceKlass org/apache/commons/compress/archivers/zip/GeneralPurposeBit
+instanceKlass org/apache/commons/compress/archivers/zip/UnparseableExtraFieldData
+instanceKlass org/apache/commons/compress/archivers/zip/ZipFile$OffsetEntry
+instanceKlass java/io/RandomAccessFile
+instanceKlass org/apache/commons/compress/utils/Charsets
+instanceKlass org/apache/commons/compress/archivers/zip/FallbackZipEncoding
+instanceKlass org/apache/commons/compress/archivers/zip/ZipEncodingHelper$SimpleEncodingHolder
+instanceKlass org/apache/commons/compress/archivers/zip/ZipEncoding
+instanceKlass org/apache/commons/compress/archivers/zip/ZipEncodingHelper
+instanceKlass org/apache/commons/compress/archivers/zip/ZipFile$2
+instanceKlass org/apache/commons/compress/archivers/zip/ZipLong
+instanceKlass org/apache/commons/compress/archivers/zip/ZipExtraField
+instanceKlass org/apache/commons/compress/archivers/ArchiveEntry
+instanceKlass org/apache/commons/compress/archivers/zip/ZipFile
+instanceKlass de/flapdoodle/embed/process/extract/ImmutableExtractedFileSet$Builder
+instanceKlass de/flapdoodle/embed/process/extract/ImmutableExtractedFileSet
+instanceKlass de/flapdoodle/embed/process/extract/IExtractionMatch
+instanceKlass de/flapdoodle/embed/process/extract/Extractors
+instanceKlass java/nio/file/CopyOption
+instanceKlass de/flapdoodle/embed/process/config/store/FileSet$Entry
+instanceKlass de/flapdoodle/embed/process/config/store/FileSet$Builder
+instanceKlass de/flapdoodle/embed/process/config/store/FileSet
+instanceKlass de/flapdoodle/embed/process/extract/ArchiveIsFileExtractor
+instanceKlass org/apache/commons/compress/compressors/bzip2/BZip2Constants
+instanceKlass de/flapdoodle/embed/process/extract/AbstractExtractor$ArchiveWrapper
+instanceKlass de/flapdoodle/embed/process/extract/IArchiveEntry
+instanceKlass de/flapdoodle/embed/process/extract/AbstractExtractor
+instanceKlass de/flapdoodle/embed/process/extract/IExtractor
+instanceKlass ru/yandex/qatools/embed/postgresql/PackagePaths$1
+instanceKlass sun/nio/fs/WindowsPath$1
+instanceKlass java/nio/file/Paths
+instanceKlass de/flapdoodle/embed/process/store/LocalArtifactStore
+instanceKlass ru/yandex/qatools/embed/postgresql/config/SupportConfig
+instanceKlass ru/yandex/qatools/embed/postgresql/config/AbstractPostgresConfig$Credentials
+instanceKlass ru/yandex/qatools/embed/postgresql/config/AbstractPostgresConfig$Timeout
+instanceKlass org/apache/commons/lang3/StringUtils
+instanceKlass ru/yandex/qatools/embed/postgresql/config/AbstractPostgresConfig$Storage
+instanceKlass ru/yandex/qatools/embed/postgresql/config/AbstractPostgresConfig$Net
+instanceKlass de/flapdoodle/embed/process/config/ISupportConfig
+instanceKlass de/flapdoodle/embed/process/config/ExecutableProcessConfig
+instanceKlass de/flapdoodle/embed/process/runtime/Starter
+instanceKlass de/flapdoodle/embed/process/config/RuntimeConfigBuilder$ImmutableRuntimeConfig
+instanceKlass ru/yandex/qatools/embed/postgresql/EmbeddedPostgres$$Lambda$352
+instanceKlass de/flapdoodle/embed/process/distribution/Distribution
+instanceKlass java/lang/ProcessImpl$2
+instanceKlass java/lang/Process
+instanceKlass java/lang/ProcessBuilder
+instanceKlass de/flapdoodle/embed/process/extract/IExtractedFileSet
+instanceKlass de/flapdoodle/embed/process/extract/FilesToExtract
+instanceKlass de/flapdoodle/embed/process/store/PostgresArtifactStore
+instanceKlass de/flapdoodle/embed/process/store/IMutableArtifactStore
+instanceKlass de/flapdoodle/embed/process/store/Downloader
+instanceKlass ru/yandex/qatools/embed/postgresql/config/MutableDownloadConfig
+instanceKlass ru/yandex/qatools/embed/postgresql/config/IMutableDownloadConfig
+instanceKlass de/flapdoodle/embed/process/io/progress/StandardConsoleProgressListener
+instanceKlass de/flapdoodle/embed/process/io/directories/UserHome
+instanceKlass ru/yandex/qatools/embed/postgresql/PackagePaths
+instanceKlass de/flapdoodle/embed/process/config/store/DownloadPath
+instanceKlass de/flapdoodle/embed/process/config/store/NoProxyFactory
+instanceKlass de/flapdoodle/embed/process/config/store/TimeoutConfigBuilder$ImmutableTimeoutConfig
+instanceKlass de/flapdoodle/embed/process/config/store/IProxyFactory
+instanceKlass de/flapdoodle/embed/process/config/store/ITimeoutConfig
+instanceKlass de/flapdoodle/embed/process/config/store/IDownloadPath
+instanceKlass de/flapdoodle/embed/process/builder/ImmutableContainer
+instanceKlass de/flapdoodle/embed/process/extract/UUIDTempNaming
+instanceKlass de/flapdoodle/embed/process/io/file/Files
+instanceKlass de/flapdoodle/embed/process/io/directories/PlatformTempDir
+instanceKlass de/flapdoodle/embed/process/store/IDownloader
+instanceKlass de/flapdoodle/embed/process/config/store/IDownloadConfig
+instanceKlass de/flapdoodle/embed/process/extract/ITempNaming
+instanceKlass de/flapdoodle/embed/process/runtime/ICommandLinePostProcessor$Noop
+instanceKlass de/flapdoodle/embed/process/io/NamedOutputStreamProcessor
+instanceKlass de/flapdoodle/embed/process/io/ConsoleOutputStreamProcessor
+instanceKlass de/flapdoodle/embed/process/io/IStreamProcessor
+instanceKlass de/flapdoodle/embed/process/io/Processors
+instanceKlass de/flapdoodle/embed/process/builder/AbstractEmbeddedBuilder$Property
+instanceKlass de/flapdoodle/embed/process/runtime/Executable
+instanceKlass de/flapdoodle/embed/process/runtime/IStopable
+instanceKlass de/flapdoodle/embed/process/runtime/ICommandLinePostProcessor
+instanceKlass de/flapdoodle/embed/process/config/io/ProcessOutput
+instanceKlass de/flapdoodle/embed/process/builder/TypedProperty
+instanceKlass de/flapdoodle/embed/process/store/IArtifactStore
+instanceKlass de/flapdoodle/embed/process/io/progress/IProgressListener
+instanceKlass de/flapdoodle/embed/process/config/IRuntimeConfig
+instanceKlass de/flapdoodle/embed/process/builder/IProperty
+instanceKlass de/flapdoodle/embed/process/builder/AbstractEmbeddedBuilder
+instanceKlass de/flapdoodle/embed/process/config/store/IPackageResolver
+instanceKlass de/flapdoodle/embed/process/io/directories/IDirectory
+instanceKlass de/flapdoodle/embed/process/config/IExecutableProcessConfig
+instanceKlass org/apache/ibatis/session/SqlSessionFactoryBuilder
+instanceKlass org/apache/ibatis/logging/LogFactory$6
+instanceKlass org/apache/ibatis/logging/LogFactory$5
+instanceKlass org/apache/ibatis/logging/LogFactory$4
+instanceKlass org/apache/ibatis/logging/LogFactory$3
+instanceKlass org/apache/ibatis/logging/LogFactory$2
+instanceKlass org/apache/ibatis/logging/slf4j/Slf4jLocationAwareLoggerImpl
+instanceKlass org/apache/ibatis/logging/slf4j/Slf4jImpl
+instanceKlass org/apache/ibatis/logging/Log
+instanceKlass org/apache/ibatis/logging/LogFactory$1
+instanceKlass org/apache/ibatis/logging/LogFactory
+instanceKlass org/apache/ibatis/transaction/TransactionFactory
+instanceKlass org/springframework/core/SerializableTypeWrapper$FieldTypeProvider
+instanceKlass java/util/AbstractList$1
+instanceKlass org/springframework/web/context/request/NativeWebRequest
+instanceKlass org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter$$Lambda$351
+instanceKlass org/springframework/web/accept/MappingMediaTypeFileExtensionResolver
+instanceKlass org/springframework/web/accept/ContentNegotiationManagerFactoryBean
+instanceKlass org/springframework/web/method/support/HandlerMethodReturnValueHandler
+instanceKlass org/springframework/web/method/support/HandlerMethodArgumentResolver
+instanceKlass org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$ResourceChainCustomizerConfiguration
+instanceKlass org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$ResourceChainResourceHandlerRegistrationCustomizer
+instanceKlass org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$OptionalPathExtensionContentNegotiationStrategy
+instanceKlass org/springframework/security/config/annotation/web/configuration/WebSecurityConfigurerAdapter$LazyPasswordEncoder
+instanceKlass org/springframework/beans/factory/config/NamedBeanHolder
+instanceKlass org/springframework/beans/factory/NamedBean
+instanceKlass org/springframework/security/config/annotation/web/configuration/WebSecurityConfigurerAdapter$1
+instanceKlass org/springframework/web/accept/HeaderContentNegotiationStrategy
+instanceKlass org/springframework/boot/web/servlet/ServletContextInitializerBeans$FilterRegistrationBeanAdapter
+instanceKlass org/springframework/boot/web/servlet/ServletContextInitializerBeans$ServletRegistrationBeanAdapter
+instanceKlass org/springframework/boot/web/servlet/ServletContextInitializerBeans$$Lambda$350
+instanceKlass java/util/function/Function$$Lambda$349
+instanceKlass org/springframework/boot/autoconfigure/security/servlet/SecurityFilterAutoConfiguration$$Lambda$348
+instanceKlass org/springframework/boot/autoconfigure/security/servlet/SecurityFilterAutoConfiguration$$Lambda$347
+instanceKlass java/util/UUID$Holder
+instanceKlass org/springframework/boot/web/servlet/ServletContextInitializerBeans$RegistrationBeanAdapter
+instanceKlass org/springframework/web/context/support/ServletContextScope
+instanceKlass org/springframework/web/context/ContextLoader
+instanceKlass org/springframework/boot/web/servlet/server/AbstractServletWebServerFactory$$Lambda$346
+instanceKlass java/lang/invoke/LambdaForm$DMH
+instanceKlass org/apache/tomcat/InstanceManagerBindings
+instanceKlass org/apache/catalina/core/DefaultInstanceManager$AnnotationCacheEntry
+instanceKlass org/apache/catalina/core/DefaultInstanceManager
+instanceKlass org/apache/catalina/Session
+instanceKlass org/apache/tomcat/util/modeler/Util
+instanceKlass org/apache/tomcat/util/buf/UriUtil
+instanceKlass org/apache/catalina/webresources/StandardRoot$1
+instanceKlass org/apache/catalina/webresources/StandardRoot$BaseLocation
+instanceKlass org/apache/tomcat/util/http/ConcurrentDateFormat
+instanceKlass org/apache/tomcat/util/http/FastHttpDateFormat
+instanceKlass javax/security/auth/message/MessageInfo
+instanceKlass javax/security/auth/message/config/RegistrationListener
+instanceKlass javax/servlet/annotation/ServletSecurity
+instanceKlass javax/annotation/security/RunAs
+instanceKlass org/apache/catalina/servlets/DefaultServlet$PrecompressedResource
+instanceKlass org/apache/catalina/servlets/DefaultServlet$SortManager$Order
+instanceKlass org/apache/catalina/servlets/DefaultServlet$SortManager
+instanceKlass org/apache/catalina/servlets/DefaultServlet$CompressionFormat
+instanceKlass org/apache/catalina/servlets/DefaultServlet$Range
+instanceKlass org/apache/catalina/servlets/DefaultServlet$SecureEntityResolver
+instanceKlass javax/xml/parsers/DocumentBuilderFactory
+instanceKlass javax/annotation/security/DeclareRoles
+instanceKlass javax/annotation/Resources
+instanceKlass org/apache/catalina/util/Introspection
+instanceKlass org/apache/catalina/startup/WebAnnotationSet
+instanceKlass java/lang/instrument/ClassFileTransformer
+instanceKlass org/apache/catalina/security/SecurityUtil
+instanceKlass org/apache/catalina/webresources/EmptyResource
+instanceKlass org/apache/tomcat/util/compat/JrePlatform
+instanceKlass org/apache/catalina/webresources/CachedResource
+instanceKlass org/apache/catalina/util/Extension
+instanceKlass org/apache/catalina/util/ManifestResource
+instanceKlass org/apache/catalina/util/ExtensionValidator
+instanceKlass org/apache/tomcat/util/http/CookieProcessorBase
+instanceKlass org/apache/tomcat/util/http/RequestUtil
+instanceKlass org/apache/catalina/webresources/TomcatURLStreamHandlerFactory
+instanceKlass org/apache/catalina/WebResource
+instanceKlass org/apache/catalina/webresources/Cache
+instanceKlass org/apache/catalina/WebResourceSet
+instanceKlass org/apache/catalina/core/ApplicationSessionCookieConfig
+instanceKlass org/apache/catalina/core/ApplicationContextFacade
+instanceKlass javax/servlet/RequestDispatcher
+instanceKlass javax/servlet/FilterRegistration$Dynamic
+instanceKlass javax/servlet/FilterRegistration
+instanceKlass javax/servlet/SessionCookieConfig
+instanceKlass org/apache/catalina/core/ApplicationContext
+instanceKlass org/apache/catalina/util/ContextName
+instanceKlass javax/naming/RefAddr
+instanceKlass javax/naming/Reference
+instanceKlass org/apache/catalina/Cluster
+instanceKlass org/apache/catalina/core/NamingContextListener
+instanceKlass javax/servlet/HttpConstraintElement
+instanceKlass javax/management/NotificationListener
+instanceKlass javax/servlet/FilterConfig
+instanceKlass org/apache/tomcat/util/descriptor/web/LoginConfig
+instanceKlass org/apache/catalina/Authenticator
+instanceKlass org/apache/tomcat/util/descriptor/web/FilterDef
+instanceKlass javax/servlet/descriptor/JspConfigDescriptor
+instanceKlass org/apache/catalina/core/ContainerBase$StartChild
+instanceKlass org/apache/catalina/realm/X509SubjectDnRetriever
+instanceKlass org/apache/tomcat/util/http/fileupload/RequestContext
+instanceKlass org/apache/tomcat/util/http/fileupload/FileItemFactory
+instanceKlass javax/servlet/AsyncContext
+instanceKlass javax/servlet/http/PushBuilder
+instanceKlass javax/servlet/http/HttpServletMapping
+instanceKlass org/apache/catalina/connector/Response
+instanceKlass org/apache/catalina/connector/Request
+instanceKlass org/ietf/jgss/GSSContext
+instanceKlass java/security/cert/X509Extension
+instanceKlass java/util/logging/LogRecord
+instanceKlass java/nio/channels/AsynchronousSocketChannel
+instanceKlass java/nio/channels/AsynchronousByteChannel
+instanceKlass java/nio/channels/AsynchronousServerSocketChannel
+instanceKlass java/nio/channels/AsynchronousChannel
+instanceKlass org/apache/catalina/util/ServerInfo
+instanceKlass org/apache/catalina/connector/CoyoteAdapter
+instanceKlass org/apache/catalina/Executor
+instanceKlass org/apache/tomcat/util/buf/AbstractChunk
+instanceKlass org/apache/tomcat/util/buf/StringCache
+instanceKlass org/apache/tomcat/util/threads/ScheduledThreadPoolExecutor
+instanceKlass java/util/concurrent/RunnableScheduledFuture
+instanceKlass java/util/concurrent/ScheduledFuture
+instanceKlass java/util/concurrent/Delayed
+instanceKlass org/apache/tomcat/util/threads/TaskThreadFactory
+instanceKlass org/springframework/boot/web/embedded/tomcat/TomcatWebServer$$Lambda$345
+instanceKlass org/springframework/boot/autoconfigure/web/embedded/TomcatWebServerFactoryCustomizer$$Lambda$344
+instanceKlass org/apache/tomcat/websocket/server/WsContextListener
+instanceKlass javax/servlet/ServletContextListener
+instanceKlass org/springframework/boot/web/embedded/tomcat/DisableReferenceClearingContextCustomizer
+instanceKlass org/springframework/boot/web/embedded/tomcat/TomcatServletWebServerFactory$DisablePersistSessionListener
+instanceKlass org/apache/tomcat/util/buf/UDecoder
+instanceKlass org/apache/tomcat/util/descriptor/web/ErrorPage
+instanceKlass org/springframework/boot/web/embedded/tomcat/TomcatErrorPage
+instanceKlass org/springframework/boot/web/embedded/tomcat/TomcatStarter
+instanceKlass org/apache/catalina/core/StandardHost$MemoryLeakTrackingListener
+instanceKlass org/springframework/boot/web/servlet/server/AbstractServletWebServerFactory$SessionConfiguringInitializer
+instanceKlass org/springframework/boot/web/servlet/server/AbstractServletWebServerFactory$$Lambda$343
+instanceKlass org/springframework/boot/web/embedded/tomcat/TomcatServletWebServerFactory$StaticResourceConfigurer
+instanceKlass org/apache/catalina/core/StandardWrapperFacade
+instanceKlass java/util/EventListenerProxy
+instanceKlass org/apache/tomcat/util/security/PermissionCheck
+instanceKlass org/apache/juli/WebappProperties
+instanceKlass org/apache/tomcat/InstrumentableClassLoader
+instanceKlass org/apache/tomcat/util/scan/StandardJarScanner
+instanceKlass org/apache/tomcat/util/scan/StandardJarScanFilter
+instanceKlass org/springframework/boot/web/embedded/tomcat/TomcatServletWebServerFactory$$Lambda$342
+instanceKlass org/apache/catalina/util/CharsetMapper
+instanceKlass org/apache/catalina/startup/Tomcat$FixContextListener
+instanceKlass org/apache/catalina/util/URLEncoder
+instanceKlass org/apache/catalina/core/StandardContext$ContextFilterMaps
+instanceKlass org/apache/catalina/util/ErrorPageSupport
+instanceKlass org/apache/tomcat/util/descriptor/web/XmlEncodingBase
+instanceKlass org/apache/tomcat/util/descriptor/web/ApplicationParameter
+instanceKlass org/apache/catalina/core/StandardContext$1
+instanceKlass org/apache/catalina/SessionIdGenerator
+instanceKlass org/apache/tomcat/InstanceManager
+instanceKlass org/apache/tomcat/JarScanner
+instanceKlass org/apache/tomcat/util/http/CookieProcessor
+instanceKlass org/apache/catalina/ThreadBindingListener
+instanceKlass org/apache/catalina/Globals
+instanceKlass org/apache/catalina/realm/RealmBase$AllRolesMode
+instanceKlass org/apache/catalina/realm/DigestCredentialHandlerBase
+instanceKlass org/apache/catalina/realm/X509UsernameRetriever
+instanceKlass org/apache/catalina/CredentialHandler
+instanceKlass org/apache/catalina/AccessLog
+instanceKlass org/apache/catalina/Pipeline
+instanceKlass org/apache/tomcat/util/threads/LimitLatch
+instanceKlass org/springframework/boot/web/embedded/tomcat/CompressionConnectorCustomizer
+instanceKlass org/apache/tomcat/util/net/SocketWrapperBase
+instanceKlass org/apache/tomcat/util/net/SSLImplementation
+instanceKlass org/apache/tomcat/util/buf/CharsetCache
+instanceKlass org/apache/tomcat/util/buf/B2CConverter
+instanceKlass org/apache/coyote/Response
+instanceKlass org/apache/coyote/Request
+instanceKlass org/apache/tomcat/util/net/SSLHostConfig
+instanceKlass org/apache/catalina/ContainerListener
+instanceKlass org/apache/catalina/mapper/Mapper$MapElement
+instanceKlass org/apache/catalina/mapper/Mapper
+instanceKlass org/apache/tomcat/util/file/ConfigFileLoader
+instanceKlass org/apache/catalina/startup/CatalinaBaseConfigurationSource

@@ -54,7 +54,7 @@ public class BookerControllerIntegrationTest extends WebTests {
 
     private ResponseEntity<Report> getReport() {
         ResponseEntity<Report> responseEntity =
-                restTemplate.exchange(createURL("/booker/report"), HttpMethod.GET, entity,
+                restTemplate.exchange(createURL("/booker/report/2019/12"), HttpMethod.GET, entity,
                         new ParameterizedTypeReference<Report>() {
                         });
         return responseEntity;
@@ -69,6 +69,9 @@ public class BookerControllerIntegrationTest extends WebTests {
         report.setGas(new BigDecimal(gas));
         report.setAlcohol(new BigDecimal(drink));
         report.setFood(new BigDecimal(food));
+        report.setMonth("12");
+        report.setYear("2019");
+        report.setProfit(new BigDecimal("176.75"));
         return report;
     }
 

@@ -20,7 +20,8 @@
             ('ddddddd-zxczxc-zxczxc', '25.25', '2019-12-14', 'CREDIT','admin@mail.ru'),
             ('eeeeeee-zxczxc-zxczxc', '25.25', '2019-12-14', 'DRINK','admin@mail.ru'),
             ('fffffff-zxczxc-zxczxc', '25.25', '2019-12-14', 'CLOTHES','admin@mail.ru'),
-            ('xczxcasd-zxczxc-zxczxc', '25.25', '2019-12-14', 'PETS','admin@mail.ru')
+            ('xczxcas-zxczxc-zxczxc', '25.25', '2019-12-14', 'PETS','admin@mail.ru'),
+            ('vbvbvbv-zxczxc-zxczxc', '25.25', '2019-8-14', 'PETS','admin@mail.ru')
         </sql>
     </changeSet>
 </databaseChangeLog>

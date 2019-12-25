@@ -18,6 +18,7 @@ public class Report {
     private BigDecimal profit = DEFAULT_VALUE;
     private String year;
     private String month;
+    private String currentDateTime;
 
     public Report() {
     }
@@ -102,6 +103,14 @@ public class Report {
         this.month = month;
     }
 
+    public String getCurrentDateTime() {
+        return currentDateTime;
+    }
+
+    public void setCurrentDateTime(String currentDateTime) {
+        this.currentDateTime = currentDateTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -122,6 +131,7 @@ public class Report {
                 .append(profit, report.profit)
                 .append(year, report.year)
                 .append(month, report.month)
+                .append(currentDateTime, report.currentDateTime)
                 .isEquals();
     }
 
@@ -139,6 +149,7 @@ public class Report {
                 .append(profit)
                 .append(year)
                 .append(month)
+                .append(currentDateTime)
                 .toHashCode();
     }
 
@@ -156,6 +167,7 @@ public class Report {
                 ", profit=" + profit +
                 ", year='" + year + '\'' +
                 ", month='" + month + '\'' +
+                ", currentDateTime='" + currentDateTime + '\'' +
                 '}';
     }
 }

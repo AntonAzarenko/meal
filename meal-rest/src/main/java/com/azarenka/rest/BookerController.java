@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -37,5 +38,11 @@ public class BookerController {
     public Report getReportOfMonth(@PathVariable("year") String year,
                                    @PathVariable("month") String month) {
         return bookerService.getReport(year, month);
+    }
+
+    @GetMapping(value = "/report", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Report findCurrentReport() {
+        LocalDate date = LocalDate.now();
+        return bookerService.getReport(String.valueOf(date.getYear()), String.valueOf(date.getMonth().ordinal()+1));
     }
 }

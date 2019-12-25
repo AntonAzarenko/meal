@@ -40,4 +40,8 @@ public class TimeUtil {
                 .map(Entry::getKey)
                 .orElse(null);
     }
+
+    public static String getMonth(String year, String month) {
+        return getMonth(LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), 1));
+    }
 }

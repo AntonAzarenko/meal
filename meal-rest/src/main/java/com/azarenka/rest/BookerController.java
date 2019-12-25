@@ -33,8 +33,9 @@ public class BookerController {
         return bookerService.getPriceByCategory(category);
     }
 
-    @GetMapping(value = "/report", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Report getReport() {
-        return bookerService.getReport();
+    @GetMapping(value = "/report/{year}/{month}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Report getReportOfMonth(@PathVariable("year") String year,
+                                   @PathVariable("month") String month) {
+        return bookerService.getReport(year, month);
     }
 }

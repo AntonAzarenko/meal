@@ -12,27 +12,32 @@
     </resultMap>
 
     <select id="getAllByUserEmail" resultMap="booker">
-        SELECT
-               id,
+        SELECT id,
                count_price,
                date,
                type,
                user_email
-        FROM
-             home.bookers
-        WHERE
-            user_email = #{email}
+        FROM home.bookers
+        WHERE user_email = #{email}
+    </select>
+
+    <select id="getAllByEmailAndDate" resultMap="booker">
+        SELECT id,
+               count_price,
+               date,
+               type,
+               user_email
+        FROM home.bookers
+        WHERE user_email = #{email}
+          AND date = #{date}
     </select>
 
     <insert id="save" parameterType="Booker">
-        INSERT INTO
-            home.bookers (id, count_price, date, type, user_email)
-        VALUES (
-                #{id},
+        INSERT INTO home.bookers (id, count_price, date, type, user_email)
+        VALUES (#{id},
                 #{countPrice},
                 #{checkDate},
                 #{type},
-                #{userEmail}
-               )
+                #{userEmail})
     </insert>
 </mapper>

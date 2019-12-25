@@ -3,6 +3,7 @@ package com.azarenka.service.response;
 import com.azarenka.domain.Booker;
 import com.azarenka.domain.CheckType;
 import com.azarenka.service.impl.auth.UserPrinciple;
+import com.azarenka.service.util.ReportConverter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -17,19 +18,9 @@ public class BookerResponse {
     public Booker asBooker(){
         Booker booker = new Booker();
         booker.setCountPrice(new BigDecimal(countPrice));
-        booker.setType(insertType());
+        booker.setType(ReportConverter.getCheckType(type));
         booker.setCheckDate(LocalDate.now());
         return booker;
-    }
-
-    private CheckType insertType(){
-        switch (type) {
-            case  "FOOD": return CheckType.FOOD;
-            case  "DRINK": return CheckType.DRINK;
-            case  "GAS": return CheckType.GAS;
-            case  "CLOTHES": return CheckType.CLOTHES;
-        }
-        return null;
     }
 
     public String getCountPrice() {

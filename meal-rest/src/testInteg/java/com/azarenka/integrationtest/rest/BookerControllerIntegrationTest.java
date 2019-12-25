@@ -2,6 +2,7 @@ package com.azarenka.integrationtest.rest;
 
 import com.azarenka.domain.Report;
 import com.azarenka.service.response.BookerResponse;
+import com.azarenka.service.util.TimeUtil;
 import org.junit.Test;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.core.ParameterizedTypeReference;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 
@@ -69,9 +71,10 @@ public class BookerControllerIntegrationTest extends WebTests {
         report.setGas(new BigDecimal(gas));
         report.setAlcohol(new BigDecimal(drink));
         report.setFood(new BigDecimal(food));
-        report.setMonth("12");
+        report.setMonth(TimeUtil.getMonth(LocalDate.of(2019,12,1)));
         report.setYear("2019");
         report.setProfit(new BigDecimal(profit));
+        report.setCurrentDateTime("2019 12 25");
         return report;
     }
 

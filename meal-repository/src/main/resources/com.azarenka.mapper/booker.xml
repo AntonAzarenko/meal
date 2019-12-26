@@ -9,35 +9,44 @@
         <result column="date" property="checkDate"/>
         <result column="type" property="type"/>
         <result column="user_email" property="userEmail"/>
+        <result column="comment" property="comment"/>
     </resultMap>
 
     <select id="getAllByUserEmail" resultMap="booker">
         SELECT id,
-               count_price,
-               date,
-               type,
-               user_email
-        FROM home.bookers
+            count_price,
+            date,
+            type,
+            user_email,
+            comment
+        FROM
+            home.bookers
         WHERE user_email = #{email}
     </select>
 
     <select id="getAllByEmailAndDate" resultMap="booker">
         SELECT id,
-               count_price,
-               date,
-               type,
-               user_email
-        FROM home.bookers
+           count_price,
+           date,
+           type,
+           user_email,
+           comment
+        FROM
+            home.bookers
         WHERE user_email = #{email}
           AND date = #{date}
     </select>
 
     <insert id="save" parameterType="Booker">
-        INSERT INTO home.bookers (id, count_price, date, type, user_email)
-        VALUES (#{id},
-                #{countPrice},
-                #{checkDate},
-                #{type},
-                #{userEmail})
+        INSERT INTO home.bookers
+            (id, count_price, date, type, user_email, comment)
+        VALUES (
+            #{id},
+            #{countPrice},
+            #{checkDate},
+            #{type},
+            #{userEmail},
+            #{comment}
+        )
     </insert>
 </mapper>

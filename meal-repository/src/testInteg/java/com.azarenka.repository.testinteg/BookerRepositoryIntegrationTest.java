@@ -44,6 +44,7 @@ public class BookerRepositoryIntegrationTest {
         booker.setUserEmail("admin@mail.ru");
         booker.setType(CheckType.GAS);
         booker.setCountPrice(new BigDecimal("25.25"));
+        booker.setComment("comment");
         bookerRepository.save(booker);
         List<Booker> bookers = bookerRepository.getAllByUserEmail("admin@mail.ru");
         assertEquals(2, bookers.size());
@@ -56,6 +57,7 @@ public class BookerRepositoryIntegrationTest {
         booker.setUserEmail("admin@mail.ru");
         booker.setType(CheckType.GAS);
         booker.setCountPrice(new BigDecimal("25.25"));
+        booker.setComment("comment");
         return booker;
     }
 }

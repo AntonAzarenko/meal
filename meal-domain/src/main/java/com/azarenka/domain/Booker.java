@@ -5,7 +5,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Booker extends BaseEntity {
 
@@ -13,8 +12,17 @@ public class Booker extends BaseEntity {
     private LocalDate checkDate;
     private CheckType type;
     private String userEmail;
+    private String comment;
 
     public Booker() {
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public BigDecimal getCountPrice() {
@@ -58,33 +66,36 @@ public class Booker extends BaseEntity {
         Booker booker = (Booker) o;
 
         return new EqualsBuilder()
-                .appendSuper(super.equals(o))
-                .append(countPrice, booker.countPrice)
-                .append(checkDate, booker.checkDate)
-                .append(type, booker.type)
-                .append(userEmail, booker.userEmail)
-                .isEquals();
+            .appendSuper(super.equals(o))
+            .append(countPrice, booker.countPrice)
+            .append(checkDate, booker.checkDate)
+            .append(type, booker.type)
+            .append(userEmail, booker.userEmail)
+            .append(comment, booker.comment)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .appendSuper(super.hashCode())
-                .append(countPrice)
-                .append(checkDate)
-                .append(type)
-                .append(userEmail)
-                .toHashCode();
+            .appendSuper(super.hashCode())
+            .append(countPrice)
+            .append(checkDate)
+            .append(type)
+            .append(userEmail)
+            .append(comment)
+            .toHashCode();
     }
 
     @Override
     public String toString() {
         return "Booker{" +
-                "id=" + getId() +
-                ", countPrice=" + countPrice +
-                ", checkDate=" + checkDate +
-                ", type=" + type +
-                ", userEmail='" + userEmail + '\'' +
-                '}';
+            "id=" + getId() +
+            ", countPrice=" + countPrice +
+            ", checkDate=" + checkDate +
+            ", type=" + type +
+            ", userEmail='" + userEmail + '\'' +
+            ", comment='" + comment + '\'' +
+            '}';
     }
 }

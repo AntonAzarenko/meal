@@ -12,9 +12,9 @@
     <changeSet id="2019-14-12-30" author="Anton Azarenka" runInTransaction="false">
         <sql>
             INSERT INTO home.bookers
-                (id, count_price, date, type, user_email)
+                (id, count_price, date, type, user_email, comment)
             VALUES
-            ('zzxcxcc-zxczxc-zxczxc', '25.25', '2019-12-14', 'GAS','admin@mail.ru')
+            ('zzxcxcc-zxczxc-zxczxc', '25.25', '2019-12-14', 'GAS','admin@mail.ru', 'comment')
         </sql>
     </changeSet>
 </databaseChangeLog>

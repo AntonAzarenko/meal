@@ -1,8 +1,6 @@
 package com.azarenka.service.response;
 
 import com.azarenka.domain.Booker;
-import com.azarenka.domain.CheckType;
-import com.azarenka.service.impl.auth.UserPrinciple;
 import com.azarenka.service.util.ReportConverter;
 
 import java.math.BigDecimal;
@@ -14,13 +12,23 @@ public class BookerResponse {
     private LocalDate checkDate;
     private String type;
     private String userEmail;
+    private String comment;
 
     public Booker asBooker(){
         Booker booker = new Booker();
         booker.setCountPrice(new BigDecimal(countPrice));
         booker.setType(ReportConverter.getCheckType(type));
         booker.setCheckDate(LocalDate.now());
+        booker.setComment(comment);
         return booker;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getCountPrice() {

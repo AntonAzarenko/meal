@@ -12,16 +12,16 @@
     <changeSet id="2019-14-12-30" author="Anton Azarenka" runInTransaction="false">
         <sql>
             INSERT INTO home.bookers
-            (id, count_price, date, type, user_email)
+            (id, count_price, date, type, user_email, comment)
             VALUES
-            ('aaaaaaa-zxczxc-zxczxc', '25.25', '2019-12-14', 'GAS','admin@mail.ru'),
-            ('bbbbbbb-zxczxc-zxczxc', '25.25', '2019-12-14', 'FOOD','admin@mail.ru'),
-            ('ccccccc-zxczxc-zxczxc', '25.25', '2019-12-14', 'HOME','admin@mail.ru'),
-            ('ddddddd-zxczxc-zxczxc', '25.25', '2019-12-14', 'CREDIT','admin@mail.ru'),
-            ('eeeeeee-zxczxc-zxczxc', '25.25', '2019-12-14', 'DRINK','admin@mail.ru'),
-            ('fffffff-zxczxc-zxczxc', '25.25', '2019-12-14', 'CLOTHES','admin@mail.ru'),
-            ('xczxcas-zxczxc-zxczxc', '25.25', '2019-12-14', 'PETS','admin@mail.ru'),
-            ('vbvbvbv-zxczxc-zxczxc', '25.25', '2019-08-14', 'PETS','admin@mail.ru')
+            ('aaaaaaa-zxczxc-zxczxc', '25.25', '2019-12-14', 'GAS','admin@mail.ru', 'comment'),
+            ('bbbbbbb-zxczxc-zxczxc', '25.25', '2019-12-14', 'FOOD','admin@mail.ru', 'comment'),
+            ('ccccccc-zxczxc-zxczxc', '25.25', '2019-12-14', 'HOME','admin@mail.ru', 'comment'),
+            ('ddddddd-zxczxc-zxczxc', '25.25', '2019-12-14', 'CREDIT','admin@mail.ru', 'comment'),
+            ('eeeeeee-zxczxc-zxczxc', '25.25', '2019-12-14', 'DRINK','admin@mail.ru', 'comment'),
+            ('fffffff-zxczxc-zxczxc', '25.25', '2019-12-14', 'CLOTHES','admin@mail.ru', 'comment'),
+            ('xczxcas-zxczxc-zxczxc', '25.25', '2019-12-14', 'PETS','admin@mail.ru', 'comment'),
+            ('vbvbvbv-zxczxc-zxczxc', '25.25', '2019-08-14', 'PETS','admin@mail.ru', 'comment')
         </sql>
     </changeSet>
 </databaseChangeLog>

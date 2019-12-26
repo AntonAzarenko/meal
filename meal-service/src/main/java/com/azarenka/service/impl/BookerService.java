@@ -100,7 +100,7 @@ public class BookerService implements IBookerService {
     private Map<CheckType, BigDecimal> convertAllBookersToMap(List<Booker> all) {
         Map<CheckType, BigDecimal> map = new HashMap<>();
         all.forEach(element -> {
-            map.merge(element.getType(), element.getCountPrice(), (old, neW) -> old.add(neW));
+            map.merge(element.getType(), element.getCountPrice(), BigDecimal::add);
         });
         return map;
     }

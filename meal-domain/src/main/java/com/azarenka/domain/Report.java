@@ -120,54 +120,54 @@ public class Report {
         Report report = (Report) o;
 
         return new EqualsBuilder()
-                .append(DEFAULT_VALUE, report.DEFAULT_VALUE)
-                .append(food, report.food)
-                .append(gas, report.gas)
-                .append(alcohol, report.alcohol)
-                .append(clothes, report.clothes)
-                .append(credit, report.credit)
-                .append(pets, report.pets)
-                .append(home, report.home)
-                .append(profit, report.profit)
-                .append(year, report.year)
-                .append(month, report.month)
-                .append(currentDateTime, report.currentDateTime)
-                .isEquals();
+            .append(DEFAULT_VALUE, report.DEFAULT_VALUE)
+            .append(food, report.food)
+            .append(gas, report.gas)
+            .append(alcohol, report.alcohol)
+            .append(clothes, report.clothes)
+            .append(credit, report.credit)
+            .append(pets, report.pets)
+            .append(home, report.home)
+            .append(profit, report.profit)
+            .append(year, report.year)
+            .append(month, report.month)
+            .append(currentDateTime, report.currentDateTime)
+            .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(DEFAULT_VALUE)
-                .append(food)
-                .append(gas)
-                .append(alcohol)
-                .append(clothes)
-                .append(credit)
-                .append(pets)
-                .append(home)
-                .append(profit)
-                .append(year)
-                .append(month)
-                .append(currentDateTime)
-                .toHashCode();
+            .append(DEFAULT_VALUE)
+            .append(food)
+            .append(gas)
+            .append(alcohol)
+            .append(clothes)
+            .append(credit)
+            .append(pets)
+            .append(home)
+            .append(profit)
+            .append(year)
+            .append(month)
+            .append(currentDateTime)
+            .toHashCode();
     }
 
     @Override
     public String toString() {
         return "Report{" +
-                "DEFAULT_VALUE=" + DEFAULT_VALUE +
-                ", food=" + food +
-                ", gas=" + gas +
-                ", alcohol=" + alcohol +
-                ", clothes=" + clothes +
-                ", credit=" + credit +
-                ", pets=" + pets +
-                ", home=" + home +
-                ", profit=" + profit +
-                ", year='" + year + '\'' +
-                ", month='" + month + '\'' +
-                ", currentDateTime='" + currentDateTime + '\'' +
-                '}';
+            "DEFAULT_VALUE=" + DEFAULT_VALUE +
+            ", food=" + food +
+            ", gas=" + gas +
+            ", alcohol=" + alcohol +
+            ", clothes=" + clothes +
+            ", credit=" + credit +
+            ", pets=" + pets +
+            ", home=" + home +
+            ", profit=" + profit +
+            ", year='" + year + '\'' +
+            ", month='" + month + '\'' +
+            ", currentDateTime='" + currentDateTime + '\'' +
+            '}';
     }
 }

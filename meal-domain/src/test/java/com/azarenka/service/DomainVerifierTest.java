@@ -1,12 +1,7 @@
 package com.azarenka.service;
 
 
-import com.azarenka.domain.BaseEntity;
-import com.azarenka.domain.Day;
-import com.azarenka.domain.Food;
-import com.azarenka.domain.Meal;
-import com.azarenka.domain.Menu;
-import com.azarenka.domain.User;
+import com.azarenka.domain.*;
 
 import org.junit.Test;
 
@@ -29,12 +24,14 @@ public class DomainVerifierTest {
     @Test
     public void testPojoStructureAndBehavior() {
         TestUtils.testPojoStructureAndBehavior(
-            Arrays.asList(Day.class, BaseEntity.class, Food.class, Meal.class, Menu.class, User.class));
+            Arrays.asList(Day.class, BaseEntity.class, Food.class, Meal.class, Menu.class, User.class, Booker.class,
+                    Filter.class, Report.class));
     }
 
     @Test
     public void testEquals() {
-        Arrays.asList(Day.class, BaseEntity.class, Food.class, Meal.class, Menu.class, User.class)
+        Arrays.asList(Day.class, BaseEntity.class, Food.class, Meal.class, Menu.class, User.class, Booker.class,
+                Filter.class, Report.class)
             .forEach(
                 clazz -> EqualsVerifier.forClass(clazz).suppress(Warning.NONFINAL_FIELDS).usingGetClass().verify());
     }

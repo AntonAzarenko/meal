@@ -11,51 +11,52 @@
         <result column="protein" property="protein"/>
         <result column="fats" property="fats"/>
         <result column="carbohydrates" property="carbohydrates"/>
-        <result  property="measurement" column="content" javaType="com.azarenka.domain.Measurement"/>
+        <result property="measurement" column="content" javaType="com.azarenka.domain.Measurement"/>
     </resultMap>
 
     <select id="findAll" resultMap="food">
-        SELECT
-            id,
-            title,
-            weight,
-            calories,
-            protein,
-            fats,
-            carbohydrates,
-            content
+        SELECT id,
+               title,
+               weight,
+               calories,
+               protein,
+               fats,
+               carbohydrates,
+               content
         FROM home.foods
     </select>
 
     <select id="findFoodById" resultMap="food">
-        SELECT
-            id,
-            title,
-            weight,
-            calories,
-            protein,
-            fats,
-            carbohydrates,
-            content
-        FROM
-            home.foods
-        WHERE
-            id=#{foodId}
+        SELECT id,
+               title,
+               weight,
+               calories,
+               protein,
+               fats,
+               carbohydrates,
+               content
+        FROM home.foods
+        WHERE id = #{foodId}
     </select>
 
     <select id="findFoodByName" resultMap="food">
-        SELECT
-            id,
-            title,
-            weight,
-            calories,
-            protein,
-            fats,
-            carbohydrates,
-            content
-        FROM
-            home.foods
-        WHERE
-            title=#{foodName}
+        SELECT id,
+               title,
+               weight,
+               calories,
+               protein,
+               fats,
+               carbohydrates,
+               content
+        FROM home.foods
+        WHERE title = #{foodName}
+    </select>
+
+    <select id="findAllByFilter" parameterType="Filter" resultMap="food">
+        SELECT *
+        FROM home.foods
+        WHERE carbohydrates = #{carbohydrates}
+        AND fats = #{fats}
+        AND protein = #{protein}
     </select>
 </mapper>

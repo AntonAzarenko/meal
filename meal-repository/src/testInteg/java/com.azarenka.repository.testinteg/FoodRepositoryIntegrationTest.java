@@ -1,5 +1,6 @@
 package com.azarenka.repository.testinteg;
 
+import com.azarenka.domain.Filter;
 import com.azarenka.domain.Food;
 import com.azarenka.domain.Measurement;
 import com.azarenka.repository.FoodRepository;
@@ -20,6 +21,22 @@ public class FoodRepositoryIntegrationTest {
 
     @Autowired
     private FoodRepository foodRepository;
+
+    @Test
+    public void testGetAllByFilter() {
+        Filter filter = buildFilter(0, 1, 0);
+        List<Food> foodList = foodRepository.findAllByFilter(filter);
+        foodList.forEach(System.out::println);
+        assertEquals(4, foodList.size());
+        filter = buildFilter(1, 0, 0);
+        foodList = foodRepository.findAllByFilter(filter);
+        foodList.forEach(System.out::println);
+        assertEquals(3, foodList.size());
+        filter = buildFilter(0, 0, 1);
+        foodList = foodRepository.findAllByFilter(filter);
+        foodList.forEach(System.out::println);
+        assertEquals(3, foodList.size());
+    }
 
     @Test
     public void testGetAll() {
@@ -51,5 +68,13 @@ public class FoodRepositoryIntegrationTest {
         food.setWeight(1);
         food.setMeasurement(Measurement.THINGS);
         return food;
+    }
+
+    private Filter buildFilter(int fats, int carbohydrates, int protein) {
+        Filter filter = new Filter();
+        filter.setCarbohydrates(carbohydrates);
+        filter.setProtein(protein);
+        filter.setFats(fats);
+        return filter;
     }
 }

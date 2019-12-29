@@ -21,14 +21,14 @@ public class MealRepositoryIntegrationTest {
     private MealRepository mealRepository;
 
     @Test
-    public void testGetAll(){
+    public void testGetAll() {
         List<Meal> meals = mealRepository.getAll();
         assertNotNull(meals);
         assertEquals(4, meals.size());
     }
 
     @Test
-    public void testGetById(){
+    public void testGetById() {
         Meal meal = new Meal();
         meal.setId("a7d51fe2-9e6d-49cb-bd54-1b24ff1d9c08 ");
         meal.setMeal("Breakfast");
@@ -36,7 +36,7 @@ public class MealRepositoryIntegrationTest {
     }
 
     @Test
-    public void testfindMaalByName(){
+    public void testfindMaalByName() {
         Meal meal = new Meal();
         meal.setId("a7d51fe2-9e6d-49cb-bd54-1b24ff1d9c08 ");
         meal.setMeal("Breakfast");

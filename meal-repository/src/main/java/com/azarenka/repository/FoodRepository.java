@@ -1,5 +1,6 @@
 package com.azarenka.repository;
 
+import com.azarenka.domain.Filter;
 import com.azarenka.domain.Food;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -36,4 +37,11 @@ public interface FoodRepository {
      * @return name of food
      */
     Food findFoodByName(@Param("foodName") String foodName);
+
+    /**
+     * Returns all food by filter
+     *
+     * @param filter filter
+     */
+    List<Food> findAllByFilter(Filter filter);
 }

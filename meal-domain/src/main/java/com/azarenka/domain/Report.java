@@ -20,6 +20,14 @@ public class Report {
     private String month;
     private String currentDateTime;
 
+    public BigDecimal getDEFAULT_VALUE() {
+        return DEFAULT_VALUE;
+    }
+
+    public void setDEFAULT_VALUE(BigDecimal DEFAULT_VALUE) {
+        this.DEFAULT_VALUE = DEFAULT_VALUE;
+    }
+
     public Report() {
     }
 

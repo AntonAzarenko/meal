@@ -5,9 +5,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Filter {
 
-    private Integer fats;
-    private Integer protein;
-    private Integer carbohydrates;
+    private Integer fats = 0;
+    private Integer protein = 0;
+    private Integer carbohydrates = 0;
 
     public Filter() {
     }

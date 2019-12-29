@@ -1,5 +1,6 @@
 package com.azarenka.integrationtest.rest;
 
+import com.azarenka.domain.Filter;
 import com.azarenka.domain.Report;
 import com.azarenka.service.response.BookerResponse;
 import com.azarenka.service.util.TimeUtil;
@@ -50,8 +51,7 @@ public class BookerControllerIntegrationTest extends WebTests {
 
     private void sendDataToController(BookerResponse booker) {
         HttpEntity<BookerResponse> request = new HttpEntity<>(booker, headers);
-        restTemplate.postForObject(createURL("/booker/"),
-                request, BookerResponse.class);
+        restTemplate.postForObject(createURL("/booker/"), request, BookerResponse.class);
     }
 
     private ResponseEntity<Report> getReport() {
@@ -71,7 +71,7 @@ public class BookerControllerIntegrationTest extends WebTests {
         report.setGas(new BigDecimal(gas));
         report.setAlcohol(new BigDecimal(drink));
         report.setFood(new BigDecimal(food));
-        report.setMonth(TimeUtil.getMonth(LocalDate.of(2019,12,1)));
+        report.setMonth(TimeUtil.getMonth(LocalDate.of(2019, 12, 1)));
         report.setYear("2019");
         report.setProfit(new BigDecimal(profit));
         report.setCurrentDateTime("2019 12 25");

@@ -1,5 +1,6 @@
 package com.azarenka.service.api;
 
+import com.azarenka.domain.Filter;
 import com.azarenka.domain.Food;
 import com.azarenka.service.response.FoodResponse;
 
@@ -20,4 +21,14 @@ public interface FoodService {
      * Gets all food.
      */
     List<FoodResponse> getFoods();
+
+    /**
+     * Returns all food by filter.
+     *
+     * @param filter filter
+     * @return list of food.
+     */
+    List<FoodResponse> getFoods(Filter filter);
+
+
 }

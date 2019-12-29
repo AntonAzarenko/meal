@@ -2,14 +2,19 @@ package com.azarenka.integrationtest.rest;
 
 import static org.junit.Assert.assertEquals;
 
+import com.azarenka.domain.Filter;
+import com.azarenka.service.response.BookerResponse;
 import com.azarenka.service.response.FoodResponse;
 
 import org.junit.Test;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,7 +44,6 @@ public class FoodControllerIntegrationTest extends WebTests {
     }
 
     private void assertFoodResponse(FoodResponse expected, FoodResponse actual) {
-        //assertEquals(expected.getId(), actual.getId());
         assertEquals(expected.getCalories(), actual.getCalories());
         assertEquals(expected.getDescription(), actual.getDescription());
         assertEquals(expected.getTitle(), actual.getTitle());

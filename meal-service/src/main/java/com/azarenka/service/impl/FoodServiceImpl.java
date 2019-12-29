@@ -1,10 +1,9 @@
 package com.azarenka.service.impl;
 
-import com.azarenka.domain.Food;
+import com.azarenka.domain.Filter;
 import com.azarenka.repository.FoodRepository;
 import com.azarenka.service.api.FoodService;
 import com.azarenka.service.response.FoodResponse;
-
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -28,7 +27,19 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public List<FoodResponse> getFoods() {
-        List<Food> foods = foodRepository.findAll();
-        return foods.stream().map(FoodResponse::new).collect(Collectors.toList());
+        return foodRepository
+                .findAll()
+                .stream()
+                .map(FoodResponse::new)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FoodResponse> getFoods(Filter filter) {
+        return foodRepository
+                .findAllByFilter(filter)
+                .stream()
+                .map(FoodResponse::new)
+                .collect(Collectors.toList());
     }
 }

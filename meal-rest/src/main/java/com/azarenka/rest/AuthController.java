@@ -49,6 +49,7 @@ public class AuthController {
     public AuthController() {
     }
 
+    @PreAuthorize(value = "@userEvaluator.checkActivate(#loginRequest)")
     @PostMapping(value = "/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
         LOGGER.error(loginRequest.toString());
@@ -72,11 +73,9 @@ public class AuthController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/activate/{code}")
     public String activate(Model model, @PathVariable("code") String code) {
-        if (userService.isActivate(code)) {
-            model.addAttribute("message", "Activate successfully");
+        if (userService.activating(code)) {
+            return "<a href=\"http://localhost:4200/login\">Вы успешно зарегистрированы.</a>";
         }
-        model.addAttribute("message", "Error");
-        return "landingPage";
+        return "Данный активационный код не найден";
     }
-
 }

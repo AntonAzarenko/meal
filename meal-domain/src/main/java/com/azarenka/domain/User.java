@@ -24,7 +24,7 @@ public class User extends BaseEntity {
     private Set<Role> roles;
     private String avatar;
     private String activateCode;
-    private LocalDateTime registrationDate;
+    private LocalDateTime registrationDate = LocalDateTime.now();
 
     public User(String id, String email, String password) {
         this.setId(id);

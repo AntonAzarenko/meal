@@ -41,7 +41,9 @@
 
     <update id="update">
         UPDATE home.users
-        SET enabled = #{enabled}
+        SET
+            enabled = #{enabled},
+            activate_code = 'ACTIVATED'
         WHERE home.users.id = #{id}
     </update>
 

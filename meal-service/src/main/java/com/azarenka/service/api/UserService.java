@@ -34,5 +34,5 @@ public interface UserService {
      *
      * @param code code.
      */
-    boolean isActivate(String code);
+    boolean activating(String code);
 }

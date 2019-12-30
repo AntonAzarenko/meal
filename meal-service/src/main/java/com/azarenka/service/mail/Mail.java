@@ -1,29 +1,65 @@
 package com.azarenka.service.mail;
 
 import com.azarenka.service.impl.UserServiceImpl;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+
+import javax.annotation.Resource;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import java.io.IOException;
 
 
+@Component
 public class Mail {
+
     private final static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+    @Value("${mail.username}")
+    private String username;
 
+    @Autowired
+    private JavaMailSender javaMailSender;
+    @Resource
+    private Configuration freemarkerConfig;
 
-    private JavaMailSender javaMailSender = new JavaMailSenderImpl();
+    @Transactional
+    public void sendMessage(SendMessage sendMessage) {
+        try {
+            LOGGER.info("Send mail to {}", "//TODO");
+            MailType mailType = sendMessage.getMailType();
+            MimeMessage message = javaMailSender.createMimeMessage();
+            freemarkerConfig.setClassForTemplateLoading(getClass(), ServiceConfigurations.BASE_PACKAGE_PATH);
+            Template template = freemarkerConfig.getTemplate(mailType.getTemplateFilename());
+            String body = FreeMarkerTemplateUtils.processTemplateIntoString(template, sendMessage.getData());
+            MimeMessageHelper helper = new MimeMessageHelper(message);
+            String sender = sendMessage.getSender();
+            if (StringUtils.isNotBlank(sender)) {
+                helper.setCc(sender);
+            }
+            helper.setFrom(username);
+            helper.setTo(sendMessage.getRecipient());
+            helper.setSubject(mailType.getSubject());
+            helper.setText(body, true);
 
-    private SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-
-    public static String REGISTRATION_MASSAGE = "Вам пришло это писмо так как вы зарегистрировались в программе HEALTH FOOD";
-
-    public void sendMessage(String login, String title, String message) {
-        LOGGER.info("Send mail to {}", login);
-        simpleMailMessage.setTo(login);
-        simpleMailMessage.setText(REGISTRATION_MASSAGE + message);
-        javaMailSender.send(simpleMailMessage);
+            javaMailSender.send(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TemplateException e) {
+            e.printStackTrace();
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
+
 }

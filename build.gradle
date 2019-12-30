@@ -70,6 +70,7 @@ sourceSets {
 
 dependencies {
     implementation project(':meal-rest')
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation "org.springframework.boot:spring-boot-parent:${springBootVersion}"
     testCompile group: 'junit', name: 'junit', version: '4.12'

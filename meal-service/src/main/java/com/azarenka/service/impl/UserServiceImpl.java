@@ -8,14 +8,21 @@ import com.azarenka.repository.UserRepository;
 import com.azarenka.repository.UsersRoleMapRepository;
 import com.azarenka.service.api.UserService;
 import com.azarenka.service.mail.Mail;
+import com.azarenka.service.mail.MailType;
+import com.azarenka.service.mail.SendMessage;
 import com.azarenka.service.util.KeyGenerator;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * User service implementation.
@@ -30,16 +37,18 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+    private final String MAIL_SUBJECT = "activate code";
+
     @Autowired
     private BCryptPasswordEncoder encoder;
     @Autowired
     private UserRepository repository;
     @Autowired
     private UsersRoleMapRepository roleMapRepository;
-   /* @Autowired
-    private Mail mail;*/
-    //@Value("${mail.url}")
-    private String url;
+    @Autowired
+    private Mail mail;
+    @Value("${mail.url}")
+    private String CONFIRM_USER_CODE;
 
     @Override
     @Transactional
@@ -51,9 +60,10 @@ public class UserServiceImpl implements UserService {
             repository.save(user);
             String roleId = roleMapRepository.getIdByRole(Role.ROLE_USER.name());
             roleMapRepository.saveRole(user.getId(), roleId);
-            String message = String.format("Hello %s. Please activate your account for Health Food. %s %s",
-                    user.getName(), url, user.getActivateCode());
-           // mail.sendMessage(registrationUser.getUsername(), Mail.REGISTRATION_MASSAGE, message);
+            String message = String.format("Привет %s. Вам нушно пройти по ссылке ниже что-бы активировать аккаунт." +
+                            "В противном случае через 3 дня он будет удален.: \n %s%s",
+                    user.getName(), CONFIRM_USER_CODE, user.getActivateCode());
+           sendMessage(CONFIRM_USER_CODE, user.getEmail(), user.getActivateCode());
         } catch (Exception e) {
             LOGGER.info("Mail hasn't been send {} {}", registrationUser.getUsername(), e.getMessage());
         }
@@ -65,8 +75,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean isActivate(String code) {
-        LOGGER.info("isActivate....");
+    public boolean activating(String code) {
+        LOGGER.info("activating....");
         User user = repository.getByActivateCode(code);
         if (null == user) {
             return false;
@@ -87,6 +97,20 @@ public class UserServiceImpl implements UserService {
         user.setName(registrationUser.getName());
         user.setActivateCode(KeyGenerator.generateUuid());
         return user;
+    }
+
+    private void sendMessage(String uri, String login, String code) {
+        SendMessage sendMessage = new SendMessage(login, MailType.REGISTER_CONFIRMATION,
+                buildMessageData(uri, login, code));
+        mail.sendMessage(sendMessage);
+    }
+
+    private static Map<String, String> buildMessageData(String uri, String login, String code) {
+        Map<String, String> data = new HashMap<>();
+        int endIndex = StringUtils.ordinalIndexOf(uri, "/", 3);
+        data.put("uri", endIndex < 0 ? uri : uri.substring(0, endIndex));
+        data.put("link", String.format(uri + code));
+        return data;
     }
 
     public static void main(String[] args) {

@@ -22,7 +22,7 @@
         <sql>
             INSERT INTO home.users
             (id, email, password, enabled, name, avatar, activate_code, date_registration) VALUES
-            ('4993f33d-cd83-4b87-a4d4-57a11e65aa9b', 'admin@mail.ru', '$2a$10$CMlWCk5kBkMPSuJJC421A.OfgPXA07wS46EmsMhNr3crHA049Zz4a', true, 'admin', '', 'active','2019-09-22')
+            ('4993f33d-cd83-4b87-a4d4-57a11e65aa9b', 'admin@mail.ru', '$2a$10$CMlWCk5kBkMPSuJJC421A.OfgPXA07wS46EmsMhNr3crHA049Zz4a', true, 'admin', '', 'ACTIVATED','2019-09-22')
         </sql>
     </changeSet>
 

@@ -1,12 +1,12 @@
 package com.azarenka.service.evaluator;
 
 import com.azarenka.domain.User;
+import com.azarenka.domain.auth.LoginForm;
 import com.azarenka.domain.auth.SignUpForm;
 import com.azarenka.repository.UserRepository;
+import com.azarenka.service.exeptions.AuthException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.naming.AuthenticationException;
 
 @Component("userEvaluator")
 public class UserEvaluator {
@@ -17,12 +17,19 @@ public class UserEvaluator {
     public UserEvaluator() {
     }
 
-    public boolean check(SignUpForm registrationUser) throws AuthenticationException {
+    public boolean check(SignUpForm registrationUser) {
         User user = repository.getByEmail(registrationUser.getUsername());
         if (null == user) {
             return true;
         }
+        return false;
+    }
 
-        throw new AuthenticationException("User already exist");
+    public boolean checkActivate(LoginForm loginForm){
+        User user = repository.getByEmail(loginForm.getUsername());
+        if(user.getActivateCode().equals("ACTIVATED")){
+            return true;
+        }
+        throw  new AuthException(String.format("Пользователь %s не прошел активацию.", user.getEmail()));
     }
 }

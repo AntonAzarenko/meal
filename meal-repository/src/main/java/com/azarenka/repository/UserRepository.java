@@ -4,6 +4,7 @@ import com.azarenka.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -54,4 +55,11 @@ public interface UserRepository {
      * @param enabled true or false.
      */
     void update(@Param("id") String id, @Param("enabled") boolean enabled);
+
+    /**
+     * This method take all users for send email.
+     *
+     * @return users {@link User}
+     */
+    List<User> getAll();
 }

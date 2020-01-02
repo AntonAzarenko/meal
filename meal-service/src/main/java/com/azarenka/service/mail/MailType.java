@@ -2,7 +2,8 @@ package com.azarenka.service.mail;
 
 public enum MailType {
 
-    REGISTER_CONFIRMATION("registerConfirmationTemplate.ftl", "Register confirmation");
+    REGISTER_CONFIRMATION("registerConfirmationTemplate.ftl", "Register confirmation"),
+    MAILING("mailingTemplate.ftl", "Update MealUI");
 
     private String templateFilename;
     private String subject;

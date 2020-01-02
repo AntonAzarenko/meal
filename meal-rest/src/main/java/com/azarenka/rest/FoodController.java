@@ -2,11 +2,9 @@ package com.azarenka.rest;
 
 import com.azarenka.domain.Filter;
 import com.azarenka.service.api.FoodService;
-import com.azarenka.service.api.UserService;
 import com.azarenka.service.response.FoodResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,7 +45,7 @@ public class FoodController {
      * @param filter filter Filter.class
      * @return list of food response
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<FoodResponse> getAllFoodsByFilter(@RequestBody Filter filter) {
         return foodService.getFoods(filter);
     }

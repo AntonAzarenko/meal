@@ -36,6 +36,18 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public List<FoodResponse> getFoods(Filter filter) {
+        if (filter.getCarbohydrates() == 1
+                && filter.getFats() == 1
+                && filter.getProtein() == 1
+                || filter.getCarbohydrates() == 0
+                && filter.getFats() == 0
+                && filter.getProtein() == 0) {
+            return foodRepository
+                    .findAll()
+                    .stream()
+                    .map(FoodResponse::new)
+                    .collect(Collectors.toList());
+        }
         return foodRepository
                 .findAllByFilter(filter)
                 .stream()

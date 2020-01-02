@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -12,8 +13,13 @@ import java.util.Map.Entry;
 @Component
 public class TimeUtil {
 
-
+    public static final String DATE_TIME_PATTERN = "yyyy-MM-dd";
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(DATE_TIME_PATTERN);
     private static final Map<String, Month> months = new HashMap<>();
+
+    public static String timeToString(LocalDate ldt) {
+        return ldt == null ? "" : ldt.format(DATE_TIME_FORMATTER);
+    }
 
     @PostConstruct
     public void init() {

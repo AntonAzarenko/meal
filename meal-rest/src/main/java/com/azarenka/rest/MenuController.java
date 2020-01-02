@@ -33,14 +33,21 @@ public class MenuController {
     private MenuService menuService;
 
     @PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> save(@RequestBody MenuResponse menuResponse) {
+    public ResponseEntity<?> save(@RequestBody List<MenuResponse> menuResponse) {
         menuService.save(menuResponse);
         return new ResponseEntity<>(new ResponseMessage("Food was added to menu"), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MenuResponse> getMenuByName(@PathVariable("name") String name) {
-        return menuService.getMenuByName(name);
+    public List<MenuResponse> getMenuByName(@PathVariable("name") String menuTitle) {
+        return menuService.getMenuByName(menuTitle);
+    }
+
+    @GetMapping(value = "/{name}/{day}/{time}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<MenuResponse> getMenuByNameAndDay(@PathVariable("name") String menuTitle,
+                                                  @PathVariable("day") String day,
+                                                  @PathVariable("time") String time) {
+        return menuService.getMenuByName(menuTitle, day,time);
     }
 
     @GetMapping(value = "/findallMenu", produces = MediaType.APPLICATION_JSON_VALUE)

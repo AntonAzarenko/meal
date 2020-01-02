@@ -1,11 +1,5 @@
 package com.azarenka.service.impl;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.powermock.api.mockito.PowerMockito.mockStatic;
-
 import com.azarenka.domain.Day;
 import com.azarenka.domain.Food;
 import com.azarenka.domain.Meal;
@@ -16,7 +10,6 @@ import com.azarenka.repository.MealRepository;
 import com.azarenka.repository.MenuRepository;
 import com.azarenka.service.impl.auth.UserPrinciple;
 import com.azarenka.service.response.MenuResponse;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -25,6 +18,10 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.util.Collections;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({UserPrinciple.class})
@@ -63,7 +60,7 @@ public class MenuServiceImplTest {
         when(userPrinciple.getId()).thenReturn("user id");
         when(userPrinciple.getUsername()).thenReturn("username");
         doNothing().when(repository).save(any(Menu.class));
-        menuService.save(buildMenuResponse());
+        menuService.save(Collections.singletonList(buildMenuResponse()));
         verify(dayRepository).findDayByName("Monday");
         verify(mealRepository).findByName("Breakfast");
         verify(foodRepository).findFoodByName("Мандарин");

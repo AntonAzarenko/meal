@@ -6,8 +6,9 @@ import com.azarenka.domain.Report;
 import com.azarenka.repository.BookerRepository;
 import com.azarenka.service.api.IBookerService;
 import com.azarenka.service.impl.auth.UserPrinciple;
+import com.azarenka.service.response.OutComeResponse;
 import com.azarenka.service.util.KeyGenerator;
-import com.azarenka.service.util.ReportConverter;
+import com.azarenka.service.util.TypeConverter;
 import com.azarenka.service.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +47,7 @@ public class BookerService implements IBookerService {
         List<Booker> all = bookerRepository.getAllByUserEmail(userEmail);
         BigDecimal price = BigDecimal.ZERO;
         for (Booker element : all) {
-            if (element.getType().equals(ReportConverter.getCheckType(category))) {
+            if (element.getType().equals(TypeConverter.getCheckType(category))) {
                 price = price.add(element.getCountPrice());
             }
         }
@@ -58,6 +59,29 @@ public class BookerService implements IBookerService {
     public Report getReport(String year, String month) {
         List<LocalDate> dates = createAllDates(year, month);
         List<Booker> allBookers = bookerRepository.getAllByUserEmail(UserPrinciple.safeGet().getUsername());
+        List<Booker> filteredBookers = filterToDate(allBookers, dates);
+        Map<CheckType, BigDecimal> checkTypeBigDecimalMap = convertAllBookersToMap(filteredBookers);
+        Report report = new Report();
+        checkTypeBigDecimalMap.forEach((k, v) -> TypeConverter.setField(k, v, report));
+        report.setYear(year);
+        report.setProfit(countProfit(report));
+        report.setMonth(TimeUtil.getMonth(year, month));
+        report.setCurrentDateTime(year + " " + month + " " + "25");
+        return report;
+    }
+
+    @Override
+    public List<OutComeResponse> getOutcome(String year, String month) {
+        List<LocalDate> dates = createAllDates(year, month);
+        List<Booker> allBookers = getByUserEmail();
+        List<Booker> filteredBookers = filterToDate(allBookers, dates);
+        return filteredBookers
+                .stream()
+                .map(OutComeResponse::new)
+                .collect(Collectors.toList());
+    }
+
+    private List<Booker> filterToDate(List<Booker> allBookers, List<LocalDate> dates) {
         List<Booker> filteredBookers = new ArrayList<>();
         dates.forEach(date -> {
             filteredBookers.addAll(allBookers
@@ -65,15 +89,7 @@ public class BookerService implements IBookerService {
                     .filter(booker -> booker.getCheckDate().equals(date))
                     .collect(Collectors.toList()));
         });
-        Map<CheckType, BigDecimal> checkTypeBigDecimalMap = convertAllBookersToMap(filteredBookers);
-        Report report = new Report();
-        checkTypeBigDecimalMap.forEach((k, v) -> ReportConverter.setField(k, v, report)
-        );
-        report.setYear(year);
-        report.setProfit(countProfit(report));
-        report.setMonth(TimeUtil.getMonth(year, month));
-        report.setCurrentDateTime(year + " " + month + " " + "25");
-        return report;
+        return filteredBookers;
     }
 
     private BigDecimal countProfit(Report report) {

@@ -60,10 +60,7 @@ public class UserServiceImpl implements UserService {
             repository.save(user);
             String roleId = roleMapRepository.getIdByRole(Role.ROLE_USER.name());
             roleMapRepository.saveRole(user.getId(), roleId);
-            String message = String.format("Привет %s. Вам нушно пройти по ссылке ниже что-бы активировать аккаунт." +
-                            "В противном случае через 3 дня он будет удален.: \n %s%s",
-                    user.getName(), CONFIRM_USER_CODE, user.getActivateCode());
-           sendMessage(CONFIRM_USER_CODE, user.getEmail(), user.getActivateCode());
+            sendMessage(CONFIRM_USER_CODE, user.getEmail(), user.getActivateCode());
         } catch (Exception e) {
             LOGGER.info("Mail hasn't been send {} {}", registrationUser.getUsername(), e.getMessage());
         }

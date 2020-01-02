@@ -84,4 +84,8 @@
             JOIN home.role r ON r.id = rm.role_id
         WHERE home.users.activate_code = #{code}
     </select>
+
+   <!-- <select id="getAll" parameterMap="user">
+        select * from home.users where enabled = true
+    </select>-->
 </mapper>

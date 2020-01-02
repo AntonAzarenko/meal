@@ -74,8 +74,8 @@ public class AuthController {
     @RequestMapping(method = RequestMethod.GET, value = "/activate/{code}")
     public String activate(Model model, @PathVariable("code") String code) {
         if (userService.activating(code)) {
-            return "<a href=\"http://check-meal.herokuapp.com/login\">Вы успешно зарегистрированы.</a>";
+            return "<h1><a href=\"http://check-meal.herokuapp.com/login\">Вы успешно зарегистрированы.</a></h1>";
         }
-        return "Данный активационный код не найден";
+        return "<h1>Данный активационный код не найден</h1>";
     }
 }

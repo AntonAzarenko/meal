@@ -28,7 +28,7 @@ public interface MenuService {
      *
      * @param menuResponse
      */
-    void save(MenuResponse menuResponse);
+    void save(List<MenuResponse> menuResponse);
 
     /**
      * Removes element from menu table by id
@@ -46,6 +46,14 @@ public interface MenuService {
      * @return menu by name
      */
     List<MenuResponse> getMenuByName(String name);
+
+    /**
+     *
+     * @param name
+     * @param day
+     * @return
+     */
+    List<MenuResponse> getMenuByName(String name, String day, String time);
 
     /**
      * @return all menu by user name

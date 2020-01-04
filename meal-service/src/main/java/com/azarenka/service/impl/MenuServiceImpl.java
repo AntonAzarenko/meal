@@ -3,10 +3,7 @@ package com.azarenka.service.impl;
 import com.azarenka.domain.Food;
 import com.azarenka.domain.Measurement;
 import com.azarenka.domain.Menu;
-import com.azarenka.repository.DayRepository;
-import com.azarenka.repository.FoodRepository;
-import com.azarenka.repository.MealRepository;
-import com.azarenka.repository.MenuRepository;
+import com.azarenka.repository.*;
 import com.azarenka.service.api.MenuService;
 import com.azarenka.service.impl.auth.UserPrinciple;
 import com.azarenka.service.response.MenuResponse;
@@ -17,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +35,8 @@ import java.util.stream.Collectors;
 public class MenuServiceImpl implements MenuService{
 
     private final static Logger LOGGER = LoggerFactory.getLogger(MenuServiceImpl.class);
-
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private MenuRepository menuRepository;
     @Autowired
@@ -122,6 +122,20 @@ public class MenuServiceImpl implements MenuService{
     public List<String> getMenuByUsername() {
         String userName = UserPrinciple.safeGet().getUsername();
         return menuRepository.findMenuByUserName(userName);
+    }
+
+    @Override
+    public List<MenuResponse> getCurrentMenu() {
+        LocalDate date = LocalDate.now();
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+        String currentMenu = userRepository.getByEmail(UserPrinciple.safeGet().getEmail()).getCurrentMenu();
+        List<MenuResponse> menuResponses = getMenuByName(currentMenu);
+        menuResponses
+                .stream()
+                .filter(e -> e.getDay().equals(dayOfWeek))
+                .collect(Collectors.toList());
+
+        return null;
     }
 
     private MenuResponse convertToMenuResponse(Menu menu) {

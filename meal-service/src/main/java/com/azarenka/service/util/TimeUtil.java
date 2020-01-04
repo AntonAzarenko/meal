@@ -3,6 +3,7 @@ package com.azarenka.service.util;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -49,5 +50,23 @@ public class TimeUtil {
 
     public static String getMonth(String year, String month) {
         return getMonth(LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), 1));
+    }
+
+    public static String dayToString(DayOfWeek dayOfWeek) {
+        String day = dayOfWeek.toString().toLowerCase();
+        char arrayDay[] = day.toCharArray();
+        String oldChar = String.valueOf(arrayDay[0]);
+        String newChar = oldChar.toUpperCase();
+        char a = newChar.charAt(0);
+        arrayDay[0] = a;
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < arrayDay.length; i++) {
+            builder.append(arrayDay[i]);
+        }
+        return builder.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(dayToString(DayOfWeek.FRIDAY));
     }
 }

@@ -47,7 +47,12 @@ public class MenuController {
     public List<MenuResponse> getMenuByNameAndDay(@PathVariable("name") String menuTitle,
                                                   @PathVariable("day") String day,
                                                   @PathVariable("time") String time) {
-        return menuService.getMenuByName(menuTitle, day,time);
+        return menuService.getMenuByName(menuTitle, day, time);
+    }
+
+    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<MenuResponse> getCurrentMenu() {
+        return menuService.getCurrentMenu();
     }
 
     @GetMapping(value = "/findallMenu", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -60,7 +60,7 @@ public class UserServiceImplTest {
         when(repository.getByActivateCode("123")).thenReturn(new User());
         userService.activating("123");
         verify(repository).getByActivateCode("123");
-        verify(repository).update(null, true);
+        verify(repository).updateActivationCode(null, true);
     }
 
     private User getUser() {

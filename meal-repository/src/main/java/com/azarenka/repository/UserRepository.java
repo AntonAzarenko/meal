@@ -54,7 +54,13 @@ public interface UserRepository {
      * @param id      user id.
      * @param enabled true or false.
      */
-    void update(@Param("id") String id, @Param("enabled") boolean enabled);
+    void updateActivationCode(@Param("id") String id, @Param("enabled") boolean enabled);
+
+    /**
+     *
+     * @param user
+     */
+    void update(User user);
 
     /**
      * This method take all users for send email.

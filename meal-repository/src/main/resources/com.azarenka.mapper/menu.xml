@@ -14,7 +14,24 @@
         <result column="sets_name" property="titleOfSet"/>
         <result column="count_food" property="countFood"/>
     </resultMap>
-
+    <select id="findMenuByFilter" resultMap="menu">
+        SELECT
+            me.id,
+            user_id,
+            food_id,
+            day_id,
+            meal_id,
+            email,
+            date,
+            count_food,
+            sets_name
+        FROM home.menu me
+        join home.days d on me.day_id = d.id
+        join home.meals m on me.meal_id = m.id
+        where d.day = #{day}
+        and m.meal = #{meal}
+        and me.email = #{userName}
+    </select>
     <select id="getMenu" resultMap="menu">
         SELECT
             id,
@@ -50,6 +67,23 @@
         FROM home.menu
         WHERE email=#{userName}
         and sets_name=#{title}
+    </select>
+
+    <select id="getMenuByUsernameAndMenuTitleAndDay" resultMap="menu">
+        SELECT
+            id,
+            user_id,
+            food_id,
+            day_id,
+            meal_id,
+            email,
+            date,
+            count_food,
+            sets_name
+        FROM home.menu
+        WHERE email=#{userName}
+        and sets_name=#{title}
+        and day_id = #{dayId}
     </select>
 
     <insert id="save" parameterType="Menu">

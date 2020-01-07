@@ -2,6 +2,7 @@ package com.azarenka.service.api;
 
 import com.azarenka.domain.Menu;
 import com.azarenka.service.response.MenuResponse;
+import com.azarenka.service.response.TodayMenuResponse;
 
 import java.util.List;
 
@@ -49,11 +50,10 @@ public interface MenuService {
 
     /**
      *
-     * @param name
      * @param day
      * @return
      */
-    List<MenuResponse> getMenuByName(String name, String day, String time);
+    List<MenuResponse> getMenuByName(String day, String time);
 
     /**
      * @return all menu by user name
@@ -64,5 +64,7 @@ public interface MenuService {
      *
      * @return
      */
-    List<MenuResponse> getCurrentMenu();
+    List<TodayMenuResponse> getCurrentMenu();
+
+    String getTitleOfCurrentMenu();
 }

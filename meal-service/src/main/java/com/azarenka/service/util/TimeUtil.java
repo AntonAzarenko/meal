@@ -10,6 +10,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Component
 public class TimeUtil {
@@ -53,20 +55,11 @@ public class TimeUtil {
     }
 
     public static String dayToString(DayOfWeek dayOfWeek) {
-        String day = dayOfWeek.toString().toLowerCase();
-        char arrayDay[] = day.toCharArray();
-        String oldChar = String.valueOf(arrayDay[0]);
-        String newChar = oldChar.toUpperCase();
-        char a = newChar.charAt(0);
-        arrayDay[0] = a;
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < arrayDay.length; i++) {
-            builder.append(arrayDay[i]);
-        }
-        return builder.toString();
-    }
+        char arrayDay[] = dayOfWeek.toString().toLowerCase().toCharArray();
+        arrayDay[0] = String.valueOf(arrayDay[0]).toUpperCase().charAt(0);
 
-    public static void main(String[] args) {
-        System.out.println(dayToString(DayOfWeek.FRIDAY));
+        return IntStream.range(0, arrayDay.length)
+                .mapToObj(i -> String.valueOf(arrayDay[i]))
+                .collect(Collectors.joining());
     }
 }

@@ -1,13 +1,7 @@
 package com.azarenka.service.impl;
 
-import com.azarenka.domain.Day;
-import com.azarenka.domain.Food;
-import com.azarenka.domain.Meal;
-import com.azarenka.domain.Menu;
-import com.azarenka.repository.DayRepository;
-import com.azarenka.repository.FoodRepository;
-import com.azarenka.repository.MealRepository;
-import com.azarenka.repository.MenuRepository;
+import com.azarenka.domain.*;
+import com.azarenka.repository.*;
 import com.azarenka.service.impl.auth.UserPrinciple;
 import com.azarenka.service.response.MenuResponse;
 import org.junit.Test;
@@ -39,6 +33,8 @@ public class MenuServiceImplTest {
     private MealRepository mealRepository;
     @Mock
     private FoodRepository foodRepository;
+    @Mock
+    private UserRepository userRepository;
 
     @Test
     public void testGetMenu() {
@@ -60,6 +56,7 @@ public class MenuServiceImplTest {
         when(userPrinciple.getId()).thenReturn("user id");
         when(userPrinciple.getUsername()).thenReturn("username");
         doNothing().when(repository).save(any(Menu.class));
+        when(userRepository.getByEmail("username")).thenReturn(new User());
         menuService.save(Collections.singletonList(buildMenuResponse()));
         verify(dayRepository).findDayByName("Monday");
         verify(mealRepository).findByName("Breakfast");

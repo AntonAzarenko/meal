@@ -3,12 +3,15 @@ package com.azarenka.service.util;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Component
 public class TimeUtil {
@@ -49,5 +52,14 @@ public class TimeUtil {
 
     public static String getMonth(String year, String month) {
         return getMonth(LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), 1));
+    }
+
+    public static String dayToString(DayOfWeek dayOfWeek) {
+        char arrayDay[] = dayOfWeek.toString().toLowerCase().toCharArray();
+        arrayDay[0] = String.valueOf(arrayDay[0]).toUpperCase().charAt(0);
+
+        return IntStream.range(0, arrayDay.length)
+                .mapToObj(i -> String.valueOf(arrayDay[i]))
+                .collect(Collectors.joining());
     }
 }

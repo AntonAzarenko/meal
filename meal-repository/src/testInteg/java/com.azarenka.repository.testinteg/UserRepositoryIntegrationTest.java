@@ -68,6 +68,7 @@ public class UserRepositoryIntegrationTest {
         user.setName("admin");
         user.setPassword("admin");
         user.setRegistrationDate(LocalDateTime.of(2019, 9, 22, 0, 0, 0));
+        user.setCurrentMenu("");
         return user;
     }
 }

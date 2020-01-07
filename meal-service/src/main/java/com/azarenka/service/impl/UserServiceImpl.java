@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
         if (null == user) {
             return false;
         }
-        repository.update(user.getId(), true);
+        repository.updateActivationCode(user.getId(), true);
         return true;
     }
 

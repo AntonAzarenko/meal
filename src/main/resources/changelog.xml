@@ -11,4 +11,5 @@
     <include file="liquibase/com.azarenka/DML/init-01.xml"/>
     <include file="liquibase/com.azarenka/DML/november-2019.xml"/>
     <include file="liquibase/com.azarenka/DML/december-2019.xml"/>
+    <include file="liquibase/com.azarenka/DML/january-2020.xml"/>
 </databaseChangeLog>

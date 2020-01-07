@@ -10,82 +10,87 @@
         <result column="name" property="name"/>
         <result column="password" property="password"/>
         <result column="activate_code" property="activateCode"/>
-        <result  column="date_registration" property="registrationDate"/>
+        <result column="date_registration" property="registrationDate"/>
+        <result column="current_menu" property="currentMenu"/>
         <collection property="roles" ofType="com.azarenka.domain.Role" javaType="java.util.HashSet">
             <result property="name" column="role"/>
         </collection>
     </resultMap>
 
     <insert id="save" parameterType="User">
-        INSERT INTO home.users (
-            id,
-            email,
-            enabled,
-            name,
-            avatar,
-            password,
-            activate_code,
-            date_registration
-        )
-        VALUES (
-            #{id},
-            #{email},
-            #{enabled},
-            #{name},
-            #{avatar},
-            #{password},
-            #{activateCode},
-            #{registrationDate}
-        )
+        INSERT INTO home.users (id,
+                                email,
+                                enabled,
+                                name,
+                                avatar,
+                                password,
+                                activate_code,
+                                date_registration)
+        VALUES (#{id},
+                #{email},
+                #{enabled},
+                #{name},
+                #{avatar},
+                #{password},
+                #{activateCode},
+                #{registrationDate})
     </insert>
 
     <update id="update">
         UPDATE home.users
-        SET
-            enabled = #{enabled},
+        SET email         = #{email},
+            name          = #{name},
+            avatar= #{avatar},
+            enabled       = #{enabled},
+            activate_code = #{activateCode},
+            current_menu  = #{currentMenu}
+        WHERE home.users.id = #{id}
+    </update>
+
+    <update id="updateActivationCode" parameterType="User">
+        UPDATE home.users
+        SET enabled       = #{enabled},
             activate_code = 'ACTIVATED'
         WHERE home.users.id = #{id}
     </update>
 
     <select id="getByEmail" resultMap="user">
-        SELECT
-            home.users.id,
-            email,
-            name,
-            avatar,
-            activate_code,
-            password,
-            date_registration,
-            r.id,
-            r.role,
-            enabled
-        FROM
-            home.users
-            JOIN home.user_role_map rm ON rm.user_id = id
-            JOIN home.role r ON r.id = rm.role_id
-        WHERE home.users.email = #{email}
+        SELECT u.id,
+               email,
+               name,
+               avatar,
+               activate_code,
+               password,
+               date_registration,
+               r.id,
+               r.role,
+               enabled,
+               u.current_menu
+        FROM home.users u
+                 JOIN home.user_role_map rm ON rm.user_id = u.id
+                 JOIN home.role r ON r.id = rm.role_id
+        WHERE u.email = #{email}
     </select>
 
     <select id="getByActivateCode" resultMap="user">
-        SELECT
-            home.users.id,
-            email,
-            name,
-            avatar,
-            password,
-            activate_code,
-            date_registration,
-            r.id,
-            r.role,
-            enabled
-        FROM
-            home.users
-            JOIN home.user_role_map rm ON rm.user_id = id
-            JOIN home.role r ON r.id = rm.role_id
-        WHERE home.users.activate_code = #{code}
+        SELECT u.id,
+               email,
+               name,
+               avatar,
+               password,
+               activate_code,
+               date_registration,
+               r.id,
+               r.role,
+               enabled,
+               u.current_menu
+        FROM home.users u
+                 JOIN home.user_role_map rm ON rm.user_id = u.id
+                 JOIN home.role r ON r.id = rm.role_id
+        WHERE u.activate_code = #{code}
     </select>
 
-   <!-- <select id="getAll" parameterMap="user">
-        select * from home.users where enabled = true
-    </select>-->
+    <!-- <select id="getAll" parameterMap="user">
+         select * from home.users where enabled = true
+     </select>-->
 </mapper>

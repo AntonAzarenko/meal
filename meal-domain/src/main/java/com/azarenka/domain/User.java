@@ -8,8 +8,8 @@ import java.util.Set;
 
 /**
  * User
-  * <p>
- *  (c) ant-azarenko@mail.ru
+ * <p>
+ * (c) ant-azarenko@mail.ru
  * </p>
  *
  * @author Anton Azarnko
@@ -24,6 +24,7 @@ public class User extends BaseEntity {
     private Set<Role> roles;
     private String avatar;
     private String activateCode;
+    private String currentMenu;
     private LocalDateTime registrationDate = LocalDateTime.now();
 
     public User(String id, String email, String password) {
@@ -33,6 +34,14 @@ public class User extends BaseEntity {
     }
 
     public User() {
+    }
+
+    public String getCurrentMenu() {
+        return currentMenu;
+    }
+
+    public void setCurrentMenu(String currentMenu) {
+        this.currentMenu = currentMenu;
     }
 
     public LocalDateTime getRegistrationDate() {
@@ -182,31 +191,33 @@ public class User extends BaseEntity {
         User user = (User) o;
 
         return new EqualsBuilder()
-            .appendSuper(super.equals(o))
-            .append(enabled, user.enabled)
-            .append(email, user.email)
-            .append(password, user.password)
-            .append(name, user.name)
-            .append(roles, user.roles)
-            .append(avatar, user.avatar)
-            .append(activateCode, user.activateCode)
-            .append(registrationDate, user.registrationDate)
-            .isEquals();
+                .appendSuper(super.equals(o))
+                .append(enabled, user.enabled)
+                .append(email, user.email)
+                .append(password, user.password)
+                .append(name, user.name)
+                .append(roles, user.roles)
+                .append(avatar, user.avatar)
+                .append(activateCode, user.activateCode)
+                .append(registrationDate, user.registrationDate)
+                .append(currentMenu, user.currentMenu)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-            .appendSuper(super.hashCode())
-            .append(email)
-            .append(password)
-            .append(name)
-            .append(enabled)
-            .append(roles)
-            .append(avatar)
-            .append(activateCode)
-            .append(registrationDate)
-            .toHashCode();
+                .appendSuper(super.hashCode())
+                .append(email)
+                .append(password)
+                .append(name)
+                .append(enabled)
+                .append(roles)
+                .append(avatar)
+                .append(activateCode)
+                .append(registrationDate)
+                .append(currentMenu)
+                .toHashCode();
     }
 
     @Override
@@ -220,6 +231,7 @@ public class User extends BaseEntity {
                 ", avatar='" + avatar + '\'' +
                 ", activateCode='" + activateCode + '\'' +
                 ", registrationDate=" + registrationDate +
+                ", currentMenu=" + currentMenu +
                 '}';
     }
 }

@@ -11,6 +11,7 @@
     <include file="liquibase/com.azarenka/DDL/home_schema_crate_database_changelog.xml"/>
     <include file="liquibase/com.azarenka/DML/november-2019.xml"/>
     <include file="liquibase/com.azarenka/DML/december-2019.xml"/>
+    <include file="liquibase/com.azarenka/DML/january-2020.xml"/>
     <include file="user_test_data.xml"/>
     <include file="food_test_data.xml"/>
     <include file="meal_test_data.xml"/>

@@ -3,20 +3,20 @@ package com.azarenka.service.impl;
 import com.azarenka.domain.Food;
 import com.azarenka.domain.Measurement;
 import com.azarenka.domain.Menu;
-import com.azarenka.repository.DayRepository;
-import com.azarenka.repository.FoodRepository;
-import com.azarenka.repository.MealRepository;
-import com.azarenka.repository.MenuRepository;
+import com.azarenka.domain.User;
+import com.azarenka.repository.*;
 import com.azarenka.service.api.MenuService;
 import com.azarenka.service.impl.auth.UserPrinciple;
 import com.azarenka.service.response.MenuResponse;
+import com.azarenka.service.response.TodayMenuResponse;
 import com.azarenka.service.util.KeyGenerator;
-
+import com.azarenka.service.util.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,10 +33,11 @@ import java.util.stream.Collectors;
  * @author Anton Azarnka
  */
 @Service
-public class MenuServiceImpl implements MenuService{
+public class MenuServiceImpl implements MenuService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(MenuServiceImpl.class);
-
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private MenuRepository menuRepository;
     @Autowired
@@ -82,6 +83,9 @@ public class MenuServiceImpl implements MenuService{
         menu.setEmail(UserPrinciple.safeGet().getUsername());
         menu.setTitleOfSet(title);
         menuRepository.save(menu);
+        User user = userRepository.getByEmail(UserPrinciple.safeGet().getUsername());
+        user.setCurrentMenu(title);
+        userRepository.update(user);
     }
 
     @Override
@@ -97,7 +101,7 @@ public class MenuServiceImpl implements MenuService{
     @Override
     public List<MenuResponse> getMenuByName(String title) {
         String userName = UserPrinciple.safeGet().getUsername();
-        List<Menu> menuList =  menuRepository.getMenuByUsernameAndMenuTitle(userName, title);
+        List<Menu> menuList = menuRepository.getMenuByUsernameAndMenuTitle(userName, title);
         List<MenuResponse> menuResponses = new ArrayList<>();
         if (menuList.size() > 0) {
             menuList.forEach(menu -> menuResponses.add(convertToMenuResponse(menu)));
@@ -106,22 +110,51 @@ public class MenuServiceImpl implements MenuService{
     }
 
     @Override
-    public List<MenuResponse> getMenuByName(String title, String day, String time) {
-        List<MenuResponse> menuResponses = getMenuByName(title);
-        List<MenuResponse> filteredMenuResponses =  menuResponses
-                .stream()
-                .filter(e -> e.getDay().equals(day))
-                .collect(Collectors.toList());
-        return filteredMenuResponses
-                .stream()
-                .filter(e -> e.getMeal().equals(time))
-                .collect(Collectors.toList());
+    public List<MenuResponse> getMenuByName(String day, String time) {
+        String currentMenu = userRepository.getByEmail(UserPrinciple.safeGet().getUsername()).getCurrentMenu();
+        List<Menu> menuList = menuRepository.findMenuByFilter(UserPrinciple.safeGet().getUsername(),
+                currentMenu,day, time);
+        List<MenuResponse> menuResponses = new ArrayList<>();
+        if (menuList.size() > 0) {
+            menuList.forEach(menu -> menuResponses.add(convertToMenuResponse(menu)));
+        }
+        return menuResponses;
     }
 
     @Override
     public List<String> getMenuByUsername() {
         String userName = UserPrinciple.safeGet().getUsername();
         return menuRepository.findMenuByUserName(userName);
+    }
+
+    @Override
+    public List<TodayMenuResponse> getCurrentMenu() {
+        LocalDate date = LocalDate.now();
+        String dayId = dayRepository.findDayByName(TimeUtil.dayToString(date.getDayOfWeek())).getId();
+        String currentMenu = userRepository.getByEmail(UserPrinciple.safeGet().getUsername()).getCurrentMenu();
+        List<Menu> menuList =
+                menuRepository.getMenuByUsernameAndMenuTitleAndDay(UserPrinciple.safeGet().getUsername(), currentMenu, dayId);
+        List<MenuResponse> filter = new ArrayList<>();
+        if (menuList.size() > 0) {
+            menuList.forEach(menu -> filter.add(convertToMenuResponse(menu)));
+        }
+        List<TodayMenuResponse> todayMenuResponses = new ArrayList<>();
+        todayMenuResponses.add(new TodayMenuResponse("Завтрак", filterByTime("Breakfast", filter)));
+        todayMenuResponses.add(new TodayMenuResponse("Обед", filterByTime("Lunch", filter)));
+        todayMenuResponses.add(new TodayMenuResponse("Полдник", filterByTime("Second_Lunch", filter)));
+        todayMenuResponses.add(new TodayMenuResponse("Ужин", filterByTime("Dinner", filter)));
+        return todayMenuResponses;
+    }
+
+    @Override
+    public String getTitleOfCurrentMenu() {
+        return userRepository.getByEmail(UserPrinciple.safeGet().getUsername()).getCurrentMenu();
+    }
+
+    private List<MenuResponse> filterByTime(String time, List<MenuResponse> menus) {
+        return menus.stream()
+                .filter(e -> e.getMeal().equals(time))
+                .collect(Collectors.toList());
     }
 
     private MenuResponse convertToMenuResponse(Menu menu) {
@@ -152,7 +185,7 @@ public class MenuServiceImpl implements MenuService{
     private String countFormatter(double item, int count, Measurement measurement) {
         double prop = item * count;
         if (prop > 0.5) {
-           // prop = Math.round(prop);
+            // prop = Math.round(prop);
         }
 
         return String.format("%s - %s", String.valueOf(prop), getDescriptions(measurement));

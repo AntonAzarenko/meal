@@ -3,6 +3,7 @@ package com.azarenka.rest;
 import com.azarenka.domain.auth.ResponseMessage;
 import com.azarenka.service.api.MenuService;
 import com.azarenka.service.response.MenuResponse;
+import com.azarenka.service.response.TodayMenuResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +45,23 @@ public class MenuController {
     }
 
     @GetMapping(value = "/{name}/{day}/{time}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MenuResponse> getMenuByNameAndDay(@PathVariable("name") String menuTitle,
-                                                  @PathVariable("day") String day,
+    public List<MenuResponse> getMenuByNameAndDay(@PathVariable("day") String day,
                                                   @PathVariable("time") String time) {
-        return menuService.getMenuByName(menuTitle, day,time);
+        return menuService.getMenuByName(day, time);
+    }
+
+    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<TodayMenuResponse> getCurrentMenu() {
+        return menuService.getCurrentMenu();
     }
 
     @GetMapping(value = "/findallMenu", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<String> getMenuByName() {
         return menuService.getMenuByUsername();
+    }
+
+    @GetMapping(value = "/title", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getTitleOfCurrentMenu() {
+        return menuService.getTitleOfCurrentMenu();
     }
 }

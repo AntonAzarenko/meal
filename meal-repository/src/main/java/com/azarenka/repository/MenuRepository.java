@@ -51,11 +51,19 @@ public interface MenuRepository {
     /**
      * Returns menu list by user email and menu title
      *
-     * @param title menu title
+     * @param title    menu title
      * @param userName user email
      * @return list of menu
      */
     List<Menu> getMenuByUsernameAndMenuTitle(@Param("userName") String userName, @Param("title") String title);
+
+    /**
+     * @param userName
+     * @param title
+     * @param dayId
+     * @return
+     */
+    List<Menu> getMenuByUsernameAndMenuTitleAndDay(@Param("userName") String userName, @Param("title") String title, @Param("dayId") String dayId);
 
     /**
      * Returns menu list by user email.
@@ -64,4 +72,9 @@ public interface MenuRepository {
      * @return
      */
     List<String> findMenuByUserName(String userName);
+
+    List<Menu> findMenuByFilter(@Param("userName") String userName,
+                                @Param("title") String title,
+                                @Param("day") String day,
+                                @Param("meal") String meal);
 }
